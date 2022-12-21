@@ -4,3 +4,54 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
 #}
 
 {% extends "govuk-prototype-kit/layouts/govuk-branded.html" %}
+
+
+{% block pageTitle %}
+    {{serviceName}} – GOV.UK
+{% endblock %}
+
+{% block header %}
+  {{ govukHeader({
+    homepageUrl: "#",
+    serviceName: serviceName,
+    serviceUrl: '/',
+    navigation: [
+      {
+        href: "/account/sign-out",
+        text: "Sign out"
+      }
+    ] if data.report.email
+  }) }}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.',
+    classes: 'govuk-width-container'
+  }) }}
+{% endblock %}
+
+{% block footer %}
+  {{ govukFooter({
+    meta: {
+      items: [
+        {
+          href: "/manage-prototype",
+          text: "Manage your prototype"
+        },
+        {
+          href: "/manage-prototype/clear-data",
+          text: "Clear data"
+        },
+        {
+          href: "/set-user-type?type=public",
+          text: "Public referral form"
+        },
+        {
+          href: "/set-user-type?type=employer",
+          text: "Employer referral form"
+        }
+      ]
+    }
+  }) }}
+{% endblock %}

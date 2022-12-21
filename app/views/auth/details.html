@@ -1,0 +1,36 @@
+{% extends "layouts/main.html" %}
+{% set title = "Create a Teaching Services account" %}
+
+
+{% block content %}
+<div class="govuk-panel app-panel--interruption">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+      {% block beforeForm %}{% endblock %}
+
+      <form method="post" novalidate {% if data.features.validation.on %}data-validate{% endif %}>
+        <h1 class="govuk-panel__title">{{ title }}</h1>
+        <p>
+            Before you register for an NPQ, we'll ask you for a few details to see if you're in our records.
+        </p>
+        <p>We’ll ask for your:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>name</li>
+          <li>date of birth</li>
+          <li>National Insurance number, if you have one</li>
+        </ul>
+        
+        <p class="govuk-!-margin-bottom-6">
+        
+            We may also ask some follow-up questions.
+        </p>
+        
+        {{ govukButton({
+          classes: "app-button--inverse govuk-!-margin-bottom-0",
+          html: buttonText if buttonText else 'Continue'
+        }) }}
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,22 +1,44 @@
-{% extends "layouts/main.html" %}
 
-{% block pageTitle %}
-Home – {{serviceName}} – GOV.UK Prototype Kit
+{% extends "layouts/main.html" %}
+{% block pageTitle %}Find a lost TRN prototype{% endblock %}
+
+{% block header %}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceUrl: "/",
+    containerClasses: "govuk-width-container"
+  }) }}
+
+  <div class="app-masthead">
+    <div class="govuk-width-container">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds-from-desktop">
+          <h1 class="app-masthead__title govuk-heading-xl govuk-!-margin-bottom-3">
+            TRA Digital
+          </h1>
+          <div class="app-masthead__subtitle govuk-heading-l">Prototypes of {{serviceName}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}
 
 {% block content %}
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-two-thirds-from-desktop">
+    <h2 class="govuk-heading-m">Basic auth journey</h2>
+    <p>journey has no checks on DQT and capture data for account creation</p>
 
-    {% include "govuk-prototype-kit/includes/homepage-top.njk" %}
 
-    <h1 class="govuk-heading-xl">
-      {{ serviceName }}
-    </h1>
 
-    {% include "govuk-prototype-kit/includes/homepage-bottom.njk" %}
-  </div>
+    <ul class="govuk-list">
+      <li>
+        <a href="/auth/start">Auth flow</a>
+      </li>
+     
+      
+    </ul>
 </div>
-
+</div>
 {% endblock %}

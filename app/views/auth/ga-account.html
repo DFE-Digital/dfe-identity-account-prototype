@@ -1,0 +1,32 @@
+{% extends "layouts/forms.html" %}
+{% set title = "You need a Teaching Services account to continue" %}
+{% set hideButton = true %}
+
+
+
+{% block form %}
+  <h1 class="govuk-heading-xl">{{ title }}</h1>
+  <p>A Teaching services account lets you:</p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li>
+      access different teaching services with one login
+    </li>
+    <li>
+      update your details in one place
+    </li>
+  
+  </ul>
+  
+  {{ govukButton({
+    text: 'Create a account',
+    href: 'details'
+  }) }}
+
+  <h1 class="govuk-heading-m">Already have an account?</h1>
+
+  <p class="govuk-body">
+    <a href="#">Sign in</a> to amend your NPQ application or account details.
+  </p>
+
+  
+{% endblock %}
