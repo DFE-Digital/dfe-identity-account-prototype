@@ -17,10 +17,10 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
     serviceUrl: '/',
     navigation: [
       {
-        href: "/account/sign-out",
-        text: "Sign out"
+        href: "/account",
+        text: "Account"
       }
-    ] if data.report.email
+    ] if data.showAccount == 'true'
   }) }}
   {{ govukPhaseBanner({
     tag: {

@@ -1,0 +1,22 @@
+{% extends "layouts/forms.html" %}
+{% set title %}Enter your email address{% endset %}
+
+
+{% block form %}
+<h1 class="govuk-heading-xl">{{ title | safe }}</h1>
+
+<p>You’ll receive a code by email to confirm your email address.</p>
+
+  {{ govukInput({
+    id: "[email]",
+    name: "[email]",
+ 
+    hint: {
+      html: 'Use your personal email address. This is so you can keep these sign in details should you change jobs.'
+    },
+    value: data['email']
+  }) }}
+
+
+
+{% endblock %}

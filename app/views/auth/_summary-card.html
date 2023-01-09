@@ -1,0 +1,132 @@
+{{ govukSummaryList({
+  classes: "govuk-!-margin-bottom-9",
+  titleText: "Personal details",
+  rows: [
+  {
+    key: {
+      html: 'Email'
+    },
+    value: {
+      html: data['firstName'] + ' ' + data['lastName']
+    },
+    actions: {
+      items: [{
+        text: 'Change',
+        href: "name"
+      }]
+    }
+  },
+    {
+      key: {
+        html: 'Name'
+      },
+      value: {
+        html: data['firstName'] + ' ' + data['lastName']
+      },
+      actions: {
+        items: [{
+          text: 'Change',
+          href: "name"
+        }]
+      }
+    },
+    {
+      key: {
+        html: 'Date of birth'
+      },
+      value: {
+        html: data['month'] | date 
+      },
+      actions: {
+        items: [{
+          text: 'Change',
+          href: "date-of-birth"
+        }]
+      }
+    },
+    {
+      key: {
+        html: 'Other name'
+      },
+      value: {
+        html: data.report['teacher-details']['previous-name']
+      },
+      actions: {
+        items: [{
+          text: 'Change',
+          href: "/report/teacher/name"
+        }]
+      }
+    } if data.report['teacher-details']['have-previous-name'] == 'Yes',
+    {
+      key: {
+        html: 'Do you know their National Insurance number?'
+      },
+      value: {
+        html: data.report['teacher-details']['know-nino']
+      },
+      actions: {
+        items: [{
+          text: 'Change',
+          href: "/report/teacher/nino"
+        }]
+      }
+    } if data.report['teacher-details']['know-nino'],
+    {
+      key: {
+        html: 'National Insurance number'
+      },
+      value: {
+        html: data.report['teacher-details'].nino
+      },
+      actions: {
+        items: [{
+          text: 'Change',
+          href: "/report/teacher/nino"
+        }]
+      }
+    } if data.report['teacher-details']['know-nino'] == 'Yes',
+    {
+      key: {
+        html: 'Do you know their teacher reference number (TRN)?'
+      },
+      value: {
+        html: data.report['teacher-details']['know-trn']
+      },
+      actions: {
+        items: [{
+          text: 'Change',
+          href: "/report/teacher/trn"
+        }]
+      }
+    } if data.report['teacher-details']['know-trn'],
+    {
+      key: {
+        html: 'Teacher reference number (TRN)'
+      },
+      value: {
+        html: data.report['teacher-details'].trn
+      },
+      actions: {
+        items: [{
+          text: 'Change',
+          href: "/report/teacher/trn"
+        }]
+      }
+    } if data.report['teacher-details']['know-trn'] == 'Yes',
+    {
+      key: {
+        html: 'Do they have qualified teacher status (QTS)?'
+      },
+      value: {
+        html: data.report['teacher-details'].qts
+      },
+      actions: {
+        items: [{
+          text: 'Change',
+          href: "/report/teacher/qts"
+        }]
+      }
+    } if data.report['teacher-details'].qts
+  ]
+}) }}

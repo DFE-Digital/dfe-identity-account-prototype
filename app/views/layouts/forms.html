@@ -1,8 +1,9 @@
 {% extends "layouts/main.html" %}
-{% block pageNavigation %}
-  {{ govukBackLink({
-    href: paths.back
-  }) }}
+
+{% block beforeContent %}
+{{ govukBackLink({
+  href: "javascript:history.go(-1)"
+}) }}
 {% endblock %}
 
 {% block content %}
