@@ -20,7 +20,7 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
         href: "/account",
         text: "Account"
       }
-    ] if data.showAccount == 'true'
+    ] if data.signedIn == 'true'
   }) }}
   {{ govukPhaseBanner({
     tag: {
@@ -54,4 +54,7 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
       ]
     }
   }) }}
+  
+{{ data | log }}
+
 {% endblock %}

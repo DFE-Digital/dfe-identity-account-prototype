@@ -7,13 +7,8 @@
       html: 'Email'
     },
     value: {
-      html: data['firstName'] + ' ' + data['lastName']
-    },
-    actions: {
-      items: [{
-        text: 'Change',
-        href: "name"
-      }]
+      html: data['email'] | title if data['email'] else 'email@example.com'
+    
     }
   },
     {
@@ -21,7 +16,7 @@
         html: 'Name'
       },
       value: {
-        html: data['firstName'] + ' ' + data['lastName']
+        html: data['fullName'] | title if data['firstName'] else 'John Smith'
       },
       actions: {
         items: [{
@@ -35,7 +30,7 @@
         html: 'Date of birth'
       },
       value: {
-        html: data['month'] | date 
+        html: data.dob | isoDateFromDateInput | date if data['dob'] else 'John Smith'
       },
       actions: {
         items: [{

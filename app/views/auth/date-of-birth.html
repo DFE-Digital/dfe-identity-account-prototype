@@ -6,7 +6,7 @@
 <h1 class="govuk-heading-xl">{{ title | safe }}</h1>
 
 
-
+<!-- 
 {{ govukDateInput({
   id: "[dob]",
   name: "[dob]",
@@ -34,8 +34,37 @@
       classes: "govuk-input--width-4"
     }
   ]
+}) }} -->
+
+{{ govukDateInput({
+  id: "[dob]",
+  name: "[dob]",
+  fieldset: {
+  
+  },
+  hint: {
+    text: "For example, 27 3 1987"
+  },
+  items: [
+    {
+      name: "[dob][day]",
+      label: "Day",
+      value: data.dob.day,
+      classes: "govuk-input--width-2"
+    },
+    {
+      name: "[dob][month]",
+      label: "Month",
+      value: data.dob.month,
+      classes: "govuk-input--width-2"
+    },
+    {
+      name: "[dob][year]",
+      label: "Year",
+      value: data.dob.year,
+      classes: "govuk-input--width-4"
+    }
+  ]
 }) }}
-
-
 
 {% endblock %}
