@@ -7,7 +7,26 @@
 
 {% set serviceName %}Apply for QTS{% endset %}
 
-
+{% block header %}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceUrl: "/",
+    productName: productName,
+    serviceName: serviceName if not productName,
+    serviceUrl: serviceUrl or "/start",
+    containerClasses: "govuk-width-container",
+    navigation: [
+    {
+      href: "account-details",
+      text: "Account"
+    },
+    {
+      href: "signed-out",
+      text: "Sign out"
+    }
+  ]
+  }) }}
+{% endblock %}
 
 
 {% block content %}

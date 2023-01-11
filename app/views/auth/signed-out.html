@@ -1,0 +1,17 @@
+{% extends "layouts/forms.html" %}
+{% set title %}You've signed out{% endset %}
+{% set hideButton = "Back to Gov" %}
+
+
+{% block form %}
+<h1 class="govuk-heading-xl">{{ title | safe }}</h1>
+
+
+
+{{ govukButton({
+    text: "Back to Gov",
+    href: "https://www.gov.uk/"
+}) }}
+
+
+{% endblock %}

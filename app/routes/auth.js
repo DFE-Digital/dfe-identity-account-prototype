@@ -10,12 +10,12 @@ module.exports = router => {
     res.redirect('/auth/date-of-birth')
   })
 
-  router.post('/auth/date-of-birth', (req, res) => { res.redirect('/auth/check-answers') })
-  router.post('/auth/check-answers', (req, res) => { res.redirect('/auth/finish') })
+  router.post('/auth/date-of-birth', (req, res) => { res.redirect('/auth/finish') })
+  // router.post('/auth/check-answers', (req, res) => { res.redirect('/auth/finish') })
   router.post('/auth/finish', (req, res) => { res.redirect('/auth/apply-for-qts') })
 
 
   
-  
+
 
 }
