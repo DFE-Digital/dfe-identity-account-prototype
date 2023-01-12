@@ -1,9 +1,8 @@
 {% extends "layouts/forms.html" %}
-{% set title %}What's your name?{% endset %}
-{% set signedIn = 'false' %}
+{% set title %}Your name{% endset %}
+{% set signedIn = 'true' %}
 
 {% block form %}
-{{signedIn | log}}
 <h1 class="govuk-heading-xl">{{ title | safe }}</h1>
 
 
@@ -15,7 +14,7 @@
     text: "First name",
     classes: 'govuk-label--s'
   },
-    value: data['firstName']
+    value: data['firstName'] if data['firstName'] else 'John'
 }) }}
 
 {{ govukInput({
@@ -25,7 +24,7 @@
     text: "Last name",
     classes: 'govuk-label--s'
   },
-  value: data['lastName']
+  value: data['lastName'] if data['lastName'] else 'Smith'
 }) }}
 
 

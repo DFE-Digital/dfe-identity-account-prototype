@@ -6,38 +6,24 @@
 {% endblock %}
 
 {% set serviceName %}Apply for QTS{% endset %}
-
-{% block header %}
-  {{ govukHeader({
-    homepageUrl: "/",
-    serviceUrl: "/",
-    productName: productName,
-    serviceName: serviceName if not productName,
-    serviceUrl: serviceUrl or "/start",
-    containerClasses: "govuk-width-container",
-    navigation: [
-    {
-      href: "account-details",
-      text: "Account"
-    },
-    {
-      href: "signed-out",
-      text: "Sign out"
-    }
-  ]
-  }) }}
+{% block beforeContent %}
+{{ govukBackLink({
+  href: "/auth/apply-for-qts",
+  html: "Back to " + [serviceName]
+}) }}
 {% endblock %}
 
 {% set title = "Account details" %}
 
 {% block content %}
+
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
       <span class="govuk-caption-xl">Teaching Services account</span>
       <h1 class="govuk-heading-xl">
         {{ title }}
       </h1>
-      {% include '../auth/_summary-card.html' %}
+      {% include '../account/_summary-card.html' %}
       </div>
     </div>
 {% endblock %}

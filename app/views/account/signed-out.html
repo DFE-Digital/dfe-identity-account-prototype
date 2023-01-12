@@ -1,6 +1,6 @@
 {% extends "layouts/forms.html" %}
-{% set title %}You've signed out{% endset %}
-{% set hideButton = "Back to Gov" %}
+{% set title %}You are now signed out{% endset %}
+{% set hideButton = "true" %}
 
 
 {% block form %}
@@ -9,7 +9,7 @@
 
 
 {{ govukButton({
-    text: "Back to Gov",
+    text: "Back to GOV.UK",
     href: "https://www.gov.uk/"
 }) }}
 

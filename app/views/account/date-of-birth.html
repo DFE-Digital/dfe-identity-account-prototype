@@ -1,0 +1,41 @@
+{% extends "layouts/forms.html" %}
+{% set title %}What's your date of birth?{% endset %}
+
+
+{% block form %}
+<h1 class="govuk-heading-xl">{{ title | safe }}</h1>
+
+
+
+{{ govukDateInput({
+  id: "[dob]",
+  name: "[dob]",
+  fieldset: {
+  
+  },
+  hint: {
+    text: "For example, 27 3 1987"
+  },
+  items: [
+    {
+      name: "[dob][day]",
+      label: "Day",
+      value: data.dob.day if data.dob.month else '1',
+      classes: "govuk-input--width-2"
+    },
+    {
+      name: "[dob][month]",
+      label: "Month",
+      value: data.dob.month if data.dob.month else '12',
+      classes: "govuk-input--width-2"
+    },
+    {
+      name: "[dob][year]",
+      label: "Year",
+      value: data.dob.year if data.dob.year else '1989',
+      classes: "govuk-input--width-4"
+    }
+  ]
+}) }}
+
+{% endblock %}
