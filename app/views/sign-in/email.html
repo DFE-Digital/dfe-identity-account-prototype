@@ -1,0 +1,20 @@
+{% extends "layouts/forms.html" %}
+{% set title %}Enter your email address{% endset %}
+
+
+{% block form %}
+<h1 class="govuk-heading-xl">{{ title | safe }}</h1>
+
+
+  {{ govukInput({
+    id: "[email]",
+    name: "[email]",
+
+ 
+
+    value: data['email']
+  }) }}
+
+
+
+{% endblock %}

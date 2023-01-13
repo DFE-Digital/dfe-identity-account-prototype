@@ -1,5 +1,6 @@
 {% extends "layouts/forms.html" %}
-{% set title %}Your email address{% endset %}
+{% set title %}Enter your email address to sign in{% endset %}
+{% set signedIn = 'true' %}
 
 
 {% block form %}
@@ -17,7 +18,7 @@
     hint: {
       html: "We'll use this to send you a code to confirm your email address. Do not use a work or university email that you might lose access to."
     },
-    value: data['email'] | title if data['email'] else 'email@example.com'
+    value: data['email']
   }) }}
 
 

@@ -14,6 +14,8 @@ module.exports = router => {
   // router.post('/auth/check-answers', (req, res) => { res.redirect('/auth/finish') })
   router.post('/auth/finish', (req, res) => { res.redirect('/auth/apply-for-qts') })
 
+  router.post('/auth/phone', (req, res) => { res.redirect('/auth/phone-code') })
+  router.post('/auth/phone-radio', (req, res) => { res.redirect('/auth/phone-code') })
 
   
 

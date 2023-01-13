@@ -1,6 +1,5 @@
 {% extends "layouts/forms.html" %}
 {% set title %}Confirm your email address{% endset %}
-{% set signedIn = 'true' %}
 
 
 {% block form %}
@@ -19,11 +18,16 @@
   decorate: 'email-code'
 }) }}
 
-<p>
-  <a href="#">I have not received an email</a>
-</p>
+
 
 
 
 
 {% endblock %}
+
+{% block afterContent %}
+<p>
+  <a href="#">I have not received an email</a>
+</p>
+{% endblock %}
+

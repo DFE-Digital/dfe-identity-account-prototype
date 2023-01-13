@@ -1,19 +1,20 @@
 {% extends "layouts/main.html" %}
-{% set signedIn = true %}
-
-{% block pageTitle %}
-  Apply for a QTS
-{% endblock %}
-
+{% set title = "Account details" %}
+{% block pageTitle %}Apply for a QTS{% endblock %}
 {% set serviceName %}Apply for QTS{% endset %}
+{% set signedIn = 'true' %}
+
+
 {% block beforeContent %}
 {{ govukBackLink({
   href: "/auth/apply-for-qts",
   html: "Back to " + [serviceName]
 }) }}
+
+
+
 {% endblock %}
 
-{% set title = "Account details" %}
 
 {% block content %}
 
@@ -24,6 +25,7 @@
         {{ title }}
       </h1>
       {% include '../account/_summary-card.html' %}
+
       </div>
     </div>
 {% endblock %}

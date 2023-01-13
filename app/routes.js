@@ -9,5 +9,6 @@ const router = govukPrototypeKit.requests.setupRouter()
 // Add your routes here
 require('./routes/auth-lite')(router)
 require('./routes/account-flow')(router)
+require('./routes/sign-in')(router)
 
 

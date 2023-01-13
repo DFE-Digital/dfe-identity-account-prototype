@@ -11,6 +11,9 @@ module.exports = router => {
   router.post(['/account/email'], (req, res, next) => {
     res.redirect('/account/email-code')
   })
+  router.post(['/account/email-code'], (req, res, next) => {
+    res.redirect('/account/account-details')
+  })
   router.post(['/account/date-of-birth'], (req, res, next) => {
     res.redirect('/account/account-details')
   })
