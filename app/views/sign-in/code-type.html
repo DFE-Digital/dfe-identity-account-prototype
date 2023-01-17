@@ -1,5 +1,5 @@
 {% extends "layouts/forms.html" %}
-{% set title %}How do you want get a security code{% endset %}
+{% set title %}How do you want get a security code?{% endset %}
 
 
 {% block form %}
@@ -7,40 +7,30 @@
 
 
 
-{% set phoneHtml %}
-{{ govukInput({
-  id: "contact-by-phone",
-  name: "contact-by-phone",
-  type: "tel",
-  autocomplete: "tel",
-  classes: "govuk-!-width-one-third",
-  hint: {
-    text: "For international numbers include the country code"
-  },
-  label: {
-    text: "Mobile number"
-  }
-}) }}
-{% endset -%}
+
 {{ govukRadios({
-  name: "contact",
+  name: "codeType",
+  id: "codeType",
   fieldset: {
     
   },
   hint: {
-    text: "Add your mobile number to make your account more secure. We'll send a security code to this number by text message."
+    text: "You'll need a security code to access your account."
   },
   items: [
     {
-      value: "Add mobile number",
-      text: "Yes, add mobile number",
-      conditional: {
-        html: phoneHtml
+      value: "email",
+      text: "Email",
+      hint: {
+        text: "t*****@gmail.com"
       }
     },
     {
       value: "text",
-      text: " No"
+      text: " Text message",
+      hint: {
+        text: "0*****999627"
+      }
       
     }
   ]
