@@ -1,5 +1,5 @@
 {% extends "layouts/forms.html" %}
-{% set title %}Add a mobile number {% endset %}
+{% set title %}mobile number {% endset %}
 
 
 {% block form %}
@@ -18,7 +18,7 @@
     hint: {
       html: "For international numbers include the country code"
     },
-    value: data['phone']
+    value: data['phone'] | title if data['phone'] else '07827999617'
   }) }}
 
 

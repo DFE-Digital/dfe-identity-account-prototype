@@ -4,6 +4,34 @@
   rows: [
   {
     key: {
+      html: 'Name'
+    },
+    value: {
+      html: data['fullName'] | title if data['firstName'] else 'John Smith'
+    },
+    actions: {
+      items: [{
+        text: 'Change',
+        href: "name"
+      }]
+    }
+  },
+  {
+    key: {
+      html: 'Date of birth'
+    },
+    value: {
+      html: data.dob | isoDateFromDateInput | date if data['dob'] else '1 December 1989'
+    },
+    actions: {
+      items: [{
+        text: 'Change',
+        href: "date-of-birth"
+      }]
+    }
+  },
+  {
+    key: {
       html: 'Email'
     },
     value: {
@@ -17,34 +45,22 @@
       }]
     }
   },
-    {
-      key: {
-        html: 'Name'
-      },
-      value: {
-        html: data['fullName'] | title if data['firstName'] else 'John Smith'
-      },
-      actions: {
-        items: [{
-          text: 'Change',
-          href: "name"
-        }]
-      }
+  {
+    key: {
+      html: 'Mobile number'
     },
-    {
-      key: {
-        html: 'Date of birth'
-      },
-      value: {
-        html: data.dob | isoDateFromDateInput | date if data['dob'] else '1 December 1989'
-      },
-      actions: {
-        items: [{
-          text: 'Change',
-          href: "date-of-birth"
-        }]
-      }
+    value: {
+      html: data['phone'] | title if data['phone'] else '07827999617'
+    
     },
+    actions: {
+      items: [{
+        text: 'Change',
+        href: "phone"
+      }]
+    }
+  },
+    
     {
       key: {
         html: 'Other name'

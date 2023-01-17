@@ -3,7 +3,7 @@ const _ = require('lodash')
 module.exports = router => {
 
   
-  router.post(['/account/name'], (req, res, next) => {
+  router.post(['/auth/name'], (req, res, next) => {
     req.session.data['fullName'] = `${req.body['firstName']} ${req.body['lastName']}`
     res.redirect('/account/account-details')
   })
@@ -18,5 +18,10 @@ module.exports = router => {
     res.redirect('/account/account-details')
   })
 
-
+  router.post(['/account/phone'], (req, res, next) => {
+    res.redirect('/account/phone-code')
+  })
+  router.post(['/account/phone-code'], (req, res, next) => {
+    res.redirect('/account/account-details')
+  })
 }
