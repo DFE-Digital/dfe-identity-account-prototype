@@ -19,7 +19,9 @@
       {% if showSubheader %}
          <span class="govuk-caption-xl">{{subHeader}}</span>
        {% endif %}
-      <h1 class="govuk-heading-xl">{{ title | safe }}</h1>
+       {% if not showheader %}
+        <h1 class="govuk-heading-xl">{{ title | safe }}</h1>
+       {% endif %}
 
 
       <form {{formActionHtml | safe }} method="post" novalidate spellcheck="false">

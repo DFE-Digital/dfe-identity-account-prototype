@@ -1,11 +1,8 @@
 {% extends "layouts/main.html" %}
 {% set signedIn = 'true' %}
 
-{% block pageTitle %}
-  Apply for a QTS
-{% endblock %}
 
-{% set serviceName %}Apply for QTS{% endset %}
+{% set serviceName %}{{ data.qts }}{% endset %}
 
 
 

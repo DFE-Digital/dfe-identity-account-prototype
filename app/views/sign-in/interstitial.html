@@ -1,0 +1,11 @@
+{% extends "layouts/forms.html" %}
+{% set title %}Sign in using your {{ data.tsa }}{% endset %}
+
+
+{% block form %}
+<p class="govuk-!-margin-bottom-6">Continue your application by signing into your {{ data.tsa }}. </p>
+{{ govukDetails({
+    summaryText: "What is a Teacher services account?",
+    text: "Text"
+}) }}
+{% endblock %}

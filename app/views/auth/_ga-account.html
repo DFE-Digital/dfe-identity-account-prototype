@@ -1,17 +1,22 @@
 {% set signinHtml %}
   href={{- signIn -}}
 {% endset -%}
- 
+<h1 class="govuk-heading-xl">Create a teaching services account</h1>
 
-  <p>A {{serviceName}} lets you:</p>
+
+  <p>It will only take a few minutes and you’ll need:</p>
   <ul class="govuk-list govuk-list--bullet">
     <li>
-      access different teaching services with one login
+      an email address (used for contact and account security)
     </li>
     <li>
-      update your details in one place
+      a mobile phone number (used for account security)
     </li>
-  </ul>
+    <li>
+      your name and date of birth
+    </li>
+</ul>
+    <p>Once you've created an account, you can continue to {{ data.qts }}.</p>
   
   {{ govukButton({
     text: 'Create an account',
@@ -20,9 +25,22 @@
 
   <h1 class="govuk-heading-m">Already have an account?</h1>
 
-  <p class="govuk-body">
+  <p class="govuk-body govuk-!-margin-bottom-6">
     <a {{signinHtml}}>Sign in</a> to using your existing account details.
   </p>
 
   
-
+  <details class="govuk-details" data-module="govuk-details">
+    <summary class="govuk-details__summary">
+      <span class="govuk-details__summary-text">
+        About teaching services accounts
+      </span>
+    </summary>
+    <div class="govuk-details__text">
+      Teaching services accounts are new. They let teachers and teaching professionals access different DfE services with one login. You can also update your details with DfE in one place.
+    </div>
+    <div class="govuk-details__text">
+      At the moment there are only a few DfE services using teaching services accounts. In the future, you’ll be able to use your teaching services account to sign in to most DfE teaching services.
+    </div>
+  </details>
+  
