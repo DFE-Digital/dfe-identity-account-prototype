@@ -1,6 +1,6 @@
 
 {% extends "layouts/main.html" %}
-{% block pageTitle %}Find a lost TRN prototype{% endblock %}
+{% block pageTitle %} {{serviceName}} prototype{% endblock %}
 
 {% block header %}
   {{ govukHeader({
@@ -24,6 +24,12 @@
 {% endblock %}
 
 {% block content %}
+<h2 class="govuk-heading-m">QTS </h2>
+<p><a href="/qts/eligibility/start-eligibility">Check eligibility start page</a> </p>
+<p><a href="/qts/eligibility/eligible">Eligible user start page </a> </p>
+<p><a href="/qts/apply-for-qts">QTS task list - account view </a> </p>
+
+
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds-from-desktop">
@@ -41,6 +47,7 @@
     <h2 class="govuk-heading-m">Other features </h2>
     <p><a href="/auth/phone">Phone</a> Inpage form</p>
     <p><a href="/auth/phone">Phone</a> Radio option view</p>
+
 
 </div>
 </div>

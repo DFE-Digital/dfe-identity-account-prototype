@@ -1,31 +1,23 @@
-{% extends "layouts/main.html" %}
+{% extends "layouts/forms-qts.html" %}
 {% set title = "Account details" %}
-{% block pageTitle %}Apply for a QTS{% endblock %}
-{% set serviceName %}Apply for QTS{% endset %}
+{% set showSubheader = true %}
+{% set subHeader = data.tsa %}
 {% set signedIn = 'true' %}
+{% set hideButton  = 'true' %}
 
 
 {% block beforeContent %}
 {{ govukBackLink({
-  href: "/auth/apply-for-qts",
-  html: "Back to " + [serviceName]
+  href: "/qts/apply-for-qts",
+  html: "Back to QTS"
 }) }}
-
-
-
 {% endblock %}
 
 
-{% block content %}
+{% block form %}
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-      <span class="govuk-caption-xl">Teaching Services account</span>
-      <h1 class="govuk-heading-xl">
-        {{ title }}
-      </h1>
-      {% include '../account/_summary-card.html' %}
-
-      </div>
-    </div>
+  {% include '../account/_alerts.html' %}
+  {% include 'account/_summary-card.html' %}
+    
 {% endblock %}
+

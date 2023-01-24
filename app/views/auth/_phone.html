@@ -1,0 +1,24 @@
+{%- if auth -%}
+<p>Add your mobile number to make your account more secure. We'll send a security code to this number by text message. </p>
+{%- else -%}
+<p>We'll send a security code to this number by text message.</p>
+{%- endif -%}
+
+  {{ govukInput({
+    id: "[phone]",
+    name: "[phone]",
+    label: {
+      text: "Enter mobile number ",
+      classes: "govuk-label--s"
+    },
+    type: "tel",
+    autocomplete: "tel",
+    hint: {
+      html: "For international numbers include the country code"
+    },
+    value: data['phone'] or phone
+  }) }}
+
+
+
+

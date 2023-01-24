@@ -1,0 +1,11 @@
+{% extends "layouts/forms.html" %}
+{% set hideButton = true %}
+{% set accountPath = '/auth/email' %}
+{% set signIn = '/qts/tsa/sign-in/email' %}
+
+{% set title %}Create a teaching services account{% endset %}
+
+
+{% block form %}
+  {% include 'auth/_ga-account.html' %}
+{% endblock %}

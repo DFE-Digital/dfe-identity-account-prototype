@@ -1,17 +1,28 @@
 {% extends "layouts/main.html" %}
+{% set formActionHtml %}
+  {%- if formAction -%}
+    action={{- formAction -}}
+  {%- endif -%}
+{% endset -%}
+
+
 
 {% block beforeContent %}
-{{ govukBackLink({
-  href: "javascript:history.go(-1)"
-}) }}
+{% include 'includes/back.html' %}
 {% endblock %}
+
+
 
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
-      {% block beforeForm %}{% endblock %}
+      {% if showSubheader %}
+         <span class="govuk-caption-xl">{{subHeader}}</span>
+       {% endif %}
+      <h1 class="govuk-heading-xl">{{ title | safe }}</h1>
 
-      <form method="post">
+
+      <form {{formActionHtml | safe }} method="post" novalidate spellcheck="false">
         {% block form %}{% endblock %}
         {% if not hideButton %}
         {{ govukButton({

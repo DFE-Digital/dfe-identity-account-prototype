@@ -1,0 +1,22 @@
+
+{{ govukInput({
+  id: "[firstName]",
+  name: "[firstName]",
+  label: {
+    text: "First name",
+    classes: 'govuk-label--s'
+  },
+  value: data['firstName'] or defaultData.firstName 
+}) }}
+
+{{ govukInput({
+  id: "[lastName]",
+  name: "[lastName]",
+  label: {
+    text: "Last name",
+    classes: 'govuk-label--s'
+  },
+  value: data['lastName'] or defaultData.lastName 
+}) }}
+
+

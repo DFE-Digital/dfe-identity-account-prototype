@@ -1,0 +1,14 @@
+  {{ govukInput({
+    id: "[email]",
+    name: "[email]",
+    label: {
+      text: "Email address",
+      classes: "govuk-label--s"
+    },
+ 
+    hint: {
+      html: emailHint
+    },
+    value: data['email'] or email
+  }) }}
+

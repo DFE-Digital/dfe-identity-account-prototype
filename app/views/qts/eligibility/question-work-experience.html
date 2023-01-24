@@ -1,0 +1,40 @@
+{% extends "layouts/forms-qts.html" %}
+{% set title %}Do you have a teaching qualification?{% endset %}
+
+
+
+{% block form %}
+
+
+
+{{ govukRadios({
+	name: "eligibility",
+	id: "eligibility",
+	hint: {
+		text: "We need to know how long you’ve been employed as a teacher, since completing your teaching qualification."
+	  },
+	items: [
+	  {
+		value: "yes",
+		text: "Under 9 months"
+	  },
+	  {
+		value: "No",
+		text: "9 months – 20 months"
+	  },
+	  {
+		value: "No",
+		text: "More than 20 months"
+	  }
+	]
+  }) }}
+
+<p>We’ll ask for email addresses for contacts who can verify your work history (in English). If you’re successful, we’ll contact them before awarding QTS.</p>
+
+{{ govukDetails({
+	summaryText: "How to calculate your work experience",
+	html: "<p>We need to know how long you’ve spent actively teaching. This can include scheduled school holiday periods, but cannot include any other time you’ve spent away from teaching.</p>
+	<p>To work out your experience, add up the time you’ve spent employed as a teacher, including any scheduled school holidays.</p>
+	<p>If you have 9 months or more (this is equivalent to 1 academic year) but less than 20 months (this is equivalent to 2 academic years), you may still be awarded QTS, but you’ll need to complete a 2-year ‘statutory induction’ period as a newly qualified teacher.</p>"
+	}) }}
+{% endblock %}

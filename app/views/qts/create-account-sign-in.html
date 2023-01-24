@@ -1,0 +1,32 @@
+{% extends "layouts/forms-qts.html" %}
+{% set title %}Check your eligibility to apply for qualified teacher status (QTS) in England{% endset %}
+
+
+{% block form %}
+
+{{ govukRadios({
+  name: "eligibility",
+  id: "eligibility",
+  fieldset: {
+    legend: {
+      text: "Have you used the service before?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+  items: [
+    {
+      value: "false",
+      text: "Yes, sign in and continue application",
+      hint: {
+        text: "Sign in using your " + serviceNameTsa
+      }
+    },
+    {
+      value: "true",
+      text: "No, I need to check my eligibility"
+    }
+  ]
+}) }}
+
+{% endblock %}

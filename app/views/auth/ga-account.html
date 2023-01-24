@@ -1,12 +1,19 @@
 {% extends "layouts/forms.html" %}
+<<<<<<< Updated upstream
 {% set title = "You need a teaching services account to continue" %}
 {% set title %}Create a teaching services account{% endset%}
 
+=======
+{% set emailHint %}We'll use this to send you a code to confirm your email address. Do not use a work or university email that you might lose access to.{% endset %}
+>>>>>>> Stashed changes
 {% set hideButton = true %}
+{% set accountPath = 'email' %}
+{% set signIn = '/sign-in/email' %}
 
-
+{% set title %}Create a teaching services account{% endset %}
 
 {% block form %}
+<<<<<<< Updated upstream
   <h1 class="govuk-heading-xl">{{ title }}</h1>
 
 
@@ -52,4 +59,7 @@
 </details>
 
 
+=======
+  {% include 'auth/_ga-account.html' %}
+>>>>>>> Stashed changes
 {% endblock %}

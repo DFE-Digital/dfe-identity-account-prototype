@@ -1,29 +1,7 @@
 {% extends "layouts/forms.html" %}
 {% set title %}Confirm your email address{% endset %}
-{% set signedIn = 'true' %}
 
 
 {% block form %}
-<h1 class="govuk-heading-xl">{{ title | safe }}</h1>
-
-
-
-<p>A confirmation code has been sent to <strong>{{ data.email or 'emai@example.com' }}</strong>.</p>
-
-{{ govukInput({
-  label: {
-    text: "Confirmation code",
-    classes: "govuk-label--s"
-  },
-  classes: 'govuk-!-width-one-quarter',
-  decorate: 'email-code'
-}) }}
-
-<p>
-  <a href="#">I have not received an email</a>
-</p>
-
-
-
-
+  {% include 'auth/_email-code.html' %}
 {% endblock %}

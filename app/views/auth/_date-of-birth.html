@@ -1,0 +1,33 @@
+
+{{ govukDateInput({
+  id: "[dob]",
+  name: "[dob]",
+  fieldset: {
+  
+  },
+  hint: {
+    text: "For example, 27 3 1987"
+  },
+  items: [
+    {
+      name: "[dob][day]",
+      label: "Day",
+      value: data.dob.day or defaultData.day,
+      classes: "govuk-input--width-2"
+    },
+    {
+      name: "[dob][month]",
+      label: "Month",
+      value: data.dob.month or defaultData.month,
+      classes: "govuk-input--width-2"
+    },
+    {
+      name: "[dob][year]",
+      label: "Year",
+      value: data.dob.year or defaultData.year,
+      classes: "govuk-input--width-4"
+    }
+  ]
+}) }}
+
+

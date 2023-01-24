@@ -1,0 +1,43 @@
+{% extends "layouts/main.html" %}
+{% set formActionHtml %}
+  {%- if formAction -%}
+    action={{- formAction -}}
+  {%- endif -%}
+{% endset -%}
+
+
+
+{% set serviceName = data.qts %}
+
+
+{% block pageTitle %}{{ serviceName }}{% endblock %}
+{% set serviceNameTsa = data.tsa %}
+
+{% block beforeContent %}
+{% include 'includes/back.html' %}
+{% endblock %}
+
+
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+      {% if showSubheader %}
+      <span class="govuk-caption-xl">{{subHeader}}</span>
+       {% endif %}
+
+      <h1 class="govuk-heading-l">{{ title | safe }}</h1>
+
+
+      <form {{formActionHtml | safe }} method="post" novalidate spellcheck="false">
+        {% block form %}{% endblock %}
+        {% if not hideButton %}
+        {{ govukButton({
+          html: buttonText if buttonText else 'Continue'
+        }) }}
+      {% endif %}
+      {{ secondaryButton | safe if secondaryButton }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

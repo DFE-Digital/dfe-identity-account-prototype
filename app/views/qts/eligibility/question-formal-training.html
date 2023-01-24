@@ -1,0 +1,29 @@
+{% extends "layouts/forms-qts.html" %}
+{% set title %}Do you have a teaching qualification?{% endset %}
+
+
+
+{% block form %}
+
+
+
+{{ govukRadios({
+	name: "eligibility",
+	id: "eligibility",
+	hint: {
+		text: "To teach in England, you need to be able to show that you have a teaching qualification."
+	  },
+	items: [
+	  {
+		value: "yes",
+		text: "Yes"
+	  },
+	  {
+		value: "No",
+		text: "No"
+	  }
+	]
+  }) }}
+
+
+{% endblock %}

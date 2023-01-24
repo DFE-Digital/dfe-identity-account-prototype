@@ -1,0 +1,50 @@
+{% extends "layouts/forms-qts.html" %}
+{% set title %}Does your teaching qualification show that you can teach one of the following subjects?{% endset %}
+
+
+
+{% block form %}
+
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-one-half">
+		<ul class="govuk-list govuk-list--bullet">
+			<li>Maths</li>
+			<li>Science</li>
+			<li>Biology</li>
+			<li>Chemistry</li>
+			<li>Physics</li>
+			<li>Ancient Greek</li>
+			<li>Ancient Hebrew</li>
+			<li>French</li>
+		</ul>
+	</div>
+	<div class="govuk-grid-column-one-half">
+		<ul class="govuk-list govuk-list--bullet">
+			<li>German</li>
+			<li>Italian</li>
+			<li>Japanese</li>
+			<li>Latin</li>
+			<li>Mandarin</li>
+			<li>Russian</li>
+			<li>Spanish</li>
+		</ul>
+	</div>
+</div>
+
+{{ govukRadios({
+	name: "eligibility",
+	id: "eligibility",
+	items: [
+	  {
+		value: "yes",
+		text: "Yes"
+	  },
+	  {
+		value: "No",
+		text: "No"
+	  }
+	]
+  }) }}
+
+
+{% endblock %}

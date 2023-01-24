@@ -1,32 +1,14 @@
 {% extends "layouts/forms.html" %}
 {% set title %}Your name{% endset %}
 {% set signedIn = 'true' %}
+{% set formAction = '' %}
+
+{% set defaultData = {
+  firstName: "John",
+  lastName: "Smith"
+} %}
+
 
 {% block form %}
-<h1 class="govuk-heading-xl">{{ title | safe }}</h1>
-
-
-
-{{ govukInput({
-  id: "[firstName]",
-  name: "[firstName]",
-  label: {
-    text: "First name",
-    classes: 'govuk-label--s'
-  },
-    value: data['firstName'] if data['firstName'] else 'John'
-}) }}
-
-{{ govukInput({
-  id: "[lastName]",
-  name: "[lastName]",
-  label: {
-    text: "Last name",
-    classes: 'govuk-label--s'
-  },
-  value: data['lastName'] if data['lastName'] else 'Smith'
-}) }}
-
-
-
+  {% include 'auth/_name.html' %}
 {% endblock %}

@@ -1,0 +1,52 @@
+{% extends "layouts/forms.html" %}
+{% set title %}Check your eligibility to apply for qualified teacher status (QTS) in England?{% endset %}
+
+{% block pageTitle %}Apply for a QTS{% endblock %}
+{% set serviceName %}Apply for QTS{% endset %}
+{% block form %}
+<h1 class="govuk-heading-xl">{{ title | safe }}</h1>
+
+
+
+{% set phoneHtml %}
+{{ govukInput({
+  id: "contact-by-phone",
+  name: "contact-by-phone",
+  type: "tel",
+  autocomplete: "tel",
+  classes: "govuk-!-width-one-third",
+  hint: {
+    text: "Have you used the service before?"
+  },
+  label: {
+    text: "Mobile number"
+  }
+}) }}
+{% endset -%}
+{{ govukRadios({
+  name: "contact",
+  fieldset: {
+    legend: {
+      text: "Have you used the service before?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+  items: [
+    {
+      value: "Yes, sign in and continue application",
+      text: "Yes, sign in and continue application",
+      hint: {
+        text: "Sign in using your Teacher Services account."
+      }
+    },
+    {
+      value: "text",
+      text: "No, I need to check my eligibility"
+      
+    }
+  ]
+}) }}
+
+
+{% endblock %}

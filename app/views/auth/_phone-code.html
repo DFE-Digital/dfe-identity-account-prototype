@@ -1,0 +1,18 @@
+
+<p>We’ve sent you a text message with a security code to <strong>{{ data.phone or '07827676124' }}</strong></p>
+
+{{ govukInput({
+  label: {
+    text: "Security code",
+    classes: "govuk-label--s"
+  },
+  
+  classes: 'govuk-!-width-one-quarter',
+  decorate: 'email-code'
+}) }}
+
+<p>
+  <a href="#">I have not received an text message</a>
+</p>
+
+

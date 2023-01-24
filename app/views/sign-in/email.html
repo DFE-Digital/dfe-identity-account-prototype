@@ -1,20 +1,9 @@
 {% extends "layouts/forms.html" %}
-{% set title %}Enter your email address{% endset %}
+{% set title %}Enter your email address to sign in{% endset %}
+{% set emailHint %}Enter the email you used when creating your Teacher Services account.{% endset %}
+
 
 
 {% block form %}
-<h1 class="govuk-heading-xl">{{ title | safe }}</h1>
-
-
-  {{ govukInput({
-    id: "[email]",
-    name: "[email]",
-
- 
-
-    value: data['email']
-  }) }}
-
-
-
+  {% include 'auth/_email.html' %}
 {% endblock %}

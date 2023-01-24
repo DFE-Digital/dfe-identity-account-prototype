@@ -1,0 +1,29 @@
+{% if alert == "show" %}
+
+{% set alertMessage %}
+  <h3 class="govuk-notification-banner__heading">
+    {% if data['alert-type'] == "ni-update" %}
+        National Insurance number updated
+    {% elseif data['alert-type'] == "telephone-update" %}
+        Phone number updated
+    {% elseif data['alert-type'] == "email-update" %}
+       Email address updated
+    {% elseif data['alert-type'] == "name-update" %}
+       Name update sent
+    {% elseif data['alert-type'] == "dob-update" %}
+       Date of birth update sent
+     {% endif %}
+  </h3>
+
+  {% if data['alert-type'] == "name-update" or data['alert-type'] == "dob-update"%}
+      <p class="govuk-body">We'll review your request and get back to you within 5 working days.</p>
+   {% endif %}
+      <p class="govuk-body">We've sent a confirmation of the request to <span class="govuk-!-font-weight-bold">{{ data['email-address'] }}</span></p></p>
+{% endset %}
+
+
+{{ govukNotificationBanner({
+  html: alertMessage,
+  type: 'success'
+}) }}
+{% endif %}

@@ -1,0 +1,34 @@
+{% extends "layouts/forms-qts.html" %}
+{% set title %}Do you have a university degree?{% endset %}
+
+
+
+{% block form %}
+
+{{ govukRadios({
+	name: "eligibility",
+	id: "eligibility",
+	hint: {
+		text: "Your degree could include your teaching qualification, or it could be a degree in another subject.		"
+	  },
+	items: [
+	  {
+		value: "yes",
+		text: "Yes"
+	  },
+	  {
+		value: "No",
+		text: "No"
+	  }
+	]
+  }) }}
+
+{{ govukDetails({
+	summaryText: "Why we ask this",
+	text: "Teaching is a graduate-level profession in England, which means you must be able to show that you’ve
+	completed a university degree."
+	}) }}
+
+
+
+{% endblock %}

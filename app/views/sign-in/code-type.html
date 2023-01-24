@@ -1,40 +1,8 @@
 {% extends "layouts/forms.html" %}
-{% set title %}How do you want get a security code?{% endset %}
+{% set title %}How do you want get security codes?{% endset %}
 
 
 {% block form %}
-<h1 class="govuk-heading-xl">{{ title | safe }}</h1>
-
-
-
-
-{{ govukRadios({
-  name: "codeType",
-  id: "codeType",
-  fieldset: {
-    
-  },
-  hint: {
-    text: "You'll need a security code to access your account."
-  },
-  items: [
-    {
-      value: "email",
-      text: "Email",
-      hint: {
-        text: "t*****@gmail.com"
-      }
-    },
-    {
-      value: "text",
-      text: " Text message",
-      hint: {
-        text: "0*****999627"
-      }
-      
-    }
-  ]
-}) }}
-
-
+  {% include 'sign-in/_code-type.html' %}
 {% endblock %}
+

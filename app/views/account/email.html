@@ -1,26 +1,9 @@
 {% extends "layouts/forms.html" %}
-{% set title %}Enter your email address to sign in{% endset %}
-{% set signedIn = 'true' %}
+{% set title %}Your email address{% endset %}
+{% set emailHint %}We'll use this to send you a code to confirm your email address. Do not use a work or university email that you might lose access to.{% endset %}
+{% set email = 'email@example.com' %}
 
 
 {% block form %}
-<h1 class="govuk-heading-xl">{{ title | safe }}</h1>
-
-
-  {{ govukInput({
-    id: "[email]",
-    name: "[email]",
-    label: {
-      text: "Email address",
-      classes: "govuk-label--s"
-    },
- 
-    hint: {
-      html: "We'll use this to send you a code to confirm your email address. Do not use a work or university email that you might lose access to."
-    },
-    value: data['email']
-  }) }}
-
-
-
+  {% include 'auth/_email.html' %}
 {% endblock %}

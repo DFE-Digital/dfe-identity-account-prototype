@@ -1,0 +1,29 @@
+{% extends "layouts/forms-qts.html" %}
+{% set title %}Do you have any sanctions or restrictions on your employment record?{% endset %}
+
+
+
+{% block form %}
+
+
+
+{{ govukRadios({
+	name: "eligibility",
+	id: "eligibility",
+	hint: {
+		text: "To teach in England, your record must be free of any sanctions, restrictions, penalties or instances of misconduct."
+	  },
+	items: [
+	  {
+		value: "yes",
+		text: "Yes"
+	  },
+	  {
+		value: "No",
+		text: "No"
+	  }
+	]
+  }) }}
+
+
+{% endblock %}

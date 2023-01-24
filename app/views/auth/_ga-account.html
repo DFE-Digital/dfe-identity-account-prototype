@@ -1,0 +1,28 @@
+{% set signinHtml %}
+  href={{- signIn -}}
+{% endset -%}
+ 
+
+  <p>A {{serviceName}} lets you:</p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li>
+      access different teaching services with one login
+    </li>
+    <li>
+      update your details in one place
+    </li>
+  </ul>
+  
+  {{ govukButton({
+    text: 'Create an account',
+    href: accountPath
+  }) }}
+
+  <h1 class="govuk-heading-m">Already have an account?</h1>
+
+  <p class="govuk-body">
+    <a {{signinHtml}}>Sign in</a> to using your existing account details.
+  </p>
+
+  
+

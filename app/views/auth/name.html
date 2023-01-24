@@ -2,32 +2,7 @@
 {% set title %}What's your name?{% endset %}
 {% set signedIn = 'false' %}
 
+
 {% block form %}
-{{signedIn | log}}
-<h1 class="govuk-heading-xl">{{ title | safe }}</h1>
-
-
-
-{{ govukInput({
-  id: "[firstName]",
-  name: "[firstName]",
-  label: {
-    text: "First name",
-    classes: 'govuk-label--s'
-  },
-    value: data['firstName']
-}) }}
-
-{{ govukInput({
-  id: "[lastName]",
-  name: "[lastName]",
-  label: {
-    text: "Last name",
-    classes: 'govuk-label--s'
-  },
-  value: data['lastName']
-}) }}
-
-
-
+  {% include 'auth/_name.html' %}
 {% endblock %}

@@ -16,7 +16,7 @@ module.exports = router => {
   router.post('/sign-in/phone-code', (req, res) => { res.redirect('/sign-in/finish') })
 
 
-  router.post('/sign-in/finish', (req, res) => { res.redirect('../auth/apply-for-qts') })
+  router.post('/sign-in/finish', (req, res) => { res.redirect('/qts/apply-for-qts') })
 
 
   
