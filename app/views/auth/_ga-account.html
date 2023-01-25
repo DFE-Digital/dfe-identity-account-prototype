@@ -18,7 +18,7 @@
     </li>
 </ul>
     <p>Once you've created an account, you can continue to {{ data.qts }}.</p>
-  
+
   {{ govukButton({
     text: 'Create an account',
     href: accountPath
@@ -27,12 +27,12 @@
   <h1 class="govuk-heading-m">Already have an account?</h1>
 
   <p class="govuk-body govuk-!-margin-bottom-6">
-    <a {{signinHtml}}>Sign in</a> to using your existing account details.
+    <a {{signinHtml}}>Sign in</a> using your existing account details.
   </p>
 
-  
+
   {{ govukDetails({
-    summaryText: "About teaching services accounts?",
+    summaryText: "About teaching services accounts",
     html: "
     <p>Teaching services accounts are new. They let teachers and teaching professionals access different DfE services with one login. You can also update your details with DfE in one place.</p>
     <p>At the moment there are only a few DfE services using teaching services accounts. In the future, you’ll be able to use your teaching services account to sign in to most DfE teaching services.</p>
