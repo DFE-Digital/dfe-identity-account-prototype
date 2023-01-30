@@ -1,5 +1,5 @@
 
-<p>A confirmation code has been sent to <strong>{{ data.email or 'emai@example.com' }}</strong>.</p>
+<p>A confirmation code has been sent to <strong>{{ data.email or 'email@example.com' }}</strong>.</p>
 
 {{ govukInput({
   label: {
@@ -11,5 +11,8 @@
 }) }}
 
 <p>
-  <a href="#">I have not received an email</a>
+  <a href="resend-email.html">I have not received an email</a>
+</p>
+<p>
+  <a href="/auth/change-email-request">I can't access this email address</a>
 </p>

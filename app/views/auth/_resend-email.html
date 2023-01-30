@@ -1,0 +1,36 @@
+
+<p>Emails sometimes take a few minutes to arrive. If you do not receive the email, you can request a new one.</p>
+<!-- <p>If you are not receiving an email might mean you don't have a {{ data.tsa }}. <a href='auth/email'>Create an account</a></p> -->
+
+{% set resendEmailHtml %}
+{{ govukInput({
+  id: "[email]",
+  name: "[email]",
+  label: {
+    text: "Email address",
+    classes: "govuk-label--s"
+  },
+
+  hint: {
+    html: emailHint
+  },
+  value: data['email'] or email
+}) }}
+
+{% endset -%}
+
+{{ govukDetails({
+  summaryText: "Change where the email is sent",
+  html: resendEmailHtml
+  }) }}
+
+
+  {{ govukButton({
+    text: "Request a new code"
+  }) }}
+  
+<!-- 
+  <h1 class="govuk-heading-m">Not recieving a code?</h1>
+<p>If you are not receiving an security code might mean you don't have a {{ data.tsa }}. </p>
+  
+<p> <a href='/auth/email'>Create a {{ data.tsa }}</a></p> -->

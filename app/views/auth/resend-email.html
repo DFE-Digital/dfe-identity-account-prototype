@@ -1,0 +1,11 @@
+{% extends "layouts/forms.html" %}
+{% set title %}Request a new email code{% endset %}
+{% set buttonText %}Request a new email code{% endset %}
+{% set hideButton = 'true' %}
+
+
+{% block form %}
+  {% include 'auth/_resend-email.html' %}
+{% endblock %}
+
+

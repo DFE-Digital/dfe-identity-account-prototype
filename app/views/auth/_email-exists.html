@@ -1,0 +1,68 @@
+
+<p>We have located an existing account associated with <strong>{{ data.email-address or 'email@email.com' }}</strong></p>
+
+<!-- {% include 'sign-in/_code-type.html' %} -->
+
+{{ govukRadios({
+  name: "eligibility",
+  id: "eligibility",
+  fieldset: {
+    legend: {
+      text: "Sign in?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+  items: [
+    {
+      value: "false",
+      text: "Yes"
+    },
+    {
+      value: "true",
+      text: "No",
+      hint: {
+        text: "Create an account using a different email address"
+      }
+    }
+  ]
+}) }}
+{{ govukDetails({
+  summaryText: "Not your email address?",
+  html: "
+  <p>Something goes here.</p>
+  "
+  }) }}
+
+<!-- 
+  {{ govukRadios({
+    name: "codeType",
+    id: "codeType",
+    fieldset: {
+      legend: {
+        text: "How do you want get a security code?",
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--m"
+      }
+    },
+    hint: {
+      text: "You'll need a security code to access your account."
+    },
+    items: [
+      {
+        value: "email",
+        text: "Email",
+        hint: {
+          text: "t*****@gmail.com"
+        }
+      },
+      {
+        value: "text",
+        text: " Text message",
+        hint: {
+          text: "0*****999627"
+        }
+        
+      }
+    ]
+  }) }} -->

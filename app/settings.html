@@ -1,0 +1,45 @@
+
+{% extends "layouts/main.html" %}
+
+{% set backLink = '/records' %}
+{% set pageHeading = 'Prototype settings' %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds-from-desktop">
+    <h1 class="govuk-heading-l">{{pageHeading}}</h1>
+    <form action="" method="post">
+
+
+
+      {% if not data.isAdmin %}
+        {% set hrefHtml %}
+          ./settings?settings[userActiveProvider]={{data.settings.defaultAdminName}}&clearQuery=true&settings[previousUserActiveProvider]={{data.settings.userActiveProvider}}
+        {% endset %}
+        {{ govukButton({
+          "text": "Sign in as Admin",
+          href: hrefHtml
+        }) }}
+      {% else %}
+        {% set hrefHtml %}
+          ./settings?settings[userActiveProvider]={{data.settings.previousUserActiveProvider}}&clearQuery=true&settings[previousUserActiveProvider]=
+        {% endset %}
+        {{ govukButton({
+          "text": "Sign out as Admin",
+          href: hrefHtml
+        }) }}
+      {% endif %}
+
+   
+      {{ govukButton({
+        "text": "Update"
+      }) }}
+
+      <input name="successFlash" type="hidden" value="Prototype settings updated">
+
+    </form>
+
+  </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends "layouts/forms.html" %}
+
+{% set title = "You need to prove your identity to change your email address" %}
+{% set hideButton = true %}
+
+{% block form %}
+
+<p>Call the Teaching Regulation Agency (TRA) for support.</p>
+
+<p>
+  Telephone: 020 7593 5394<br />
+  Lines are open Monday to Thursday, 9am to 5pm, and on Friday from 9am to 4:30pm (except public holidays)
+</p>
+
+<h2 class="govuk-heading-m">Send a secure email using Galaxkey</h2>
+
+<p>To send a secure email to the Teaching Regulation Agency (TRA) you need to use the Galaxkey site:<br />
+
+<p><a href="https://manager.galaxkey.com/services/registerme">https://manager.galaxkey.com/services/registerme</a></p>
+
+<p>Use your new email address, jane.doe@example.com.</p>
+
+<p>After you activate your account you can then send secure emails to TRA using Galaxkey.</p>
+
+<h2 class="govuk-heading-m">Send your ID documents securely</h2>
+
+<p>Follow these steps to send your documents through Galaxkey:</p>
+
+<ul class="govuk-list govuk-list--bullet">
+  <li>select ‘Compose’ to create a new secure email</li>
+  <li>enter ‘[TO BE DETERMINED]’ as the recipient</li>
+  <li>enter ‘[TO BE DETERMINED]’ as the subject line</li>
+  <li>in your email include:
+    <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-2">
+      <li>your full legal name</li>
+      <li>your date of birth</li>
+      <li>your email address</li>
+    </ul>
+  </li>
+  <li>attach a scanned copy or photo of one of the following types of ID:
+    <ul class="govuk-list govuk-list--bullet">
+      <li>passport</li>
+      <li>driving licence (full or provisional)</li>
+      <li>certificate of residence</li>
+      <li>birth certificate</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 class="govuk-heading-m">What happens next</h2>
+
+<p>TRA will confirm your identity and update your email address.</p>
+
+<p>Your ID documents will be deleted once your request is processed.</p>
+{% endblock %}
