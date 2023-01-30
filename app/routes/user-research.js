@@ -9,6 +9,7 @@ module.exports = router => {
   data.onwardContinue = 'to apply for qualified teacher status (QTS) in England'
   data.returnToService = '/qts/apply-for-qts'
   data.scenario = '1'
+  data.signIn = 'true'
   res.redirect('/sign-in/email')
 })
   
@@ -18,7 +19,8 @@ module.exports = router => {
   data.identityServiceName = 'Apply for qualified teacher status (QTS) in England'
   data.onwardContinue = 'to apply for qualified teacher status (QTS) in England'
   data.returnToService = '/qts/apply-for-qts'
-  data.scenario = '1'
+  data.scenario = '2'
+  data.signIn = 'false'
   res.redirect('/auth/email')
 })
 

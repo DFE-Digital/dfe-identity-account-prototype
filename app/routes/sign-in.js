@@ -1,7 +1,11 @@
 const _ = require('lodash')
-
+function emailHasIdentity (data) {
+  return data.hasIdentity || data['email-address'] === 'existing.user@example.com'
+}
 module.exports = router => {
 
+
+  
   router.post('/sign-in/email', (req, res) => { res.redirect('/sign-in/email-code') })
 
   router.post('/sign-in/code-type', (req, res) => {
@@ -20,8 +24,12 @@ module.exports = router => {
 
   router.post('/sign-in/resend-email', (req, res) => { res.redirect('/sign-in/email-code') })
 
+  router.post('/sign-in/resend-phone', (req, res) => { res.redirect('/sign-in/phone-code') })
 
-  
+
+
+ 
 
 
 }
+

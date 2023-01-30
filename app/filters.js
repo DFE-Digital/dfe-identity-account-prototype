@@ -23,3 +23,18 @@ addFilter('isoDateFromDateInput', function(object) {
   addFilter('date', function(date) {
     return DateTime.fromISO(date).toFormat('d MMMM yyyy')
   })
+
+
+
+  addFilter('maskPhoneNumber', function(phoneNumber) {
+    var s = phoneNumber;
+    var start = 1;
+    var end = 5;
+  
+    var result = s.slice(1, start);
+    result += "*".repeat(s.length-start-end);
+    result += s.slice(s.length-end);
+    return result;
+  })
+
+

@@ -1,0 +1,7 @@
+{% extends "layouts/forms.html" %}
+{% set title %}Request a mobile security code{% endset %}
+{% set buttonText = 'Request security code' %}
+
+{% block form %}
+  {% include 'auth/_resend-phone.html' %}
+{% endblock %}

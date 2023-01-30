@@ -11,8 +11,12 @@
 }) }}
 
 <p>
-  <a href="resend-email.html">I have not received an email</a>
+  <a href="resend-email">I have not received an email</a>
 </p>
+
+{%- if signIn -%}
 <p>
-  <a href="/auth/change-email-request">I can't access this email address</a>
+  <a href="/sign-in/resend-phone">I can't access this email address</a>
 </p>
+{%- endif -%}
+
