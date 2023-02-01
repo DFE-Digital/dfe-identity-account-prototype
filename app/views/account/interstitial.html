@@ -1,0 +1,32 @@
+{% extends "layouts/forms.html" %}
+{% set title %}Change your account details{% endset %}
+{% set account  = 'true' %}
+{% set signedIn = 'true' %}
+{% set hideButton = 'true' %}
+{% set showSubheader = true %}
+{% set subHeader = data.tsa %}
+{% set serviceName %}{{ data.qts }}{% endset %}
+
+
+
+{% block form %}
+<p class="govuk-!-margin-bottom-6">You use your {{ data.tsa }} to sign in to '{{ data.qts }}'. </p>
+<p>You can change the following details in your {{ data.tsa }}</p>
+
+<ul class="govuk-list govuk-list--bullet">
+    <li>
+        email address
+    </li>
+    <li>
+        name
+    </li>
+    <li>
+        date of birth
+    </li>
+    <li>
+        mobile number <span class="hint">Used to log you in</span>
+    </li>
+</ul>
+<p><a href='/account/account-details'>Change your account details in your {{ data.tsa }}</a></p>
+
+{% endblock %}

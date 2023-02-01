@@ -16,7 +16,17 @@ module.exports = router => {
     }
   })
 
-  router.post('/sign-in/email-code', (req, res) => { res.redirect('/sign-in/finish') })
+
+  router.post('/sign-in/email-code', (req, res) => {
+    if(req.session.data['email'] == 'new@email.com') {
+      res.redirect('/auth/create-account-interstitial')
+    } else {
+      res.redirect('/sign-in/finish')
+    }
+  })
+  router.post('/auth/create-account-interstitial', (req, res) => { res.redirect('/user-research/qts/create-account') })
+
+
   router.post('/sign-in/phone-code', (req, res) => { res.redirect('/sign-in/finish') })
 
 

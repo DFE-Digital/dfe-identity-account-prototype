@@ -3,7 +3,17 @@ const _ = require('lodash')
 module.exports = router => {
 
   router.post('/auth/email', (req, res) => { res.redirect('/auth/email-code') })
-  router.post('/auth/email-code', (req, res) => { res.redirect('/auth/phone') })
+  // router.post('/auth/email-code', (req, res) => { res.redirect('/auth/phone') })
+
+  router.post('/auth/email-code', (req, res) => {
+    if(req.session.data['email'] == 'existing@email.com') {
+      res.redirect('/auth/sign-in-interstitial')
+    } else {
+      res.redirect('/auth/phone')
+    }
+  })
+  router.post('/auth/sign-in-interstitial', (req, res) => { res.redirect('/sign-in/finish') })
+
   router.post('/auth/resend-email', (req, res) => { res.redirect('/auth/email-code') })
 
   router.post('/auth/phone', (req, res) => { res.redirect('/auth/phone-code') })

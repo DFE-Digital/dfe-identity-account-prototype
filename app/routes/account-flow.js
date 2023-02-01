@@ -7,7 +7,7 @@ module.exports = router => {
     req.session.data['fullName'] = `${req.body['firstName']} ${req.body['lastName']}`
     res.redirect('/account/account-details')
   })
-  
+
   router.post(['/account/email'], (req, res, next) => {
     res.redirect('/account/email-code')
   })

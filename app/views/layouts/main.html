@@ -5,6 +5,16 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
 
 {% extends "govuk-prototype-kit/layouts/govuk-branded.html" %}
 
+{% set accountLink %}
+
+  {%- if account == 'true' -%}
+        /account/account-details
+     {%- else -%}
+       /account/interstitial
+  {%- endif -%}
+{% endset -%}
+
+
 
 {% block pageTitle %}
     {{serviceName}} – GOV.UK
@@ -17,7 +27,7 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
     serviceUrl: '/',
     navigation: [
       {
-        href: "/account/account-details",
+        href: accountLink,
         text: "Account",
         active: true if account == 'true'
       },      

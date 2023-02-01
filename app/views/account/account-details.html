@@ -1,4 +1,4 @@
-{% extends "layouts/forms-qts.html" %}
+{% extends "layouts/forms.html" %}
 {% set title = "Account details" %}
 {% set showSubheader = true %}
 {% set subHeader = data.tsa %}
@@ -8,10 +8,14 @@
 
 
 {% block beforeContent %}
-{{ govukBackLink({
-  href: "/qts/apply-for-qts",
-  html: "Back to application"
-}) }}
+<div id="bannerBar">
+  <a class="govuk-back-link" href="/qts/apply-for-qts"> Back to {{ data.qtsLc }}</a>
+</div>
+<style>
+  #bannerBar {
+    background-color: #F3F2F1;
+    padding: 0 0 0 0.5em;  }
+</style>
 {% endblock %}
 
 
