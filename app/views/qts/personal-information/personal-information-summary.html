@@ -1,0 +1,88 @@
+{% extends "layouts/forms-qts.html" %}
+{% set showSubheader = true %}
+{% set subHeader = 'About you' %}
+{% set signedIn = 'true' %}
+{% set qts = 'true' %}
+
+{% set title %}Check your answers{% endset %}
+
+
+
+
+{% block form %}
+
+{{ govukSummaryList({
+	classes: "govuk-!-margin-bottom-9",
+	titleText: "Personal details",
+	rows: [
+	{
+	  key: {
+		html: 'Name'
+	  },
+	  value: {
+		html: data['fullName'] | title if data['firstName'] else 'Jo Smith'
+	  }
+	},
+	{
+	  key: {
+		html: 'Date of birth'
+	  },
+	  value: {
+		html: data.dob | isoDateFromDateInput | date if data['dob'] else '1 December 1989'
+	  }
+	}, 
+	{
+	key: {
+		html: 'Name appears differently on your ID documents or qualifications?'
+	},
+	value: {
+		html: data['evidence'] | title if data['email'] else 'email@example.com'
+	
+	},
+	actions: {
+		items: [{
+		text: 'Change',
+		href: "question-current-legal-name"
+		}]
+	}
+	  },{
+		key: {
+		  html: 'Alternate given name'
+		},
+		value: {
+		  html: data['givenName'] | title if data['givenName'] else 'Johanna'
+		
+		},
+		actions: {
+		  items: [{
+			text: 'Change',
+			href: "question-current-legal-name"
+		  }]
+		}
+	  } if data['evidence'] == 'yes',
+	  {
+		key: {
+		  html: 'Alternate family name'
+		},
+		value: {
+		  html: data['familyName'] | title if data['familyName'] else 'Smith'
+		
+		},
+		actions: {
+		  items: [{
+			text: 'Change',
+			href: "question-current-legal-name"
+		  }]
+		}
+	  } if data['evidence'] == 'yes'
+	
+	]
+  }) }}
+  
+
+
+  {% include 'qts/_details.html' %}
+
+			
+	
+{% endblock %}

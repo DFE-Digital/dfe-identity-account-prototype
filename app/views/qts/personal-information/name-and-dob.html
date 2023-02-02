@@ -1,0 +1,54 @@
+{% extends "layouts/forms-qts.html" %}
+{% set showSubheader = true %}
+{% set subHeader = 'About you' %}
+{% set signedIn = 'true' %}
+{% set qts = 'true' %}
+
+{% set title %}Personal information{% endset %}
+{% set secondaryButton %}
+  {% from "govuk/components/button/macro.njk" import govukButton %}
+  {{ govukButton({
+    html: 'Save and come back later',
+    href: '#',
+    classes: "govuk-button--secondary secondary-button"
+  }) }}
+{% endset %}
+
+
+
+{% block form %}
+
+{{ govukSummaryList({
+	classes: "govuk-!-margin-bottom-9",
+	titleText: "Personal details",
+	rows: [
+	{
+	  key: {
+		html: 'Name'
+	  },
+	  value: {
+		html: data['fullName'] | title if data['firstName'] else 'John Smith'
+	  }
+	},
+	{
+	  key: {
+		html: 'Date of birth'
+	  },
+	  value: {
+		html: data.dob | isoDateFromDateInput | date if data['dob'] else '1 December 1989'
+	  }
+	}
+	]
+  }) }}
+  
+
+
+			
+  {% include 'qts/_details.html' %}
+
+  {{ govukDetails({
+	summaryText: "Why do we ask this?",
+	html: "We ask for your date of birth because not all forms of identification include it. It also helps with security in case we need to discuss your application with you."
+  }) }}
+
+{% endblock %}

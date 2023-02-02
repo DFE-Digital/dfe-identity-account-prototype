@@ -23,4 +23,16 @@ module.exports = router => {
   // sign in
   router.post('/sign-in/interstitial', (req, res) => { res.redirect('/user-research/qts/sign-in') })
 
+
+  // task list
+  router.post('/qts/personal-information/name-and-dob', (req, res) => { res.redirect('/qts/personal-information/question-current-legal-name') })
+  router.post('/qts/personal-information/question-current-legal-name', (req, res) => { res.redirect('/qts/personal-information/personal-information-summary') })
+  router.post('/qts/personal-information/personal-information-summary', (req, res) => { 
+    const data = req.session.data
+    data.completed = 'true'
+    res.redirect('/qts/apply-for-qts') 
+  })
+
+
+
 }

@@ -1,9 +1,10 @@
 module.exports = {
 
   // Insert values here
-  'email-address': 'sarahjones@gmail.com',
   'qts': 'Apply for qualified teacher status (QTS) in England',
   'qtsLc': 'apply for qualified teacher status (QTS) in England',
-  'tsa': 'Teaching services account'
+  'tsa': 'Teaching services account',
+  'tsaP': 'Teaching services accounts',
+
 }
 

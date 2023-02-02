@@ -1,0 +1,85 @@
+{% extends "layouts/forms-qts.html" %}
+{% set showSubheader = true %}
+{% set subHeader = 'About you' %}
+{% set signedIn = 'true' %}
+{% set qts = 'true' %}
+
+{% set title %}Does your name appear differently on your ID documents or qualifications?{% endset %}
+
+{% set secondaryButton %}
+  {% from "govuk/components/button/macro.njk" import govukButton %}
+  {{ govukButton({
+    html: 'Save and come back later',
+    href: '#',
+    classes: "govuk-button--secondary secondary-button"
+  }) }}
+{% endset %}
+
+
+
+{% block form %}
+
+{% set emailHtml %}
+{{ govukInput({
+	label: {
+	  text: "Alternate given names"
+	},
+	hint: {
+		text: "Enter your full name apart from your family name"
+	  },
+	id: "givenName",
+	name: "givenName",
+	value: data['givenName']
+
+  }) }}
+
+  {{ govukInput({
+	label: {
+	  text: "Alternate family name"
+	},
+	hint: {
+		text: "Enter just your family name"
+	  },
+	id: "familyName",
+	name: "familyName",
+	value: data['familyName']
+  }) }}
+
+  {{ govukFileUpload({
+	id: "file-upload-1",
+	name: "file-upload-1",
+	hint: {
+		text: "You can upload your files in PDF, JPG or DOC format. Each file must be no larger than 20MB."
+	  },
+	label: {
+	  text: "Select a file to upload"
+	}
+  }) }}	
+
+{% endset -%}
+
+{{ govukRadios({
+  name: "evidence",
+  id: "evidence",
+  value: data['evidence'],
+
+  hint: {
+    text: "If your name appears differently on your ID documents or qualification certificates, we’ll need to see evidence of your name change."
+  },
+  items: [
+    {
+      value: "yes",
+      text: "Yes – I'II upload another document to prove this",
+      conditional: {
+        html: emailHtml
+      }
+    },
+    {
+      value: "no",
+      text: "No"
+    }
+  ]
+}) }}
+			
+	
+{% endblock %}

@@ -25,11 +25,18 @@
           <ul class="app-task-list__items">
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="#" aria-describedby="eligibility-status">
+                <a href="personal-information/name-and-dob" aria-describedby="eligibility-status">
                   Enter your personal information
                 </a>
               </span>
-              <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="list-convictions-status">Not started</strong>
+           
+              {% if data['completed'] %}
+              <strong class="govuk-tag app-task-list__tag" id="personal-details-status">Completed</strong>
+              {% else %}
+              <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="personal-details-status">Not
+                started</strong>
+              {% endif %}
+           
             </li>
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
@@ -44,13 +51,13 @@
 
         <li>
           <h2 class="app-task-list__section">
-            <span class="app-task-list__section-number">2. </span> Your qualificaions
+            <span class="app-task-list__section-number">2. </span> Your qualifications
           </h2>
           <ul class="app-task-list__items">
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
                 <a href="#" aria-describedby="company-information-status">
-                  Add your teaching qualificaions
+                  Add your teaching qualifications
                 </a>
               </span>
               <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="list-convictions-status">Not started</strong>
