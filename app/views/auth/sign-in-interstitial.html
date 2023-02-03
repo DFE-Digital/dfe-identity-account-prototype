@@ -1,3 +1,4 @@
+{% set buttonText %}Sign in{% endset %}
 {% extends "layouts/forms.html" %}
 {% set title %}Sign in to your {{ data.tsa }}{% endset %}
 
@@ -5,9 +6,9 @@
 
 {% block form %}
 
-<p>We've found a teaching services account that uses the email {{ data.email or 'email@example.com' }}. </p>
+<p>We've found a Teaching services account for {{ data.email or 'email@example.com' }}. </p>
 
-<p>Continue to sign into your account</p>
+
 
 
 {% endblock %}
