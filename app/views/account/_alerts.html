@@ -1,10 +1,10 @@
-{% if alert == 'show' %}
+{% if data['alert'] == 'show' %}
 
    {% set alertMessage %}
    <h3 class="govuk-notification-banner__heading">
-         Your name has been updated
+         Your {{ data.alertType or 'name'}} has been updated
    </h3>
-   <p class="govuk-body">We'll review your request and get back to you within 5 working days.</p>
+   <!-- <p class="govuk-body">We'll review your request and get back to you within 5 working days.</p> -->
 
    {% endset %}
 
@@ -13,4 +13,5 @@
   html: alertMessage,
   type: 'success'
 }) }}
+
 {% endif %}

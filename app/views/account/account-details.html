@@ -9,13 +9,8 @@
 
 {% block beforeContent %}
 <div id="bannerBar">
-  <a class="govuk-back-link" href="/qts/apply-for-qts"> Back to {{ data.qtsLc }}</a>
+  <a class="govuk-back-link" href="/qts/apply-for-qts?alert=hide"> Back to {{ data.qtsLc }}</a>
 </div>
-<style>
-  #bannerBar {
-    background-color: #F3F2F1;
-    padding: 0 0 0 0.5em;  }
-</style>
 {% endblock %}
 
 
@@ -23,6 +18,6 @@
 
   {% include '../account/_alerts.html' %}
   {% include 'account/_summary-card.html' %}
-    
+
 {% endblock %}
 
