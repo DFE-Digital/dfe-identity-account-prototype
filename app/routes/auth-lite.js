@@ -7,6 +7,8 @@ module.exports = router => {
 
   router.post('/auth/email-code', (req, res) => {
     if(req.session.data['email'] == 'existing@email.com') {
+      const data = req.session.data
+      data.phoneMatch = 'false'
       res.redirect('/auth/sign-in-interstitial')
     } else {
       res.redirect('/auth/phone')
@@ -17,7 +19,16 @@ module.exports = router => {
   router.post('/auth/resend-email', (req, res) => { res.redirect('/auth/email-code') })
 
   router.post('/auth/phone', (req, res) => { res.redirect('/auth/phone-code') })
-  router.post('/auth/phone-code', (req, res) => { res.redirect('/auth/name') })
+
+  router.post('/auth/phone-code', (req, res) => {
+    if(req.session.data['phone'] == '07827999618') {
+      const data = req.session.data
+      data.phoneMatch = 'true'
+      res.redirect('/auth/sign-in-interstitial')
+    } else {
+      res.redirect('/auth/name')
+    }
+  })
 
 
   router.post(['/auth/name'], (req, res, next) => {

@@ -2,13 +2,9 @@
 {% set title %}We could not find an account{% endset %}
 {% set buttonText %}Create an account{% endset %}
 
-
-
 {% block form %}
-<p class="govuk-!-margin-bottom-6">We could not find a {{ data.tsa }}  for {{ data.email or 'email@example.com' }}. </p>
-<h2 class="govuk-heading-m">Create an account</h2>
-
-{% include 'auth/_account-info.html' %}
-
+    <p class="govuk-!-margin-bottom-6">We couldn't find an {{ data.tsa }}  belonging to {{ data.email or 'email@example.com' }}. </p>
+    <h2 class="govuk-heading-m">Create an account</h2>
+    {% include 'auth/_account-info.html' %}
 
 {% endblock %}

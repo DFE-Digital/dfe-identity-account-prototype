@@ -6,7 +6,7 @@
 
 
 
-    {% include 'auth/_account-info.html' %}
+  {% include 'auth/_account-info.html' %}
 
   {{ govukButton({
     text: 'Create an account',
@@ -20,10 +20,5 @@
   </p>
 
 
-  {{ govukDetails({
-    summaryText: "About Teaching services accounts",
-    html: "
-    <p>Teaching services accounts are new. They let teachers and teaching professionals access different DfE services with one login. You can also update your details with DfE in one place.</p>
-    <p>At the moment there are only a few DfE services using Teaching services accounts. In the future, you’ll be able to use your account details to sign in to most DfE teaching services.</p>
-    "
-    }) }}
+  {% include 'auth/_about-account.html' %}
+
