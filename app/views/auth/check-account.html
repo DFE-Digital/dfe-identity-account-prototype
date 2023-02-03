@@ -1,0 +1,52 @@
+{% extends "layouts/forms.html" %}
+{% set title %}We found an account that matches your details{% endset %}
+{% set emailExample %}J***@***.sch.uk{% endset %}
+{% set emailCurrent %}
+  {{ data.email or 'email@example.com' }}
+{% endset %}
+
+
+{% block form %}
+
+<p>This could be because you already have a teacher services account, and you are</p>
+<ul class="govuk-list govuk-list--bullet">
+  <li>
+    using a different personal or work email address
+  </li>
+  <li>
+    using a new work email address
+  </li>
+  <li>
+    using a new mobile number
+  </li>
+</ul>
+
+<h2 class="govuk-heading-m">Is this your account?</h2>
+{{ govukInsetText({
+  text: emailExample
+}) }}
+
+
+{{ govukRadios({
+  name: "matchAccount",
+  id: "matchAccount",
+  value: data['matchAccount'],
+
+  items: [
+    {
+      value: "true",
+      text: "Yes, sign in to this account",
+      hint: {
+        text: "We'll send a security code to " + emailExample
+      }
+    },
+    {
+      value: "false",
+      text: "No, this is not my account",
+      hint: {
+        text: "Create an account using " + emailCurrent
+      }
+    }
+  ]
+}) }}
+{% endblock %}

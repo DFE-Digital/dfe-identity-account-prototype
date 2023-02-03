@@ -31,12 +31,33 @@ module.exports = router => {
   })
 
 
+
   router.post(['/auth/name'], (req, res, next) => {
     req.session.data['fullName'] = `${req.body['firstName']} ${req.body['lastName']}`
     res.redirect('/auth/date-of-birth')
   })
 
-  router.post('/auth/date-of-birth', (req, res) => { res.redirect('/auth/finish') })
+  router.post('/auth/date-of-birth', (req, res) => { 
+    if(req.session.data['fullName'] == 'Dave Smith') {
+      res.redirect('/auth/check-account')
+    } else {
+      res.redirect('/auth/finish')
+    }
+  })
+
+  router.post('/auth/check-account', (req, res) => {
+    if(req.session.data['matchAccount'] == 'true') {
+      const data = req.session.data
+      data.email = 'J***@***.sch.uk'
+      res.redirect('/sign-in/email-code')
+    } else {
+      res.redirect('/auth/finish')
+    }
+  })
+
+
+
+
   // router.post('/auth/check-answers', (req, res) => { res.redirect('/auth/finish') })
   router.post('/auth/finish', (req, res) => { res.redirect('/auth/return-to-service') })
 
