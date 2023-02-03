@@ -1,3 +1,4 @@
+{% set buttonText %}Sign in{% endset %}
 {% extends "layouts/forms.html" %}
 {% set title %}Sign in to your {{ data.tsa }}{% endset %}
 
@@ -11,6 +12,8 @@
 
 
 {% block form %}
-    <p>We've found a teaching services account that uses the {{deviceMatch}}. </p>
+
+    <p>We've found a Teaching services account for {{deviceMatch}}. </p>
     <p>Continue to sign into your account</p>
+
 {% endblock %}
