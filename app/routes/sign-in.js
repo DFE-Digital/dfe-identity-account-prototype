@@ -24,7 +24,7 @@ module.exports = router => {
       res.redirect('/sign-in/finish')
     }
   })
-  router.post('/auth/create-account-interstitial', (req, res) => { res.redirect('/user-research/qts/create-account') })
+  router.post('/auth/create-account-interstitial', (req, res) => { res.redirect('/user-research/qts/create-account-phone') })
 
 
   router.post('/sign-in/phone-code', (req, res) => { res.redirect('/sign-in/finish') })

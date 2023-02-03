@@ -1,13 +1,16 @@
 {% extends "layouts/forms.html" %}
 {% set title %}Sign in to your {{ data.tsa }}{% endset %}
 
+{% set deviceMatch %}
+    {%- if data['phoneMatch'] == 'true' -%}
+       mobile number {{ data.phone or '07827999618' }}
+    {%- else -%}
+        email {{ data.email or 'email@example.com' }}
+    {%- endif -%}
+{% endset -%}
 
 
 {% block form %}
-
-<p>We've found a teaching services account that uses the email {{ data.email or 'email@example.com' }}. </p>
-
-<p>Continue to sign into your account</p>
-
-
+    <p>We've found a teaching services account that uses the {{deviceMatch}}. </p>
+    <p>Continue to sign into your account</p>
 {% endblock %}

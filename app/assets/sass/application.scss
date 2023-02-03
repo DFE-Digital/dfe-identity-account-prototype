@@ -24,4 +24,8 @@ $govuk-assets-path: '/govuk/assets/';
 }
 #bannerBar {
     background-color: #F3F2F1;
-    padding: 0 0 0 0.5em;  }
+    padding: 0 0 0 0.5em;  
+}
+.govuk-notification-banner--success {
+    margin: 1em 0 0 0;
+}

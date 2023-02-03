@@ -8,15 +8,15 @@
 
 
 {% block beforeContent %}
-<div id="bannerBar">
-  <a class="govuk-back-link" href="/qts/apply-for-qts?alert=hide"> Back to {{ data.qtsLc }}</a>
-</div>
+  <div id="bannerBar">
+    <a class="govuk-back-link" href="/qts/apply-for-qts?alert=hide"> Back to {{ data.qtsLc }}</a>
+  </div>
+  {% include 'account/_alerts.html' %}
 {% endblock %}
 
 
 {% block form %}
 
-  {% include '../account/_alerts.html' %}
   {% include 'account/_summary-card.html' %}
 
 {% endblock %}
