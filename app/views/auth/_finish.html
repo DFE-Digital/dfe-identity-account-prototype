@@ -2,4 +2,8 @@
 <p>Next time, you can sign in just using your email ({{ data.email or 'email@example.com' }}).</p>
 {%- endif -%}
 
+{%- if data['matchAccount'] == 'true' -%}
+    <p>Next time, sign into your account using ({{ data.email or 'email@example.com' }}).  </p>
+{%- endif -%}
+
 <p class="govuk-!-margin-bottom-6">Continue to <strong>{{serviceNameOnwards or data.qts }}</strong>. </p>

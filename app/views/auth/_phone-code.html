@@ -23,13 +23,18 @@
   decorate: 'email-code'
 }) }}
 
-<p>
-  <a href="/sign-in/resend-phone">I have not received an text message</a>
-</p>
+{%- if auth or account -%}
+  <p>
+    <a href="resend-phone">I have not received an text message</a>
+  </p>
+{%- elseif signIn -%}
+  <p>
+    <a href="/sign-in/resend-phone">I have not received an text message</a>
+  </p>
 
-
-{%- if signIn -%}
-<p>
-  <a href="/auth/change-email-request">I can't access this mobile number</a>
-</p>
+  <p>
+    <a href="/auth/change-email-request">I can't access this mobile number</a>
+  </p>
 {%- endif -%}
+
+

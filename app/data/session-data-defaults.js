@@ -5,6 +5,7 @@ module.exports = {
   'qtsLc': 'apply for qualified teacher status (QTS) in England',
   'tsa': 'Teaching services account',
   'tsaP': 'Teaching services accounts',
+  'emailExample': 'davesmith@school.sch.uk',
 
 }
 

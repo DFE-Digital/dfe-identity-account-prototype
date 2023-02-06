@@ -6,7 +6,12 @@ module.exports = router => {
 
 
   
-  router.post('/sign-in/email', (req, res) => { res.redirect('/sign-in/email-code') })
+  router.post('/sign-in/email', (req, res) => {
+    const data = req.session.data
+    data.matchAccountEmail = 'false' 
+    data.errorMessage = 'false'
+    res.redirect('/sign-in/email-code') 
+  })
 
   router.post('/sign-in/code-type', (req, res) => {
     if(req.session.data['codeType'] == 'email') {

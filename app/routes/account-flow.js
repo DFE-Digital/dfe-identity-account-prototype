@@ -16,11 +16,16 @@ module.exports = router => {
     const data = req.session.data
     data.alert = 'show'
     data.alertType = 'email'
+    data.matchAccountEmail = 'false' 
     res.redirect('/account/email-code')
   })
   router.post(['/account/email-code'], (req, res, next) => {
     res.redirect('/account/account-details')
   })
+
+  router.post('/account/resend-email', (req, res) => { res.redirect('/account/email-code') })
+  router.post('/account/resend-phone', (req, res) => { res.redirect('/account/phone-code') })
+
   router.post(['/account/date-of-birth'], (req, res, next) => {
     const data = req.session.data
     data.alert = 'show'

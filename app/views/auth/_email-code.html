@@ -1,5 +1,13 @@
+{% set email %}
+  {%- if data['matchAccountEmail'] == 'true' -%}
+    {{data.email | maskEmail}}
+  {%- else -%}
+    {{ data.email or 'email@example.com' }}
+  {%- endif -%}
+{% endset %}
 
-<p>A confirmation code has been sent to <strong>{{ data.email or 'email@example.com' }}</strong>.</p>
+
+<p>A confirmation code has been sent to <strong>({{ email }})</strong>.</p>
 
 {{ govukInput({
   label: {

@@ -6,7 +6,7 @@
     {%- if data['phoneMatch'] == 'true' -%}
        mobile number {{ data.phone or '07827999618' }}
     {%- else -%}
-        email {{ data.email or 'email@example.com' }}
+        email ({{ data.email or 'email@example.com' }})
     {%- endif -%}
 {% endset -%}
 
@@ -14,5 +14,6 @@
 {% block form %}
 
     <p>We've found a Teaching services account for {{deviceMatch}}. </p>
+
 
 {% endblock %}

@@ -1,13 +1,18 @@
-  {{ govukInput({
+{{ govukInput({
     id: "[email]",
     name: "[email]",
     label: {
       text: "",
-      classes: "govuk-label--s"
+      classes: "govuk-label--s "
     },
-
+    errorMessage: {
+      text: data['errorMessageCopy']
+    } if data['errorMessage'] == 'true'
+    ,
     hint: {
       html: emailHint
     },
     value: data['email'] or email
   }) }}
+
+

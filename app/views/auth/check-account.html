@@ -1,6 +1,8 @@
 {% extends "layouts/forms.html" %}
 {% set title %}We found an account that matches your details{% endset %}
-{% set emailExample %}J***@***.sch.uk{% endset %}
+{% set existingEmailExample %}
+  {{data.emailExample | maskEmail}}
+{% endset %}
 {% set emailCurrent %}
   {{ data.email or 'email@example.com' }}
 {% endset %}
@@ -20,31 +22,30 @@
     using a new mobile number
   </li>
 </ul>
-
 <h2 class="govuk-heading-m">Is this your account?</h2>
 {{ govukInsetText({
-  text: emailExample
+  text: existingEmailExample
 }) }}
 
 
 {{ govukRadios({
-  name: "matchAccount",
-  id: "matchAccount",
-  value: data['matchAccount'],
+  name: "matchAccountEmail",
+  id: "matchAccountEmail",
+  value: data['matchAccountEmail'],
 
   items: [
     {
       value: "true",
       text: "Yes, sign in to this account",
       hint: {
-        text: "We'll send a security code to " + emailExample
+        text: "We'll send a security code to " + existingEmailExample
       }
     },
     {
       value: "false",
       text: "No, this is not my account",
       hint: {
-        text: "Create an account using " + emailCurrent
+        text: "Create an account using davesmith@email.com"
       }
     }
   ]

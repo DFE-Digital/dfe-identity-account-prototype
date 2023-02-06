@@ -1,10 +1,28 @@
-{% set phonehtml %}
-    {{data.phone | maskPhoneNumber if data['phone'] else '**** ** 9615'}}
+
+<p>Text messages sometimes take a few minutes to arrive. If you do not receive the text message, you can request a new one.</p>
+
+{% set resendPhoneHtml %}
+{{ govukInput({
+    id: "[phone]",
+    name: "[phone]",
+    label: {
+      text: "Mobile number ",
+      classes: "govuk-label--s"
+    },
+    type: "tel",
+    autocomplete: "tel",
+    hint: {
+      html: "For international numbers include the country code"
+    },
+    value: data['phone'] or phone
+  }) }}
+
+
+
 {% endset -%}
 
-{% block form %}
+{{ govukDetails({
+  summaryText: "Change where the text message is sent",
+  html: resendPhoneHtml
+  }) }}
 
-<p class="govuk-!-margin-bottom-6">We'll send a text message to <strong>{{phonehtml | maskPhoneNumber}}</strong> which contains a security code. </p>
-<p><a href='/auth/change-email-request'>I can't access this mobile number</a></p>
-
-{% endblock %}
