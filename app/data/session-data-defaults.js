@@ -6,6 +6,10 @@ module.exports = {
   'tsa': 'Teaching services account',
   'tsaP': 'Teaching services accounts',
   'emailExample': 'davesmith@school.sch.uk',
+  
+  // Error messages
+  'errorMessageCopy': 'Enter a personal email address. Shared work emails are not allowed.',
 
-}
+}      
+
 
