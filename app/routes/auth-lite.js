@@ -6,7 +6,6 @@ module.exports = router => {
     if(req.session.data['email'] == 'head@school.com') {
       const data = req.session.data
       data.errorMessage = 'true'
-      data.errorMessageCopy = 'Enter a personal email address. Shared work email are not allowed.'
       res.redirect('/auth/email')
     } else {
       const data = req.session.data
@@ -29,7 +28,7 @@ module.exports = router => {
   router.post('/auth/sign-in-interstitial', (req, res) => { res.redirect('/sign-in/finish') })
 
   router.post('/auth/resend-email', (req, res) => { res.redirect('/auth/email-code') })
-  
+
   router.post('/auth/resend-phone', (req, res) => { res.redirect('/auth/phone-code') })
 
   router.post('/auth/phone', (req, res) => { res.redirect('/auth/phone-code') })
