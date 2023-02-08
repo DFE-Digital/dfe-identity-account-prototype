@@ -6,10 +6,8 @@ module.exports = {
   'tsa': 'Teaching services account',
   'tsaP': 'Teaching services accounts',
   'emailExample': 'davesmith@school.sch.uk',
-  
+
   // Error messages
   'errorMessageCopy': 'Enter a personal email address. It cannot be one that other people may get access to.',
 
-}      
-
-
+}
