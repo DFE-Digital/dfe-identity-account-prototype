@@ -8,7 +8,7 @@ module.exports = {
   'emailExample': 'davesmith@school.sch.uk',
   
   // Error messages
-  'errorMessageCopy': 'Enter a personal email address. Shared work emails are not allowed.',
+  'errorMessageCopy': 'Enter a personal email address. It cannot be one that other people may get access to.',
 
 }      
 
