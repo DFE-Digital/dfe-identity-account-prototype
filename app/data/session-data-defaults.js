@@ -8,4 +8,3 @@ module.exports = {
   'emailExample': 'davesmith@school.sch.uk',
 
 }
-
