@@ -9,7 +9,15 @@
 
 {% block beforeContent %}
   <div id="bannerBar">
-    <a class="govuk-back-link" href="/qts/apply-for-qts?alert=hide"> Back to {{ data.qtsLc }}</a>
+   
+{%- if data['service'] == 'qs' -%}
+<a class="govuk-back-link" href="https://qualifications-prototype.herokuapp.com/landing-pages/qualifications"> Back to Access your teaching qualifications</a>
+
+{%- else -%}
+  <a class="govuk-back-link" href="/qts/apply-for-qts?alert=hide"> Back to {{ data.qtsLc }}</a>
+
+{%- endif -%}
+   
   </div>
   {% include 'account/_alerts.html' %}
 {% endblock %}
