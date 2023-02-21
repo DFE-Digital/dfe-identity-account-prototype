@@ -1,5 +1,5 @@
 {% extends "layouts/forms.html" %}
-{% set title %}We found an account that matches your details{% endset %}
+{% set title %}We've found an account that matches your details{% endset %}
 {% set existingEmailExample %}
   {{data.emailExample | maskEmail}}
 {% endset %}
@@ -10,18 +10,8 @@
 
 {% block form %}
 
-<p>This could be because you already have a teacher services account, and you are</p>
-<ul class="govuk-list govuk-list--bullet">
-  <li>
-    using a different personal or work email address
-  </li>
-  <li>
-    using a new work email address
-  </li>
-  <li>
-    using a new mobile number
-  </li>
-</ul>
+<p>This could be because you already have a Teaching services account, and you're using a different email address or mobile phone number.</p>
+
 <h2 class="govuk-heading-m">Is this your account?</h2>
 {{ govukInsetText({
   text: existingEmailExample
