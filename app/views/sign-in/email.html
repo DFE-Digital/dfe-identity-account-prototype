@@ -1,6 +1,6 @@
 {% extends "layouts/forms.html" %}
 {% set title %}Your email address{% endset %}
-{% set emailHint %}Enter the email you used when creating your Teacher services account.{% endset %}
+{% set emailHint %}Enter the email you used when creating your {{ serviceName }}.{% endset %}
 
 {% block form %}
   {% include 'auth/_email.html' %}
