@@ -1,5 +1,5 @@
 {% extends "layouts/forms.html" %}
-{% set title = "Your account details" %}
+{% set title = "Your sign in details" %}
 {% set showSubheader = true %}
 {% set subHeader = data.tsa %}
 {% set signedIn = 'true' %}
@@ -11,7 +11,7 @@
   <div id="bannerBar">
    
 {%- if data['service'] == 'qs' -%}
-<a class="govuk-back-link" href="https://qualifications-prototype.herokuapp.com/landing-pages/qualifications"> Back to Access your teaching qualifications</a>
+<a class="govuk-back-link" href="https://qualifications-prototype.herokuapp.com/landing-pages/qualifications?alert=hide"> Back to Access your teaching qualifications</a>
 
 {%- else -%}
   <a class="govuk-back-link" href="/qts/apply-for-qts?alert=hide"> Back to {{ data.qtsLc }}</a>
