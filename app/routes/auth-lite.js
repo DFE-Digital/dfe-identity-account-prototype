@@ -54,10 +54,53 @@ module.exports = router => {
   router.post('/auth/date-of-birth', (req, res) => { 
     if(req.session.data['fullName'] == 'Dave Smith') {
       res.redirect('/auth/check-account')
+    } else if (req.session.data['dqtCheck']) {
+      res.redirect('/auth/have-nino')
     } else {
       res.redirect('/auth/finish')
     }
   })
+
+
+  router.post('/auth/have-nino', (req, res) => { 
+    if(req.session.data['have-nino'] == 'yes') {
+      res.redirect('/auth/nino')
+    } else {
+      res.redirect('/auth/have-trn')
+    }
+  })
+
+  router.post('/auth/nino', (req, res) => { 
+      res.redirect('/auth/have-trn')
+  })
+
+  router.post('/auth/have-trn', (req, res) => { 
+    if(req.session.data['have-trn'] == 'yes') {
+      res.redirect('/auth/trn')
+    } else {
+      res.redirect('/auth/have-qts')
+    }
+  })
+  
+  router.post('/auth/trn', (req, res) => { 
+    res.redirect('/auth/have-qts')
+})
+
+  router.post('/auth/have-qts', (req, res) => { 
+    const data = req.session.data
+    data.qtsAnswered = 'true'
+    if(req.session.data['have-qts'] == 'Yes') {
+      res.redirect('/auth/how-qts')
+    } else {
+      res.redirect('/auth/check-answers')
+    }
+  })
+
+
+  router.post('/auth/how-qts', (req, res) => { 
+    res.redirect('/auth/check-answers')
+  })
+
 
   router.post('/auth/check-account', (req, res) => {
     const data = req.session.data
@@ -78,7 +121,7 @@ module.exports = router => {
 
 
 
-  // router.post('/auth/check-answers', (req, res) => { res.redirect('/auth/finish') })
+   router.post('/auth/check-answers', (req, res) => { res.redirect('/auth/finish') })
   router.post('/auth/finish', (req, res) => { res.redirect('/auth/return-to-service') })
 
   router.post('/auth/phone', (req, res) => { res.redirect('/auth/phone-code') })

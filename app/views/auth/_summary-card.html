@@ -9,11 +9,20 @@
     value: {
       html: data['email'] | title if data['email'] else 'email@example.com'
     
+    }
+  },  
+  {
+    key: {
+      html: 'Mobile phone'
+    },
+    value: {
+      html: data['phone'] | title if data['phone'] else '07827999613'
+    
     },
     actions: {
       items: [{
         text: 'Change',
-        href: "name"
+        href: "phone"
       }]
     }
   },
@@ -36,7 +45,7 @@
         html: 'Date of birth'
       },
       value: {
-        html: data.dob | isoDateFromDateInput | date if data['dob'] else 'John Smith'
+        html: data.dob | isoDateFromDateInput | date if data['dob'] else '31 December 2021'
       },
       actions: {
         items: [{
@@ -47,87 +56,87 @@
     },
     {
       key: {
-        html: 'Other name'
+        html: 'Do you have a National Insurance number?'
       },
       value: {
-        html: data.report['teacher-details']['previous-name']
+        html: 'No'
       },
       actions: {
         items: [{
           text: 'Change',
-          href: "/report/teacher/name"
+          href: "have-nino"
         }]
       }
-    } if data.report['teacher-details']['have-previous-name'] == 'Yes',
-    {
-      key: {
-        html: 'Do you know their National Insurance number?'
-      },
-      value: {
-        html: data.report['teacher-details']['know-nino']
-      },
-      actions: {
-        items: [{
-          text: 'Change',
-          href: "/report/teacher/nino"
-        }]
-      }
-    } if data.report['teacher-details']['know-nino'],
+    } if data['have-nino'] == "no",
     {
       key: {
         html: 'National Insurance number'
       },
       value: {
-        html: data.report['teacher-details'].nino
+        html: data['national-insurance-number'] or 'Not given'
       },
       actions: {
         items: [{
           text: 'Change',
-          href: "/report/teacher/nino"
+          href: "nino"
         }]
       }
-    } if data.report['teacher-details']['know-nino'] == 'Yes',
+    } if data['have-nino'] == "yes",
     {
       key: {
-        html: 'Do you know their teacher reference number (TRN)?'
+        html: 'Do you have a Teacher reference number (TRN)?'
       },
       value: {
-        html: data.report['teacher-details']['know-trn']
+        html: 'No'
       },
       actions: {
         items: [{
           text: 'Change',
-          href: "/report/teacher/trn"
+          href: "have-trn"
         }]
       }
-    } if data.report['teacher-details']['know-trn'],
+    } if data['have-trn'] == "no",
     {
       key: {
         html: 'Teacher reference number (TRN)'
       },
       value: {
-        html: data.report['teacher-details'].trn
+        html: data.trn or 'Not given'
       },
       actions: {
         items: [{
           text: 'Change',
-          href: "/report/teacher/trn"
+          href: "trn"
         }]
       }
-    } if data.report['teacher-details']['know-trn'] == 'Yes',
+    } if data['have-trn'] == "yes",
+    {
+      key: {
+        html: 'Have you been awarded QTS?'
+      },
+      value: {
+        html: data['have-qts']
+      },
+      actions: {
+        items: [{
+          text: 'Change',
+          href: "have-qts"
+        }]
+      }
+    } if data.qtsAnswered,
     {
       key: {
         html: 'Do they have qualified teacher status (QTS)?'
       },
       value: {
-        html: data.report['teacher-details'].qts
+        html: data['has-qts-from-provider']
       },
       actions: {
         items: [{
           text: 'Change',
-          href: "/report/teacher/qts"
+          href: "how-qts"
         }]
       }
-    } if data.report['teacher-details'].qts
+    } if data['has-qts-from-provider']
   ]
 }) }}

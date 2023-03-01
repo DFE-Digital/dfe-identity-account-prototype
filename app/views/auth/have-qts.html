@@ -1,0 +1,25 @@
+{% extends "layouts/forms.html" %}
+{% set title %}Have you been awarded qualified teacher status (QTS)?{% endset %}
+
+{% block form %}
+
+
+{{ govukRadios({
+  name: "have-qts",
+  id: "have-qts",
+  value: data['have-qts'],
+  items: [
+    {
+      value: "Yes",
+      text: "Yes"
+    },
+    {
+      value: "No",
+      text: "No"
+    }
+  ]
+}) }}
+
+
+
+{% endblock %}
