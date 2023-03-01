@@ -1,0 +1,25 @@
+{% extends "layouts/forms.html" %}
+{% set title %}Did a university, SCITT or school award your QTS?{% endset %}
+
+{% block form %}
+
+
+{{ govukRadios({
+  name: "has-qts-from-provider",
+  id: "has-qts-from-provider",
+  value: data['has-qts-from-provider'],
+  items: [
+    {
+      value: "Yes",
+      text: "Yes"
+    },
+    {
+      value: "No, I was awarded QTS another way",
+      text: "No, I was awarded QTS another way"
+    }
+  ]
+}) }}
+
+
+
+{% endblock %}

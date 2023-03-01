@@ -2,7 +2,7 @@ const _ = require('lodash')
 
 module.exports = router => {
 
- // QTS create account
+ // QTS sign in account
  router.get('/user-research/qts/sign-in', (req, res) => {
   const data = req.session.data
   data.identityServiceName = 'Apply for qualified teacher status (QTS) in England'
@@ -33,6 +33,31 @@ module.exports = router => {
   data.signIn = 'false'
   res.redirect('/auth/phone')
 })
+
+
+ // Qual create account
+ router.get('/user-research/qual/create-account', (req, res) => {
+  const data = req.session.data
+  data.identityServiceName = data.qs
+  data.onwardContinue = 'to ' + data.qs
+  data.returnToService = 'https://qualifications-prototype.herokuapp.com/landing-pages/v2/qualifications'
+  data.scenario = '4'
+  data.dqtCheck = 'true'
+  data.signIn = 'true'
+  res.redirect('/auth/email')
+})
+
+ // Qual sign in
+ router.get('/user-research/qual/sign-in', (req, res) => {
+  const data = req.session.data
+  data.identityServiceName = data.qs
+  data.onwardContinue = 'to ' + data.qs
+  data.returnToService = 'https://qualifications-prototype.herokuapp.com/landing-pages/v2/qualifications'
+  data.scenario = '5'
+  data.signIn = 'true'
+  res.redirect('/sign-in/email')
+})
+
 router.get('/auth/return-to-service', (req, res) => {
   res.redirect(req.session.data.returnToService)
 })

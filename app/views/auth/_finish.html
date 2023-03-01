@@ -6,4 +6,4 @@
     <p>Next time, sign into your account using {{ data.email or 'email@example.com' }}.  </p>
 {%- endif -%}
 
-<p class="govuk-!-margin-bottom-6">Continue to <strong>{{serviceNameOnwards or data.qts }}</strong>. </p>
+<p class="govuk-!-margin-bottom-6">Continue <strong>{{ data.onwardContinue or data.qts }}</strong>. </p>

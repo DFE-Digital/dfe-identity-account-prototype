@@ -1,0 +1,47 @@
+{% extends "layouts/forms.html" %}
+{% set title %}Do you have a teacher reference number (TRN)?{% endset %}
+
+{% block form %}
+<p>You’ll have a TRN if you:</p>
+
+<ul class="govuk-list govuk-list--bullet">
+  <li>
+    hold qualified teacher status (QTS) in England or Wales
+  </li>
+  <li>
+    hold early years teacher status (EYTS) in England
+  </li>
+  <li>
+    already hold a national professional qualification (NPQ)
+  </li>
+  <li>
+    are working towards QTS or a EYTS
+  </li>
+</ul>
+
+{{ govukRadios({
+  name: "have-trn",
+  id: "have-trn",
+  value: data['have-trn'],
+  fieldset: {
+    legend: {
+      text: "Do you have a TRN?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+  items: [
+    {
+      value: "yes",
+      text: "Yes"
+    },
+    {
+      value: "no",
+      text: "No"
+    }
+  ]
+}) }}
+
+
+
+{% endblock %}

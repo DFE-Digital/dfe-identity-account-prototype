@@ -1,0 +1,39 @@
+{% extends "layouts/forms.html" %}
+{% set title %}What is your teacher reference number (TRN)?{% endset %}
+
+{% block form %}
+
+{% set details %}
+  <p>You can continue without it.</p>
+  {{ govukButton({
+    text: "Continue without it",
+    classes: "govuk-button--secondary"
+  }) }}
+{% endset -%}
+
+<p>A TRN is 7 digits long, for example 4567814</p>
+
+<p>It might include the letters RP and a slash, for example RP99/12345</p>
+
+<p>It’s previously been known as a QTS, GTC, DfE, DfES and DCSF number</p>
+
+{{ govukInput({
+  label: {
+    text: "Enter your TRN",
+    classes: "govuk-label--s",
+    isPageHeading: true
+  },
+  id: "[trn]",
+  name: "[trn]",
+ 
+  classes: "govuk-input--width-20",
+  value: data['trn']
+}) }}
+
+
+{{ govukDetails({
+  summaryText: "I don’t know my TRN",
+  html: details
+}) }}
+
+{% endblock %}
