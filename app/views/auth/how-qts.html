@@ -2,7 +2,19 @@
 {% set title %}Did a university, SCITT or school award your QTS?{% endset %}
 
 {% block form %}
-
+{% set qtsHtml %}
+{{ govukInput({
+  id: "itt-provider",
+  name: "itt-provider",
+  label: {
+    text: "Where did you get your QTS?",
+    classes: "govuk-label--s"
+  },
+  hint: {
+    text: "Your university, SCITT, school or other training provider"
+  }
+}) }}
+{% endset -%}
 
 {{ govukRadios({
   name: "has-qts-from-provider",
@@ -11,7 +23,10 @@
   items: [
     {
       value: "Yes",
-      text: "Yes"
+      text: "Yes",
+      conditional: {
+        html: qtsHtml
+      }
     },
     {
       value: "No, I was awarded QTS another way",
