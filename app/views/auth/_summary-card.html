@@ -123,10 +123,10 @@
           href: "have-qts"
         }]
       }
-    } if data.qtsAnswered,
+    } if data['have-qts'] == 'Yes',
     {
       key: {
-        html: 'Do they have qualified teacher status (QTS)?'
+        html: 'Did a university, SCITT or school award your QTS?'
       },
       value: {
         html: data['has-qts-from-provider']
@@ -137,6 +137,20 @@
           href: "how-qts"
         }]
       }
-    } if data['has-qts-from-provider']
+    } if data['has-qts-from-provider'] != 'Yes',
+    {
+      key: {
+        html: 'Where did you get your QTS?'
+      },
+      value: {
+        html: data['itt-provider']  or 'Not given'
+      },
+      actions: {
+        items: [{
+          text: 'Change',
+          href: "how-qts"
+        }]
+      }
+    } if data['has-qts-from-provider'] == 'Yes'
   ]
 }) }}
