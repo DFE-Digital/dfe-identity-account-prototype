@@ -57,7 +57,7 @@ module.exports = router => {
     } else if (req.session.data['dqtCheck']) {
       res.redirect('/auth/have-nino')
     } else {
-      res.redirect('/auth/finish')
+      res.redirect('/auth/check-answers')
     }
   })
 
