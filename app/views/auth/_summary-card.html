@@ -31,7 +31,7 @@
         html: 'Name'
       },
       value: {
-        html: data['fullName'] | title if data['firstName'] else 'John Smith'
+        html: data['fullName'] | title if data['firstName'] else 'Ria Smith'
       },
       actions: {
         items: [{
@@ -45,7 +45,7 @@
         html: 'Date of birth'
       },
       value: {
-        html: data.dob | isoDateFromDateInput | date if data['dob'] else '31 December 2021'
+        html:  (data['dob'] if data['dob'] else { day: 31, month: 12, year: 2021 }) | isoDateFromDateInput | govukDate
       },
       actions: {
         items: [{
@@ -137,7 +137,7 @@
           href: "how-qts"
         }]
       }
-    } if data['has-qts-from-provider'] != 'Yes',
+    } if data['has-qts-from-provider'] == 'Yes',
     {
       key: {
         html: 'Where did you get your QTS?'

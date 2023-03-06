@@ -17,7 +17,7 @@ module.exports = router => {
  router.get('/user-research/qts/create-account', (req, res) => {
   const data = req.session.data
   data.identityServiceName = 'Apply for qualified teacher status (QTS) in England'
-  data.onwardContinue = 'to apply for qualified teacher status (QTS) in England'
+  data.onwardContinue = 'apply for qualified teacher status (QTS) in England'
   data.returnToService = '/qts/apply-for-qts'
   data.scenario = '2'
   data.signIn = 'false'
@@ -27,7 +27,7 @@ module.exports = router => {
  router.get('/user-research/qts/create-account-phone', (req, res) => {
   const data = req.session.data
   data.identityServiceName = 'Apply for qualified teacher status (QTS) in England'
-  data.onwardContinue = 'to apply for qualified teacher status (QTS) in England'
+  data.onwardContinue = 'apply for qualified teacher status (QTS) in England'
   data.returnToService = '/qts/apply-for-qts'
   data.scenario = '3'
   data.signIn = 'false'
@@ -39,7 +39,7 @@ module.exports = router => {
  router.get('/user-research/qual/create-account', (req, res) => {
   const data = req.session.data
   data.identityServiceName = data.qs
-  data.onwardContinue = 'to ' + data.qs
+  data.onwardContinue = data.qs
   data.returnToService = 'https://qualifications-prototype.herokuapp.com/landing-pages/v2/qualifications'
   data.scenario = '4'
   data.dqtCheck = 'true'
@@ -51,7 +51,7 @@ module.exports = router => {
  router.get('/user-research/qual/sign-in', (req, res) => {
   const data = req.session.data
   data.identityServiceName = data.qs
-  data.onwardContinue = 'to ' + data.qs
+  data.onwardContinue = data.qs
   data.returnToService = 'https://qualifications-prototype.herokuapp.com/landing-pages/v2/qualifications'
   data.scenario = '5'
   data.signIn = 'true'
