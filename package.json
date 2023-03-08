@@ -9,6 +9,7 @@
     "govuk-prototype-filters": "^0.1.0",
     "govuk-prototype-kit": "^13.0.1",
     "lodash": "^4.17.21",
-    "luxon": "^3.2.1"
+    "luxon": "^3.2.1",
+    "notifications-node-client": "^7.0.0"
   }
 }
