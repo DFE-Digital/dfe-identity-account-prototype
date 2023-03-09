@@ -7,8 +7,9 @@ module.exports = router => {
     const data = req.session.data
     data.alert = 'show'
     data.alertType = 'name'
+    data.editType = 'name',
     req.session.data['fullName'] = `${req.body['firstName']} ${req.body['lastName']}`
-    res.redirect('/account/account-details')
+    res.redirect('/account/check-answers')
   })
 
 
@@ -29,8 +30,9 @@ module.exports = router => {
   router.post(['/account/date-of-birth'], (req, res, next) => {
     const data = req.session.data
     data.alert = 'show'
+    data.editType = 'dob',
     data.alertType = 'date of birth'
-    res.redirect('/account/account-details')
+    res.redirect('/account/check-answers')
   })
 
   router.post(['/account/phone'], (req, res, next) => {
@@ -42,5 +44,24 @@ module.exports = router => {
 
   router.post(['/account/phone-code'], (req, res, next) => {
     res.redirect('/account/account-details')
+  })
+
+  router.post(['/account/name-dqt'], (req, res, next) => {
+    const data = req.session.data
+    data.alert = 'show'
+    data.alertType = 'name',
+    data.editType = 'name-dqt',
+    req.session.data['fullNameDQT'] = `${req.body['firstNameDQT']} ${req.body['lastNameDQT']}`
+    data.nameLozenge = 'show'
+    res.redirect('/account/evidence')
+  })
+
+  router.post('/account/evidence', (req, res) => { 
+    res.redirect('/account/check-answers') 
+  })
+  router.post('/account/check-answers', (req, res) => { 
+    const data = req.session.data
+    data.alert = 'show'
+    res.redirect('/account/account-details') 
   })
 }

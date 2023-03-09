@@ -1,9 +1,19 @@
 {% if data['alert'] == 'show' %}
    {% set alertMessage %}
-   <h3 class="govuk-notification-banner__heading">
-         Your {{ data.alertType or 'name'}} has been updated
+
+    
+   {% if data['editType'] == 'name-dqt' %}
+    <h3 class="govuk-notification-banner__heading">
+      Your {{ data.alertType or 'name'}} has been sent
+  </h3>
+    <p class="govuk-body">We'll review your request and get back to you within 5 working days.</p> 
+
+
+    {% else %}
+    <h3 class="govuk-notification-banner__heading">
+      Your {{ data.alertType or 'name'}} has been updated
    </h3>
-   <!-- <p class="govuk-body">We'll review your request and get back to you within 5 working days.</p> -->
+    {% endif %}
    {% endset %}
 
   {{ govukNotificationBanner({

@@ -1,0 +1,115 @@
+{% extends "layouts/forms.html" %}
+{% set title = 'Confirm change' %}
+{% set signedIn = 'true' %}
+{% set buttonText = 'Submit change' %}
+{% set notFullWidth = true %}
+{% set backlink = true %}
+
+{% block form %}
+{{ govukSummaryList({
+  classes: "govuk-!-margin-bottom-9",
+  titleText: "Personal details",
+  rows: [
+  {
+    key: {
+      html: 'Name on certicate'
+    },
+    value: {
+      html: data['fullNameDQT'] | title if data['fullNameDQT'] else 'Victoria Smith'
+    },
+    actions: {
+      items: [{
+        text: 'Change',
+        href: "name"
+      }]
+    }
+  } if data['editType'] == "name-dqt",
+  {
+    key: {
+      html: 'Name'
+    },
+    value: {
+      html: data['fullName'] | title if data['fullName'] else 'Victoria Smith'
+    },
+    actions: {
+      items: [{
+        text: 'Change',
+        href: "name"
+      }]
+    }
+  } if data['editType'] == "name",
+  {
+    key: {
+      html: 'Date of birth'
+    },
+    value: {
+      html: data.dob | isoDateFromDateInput | date if data['dob'] else '31 January 1985'
+    },
+    actions: {
+      items: [{
+        text: 'Change',
+        href: "date-of-birth"
+      }]
+    }
+  } if data['editType'] == "dob",
+  {
+    key: {
+      html: 'File upload'
+    },
+    value: {
+      html: data['fileUpload'] | title if data['fileUpload'] else 'evidenceCertificate.png'
+    
+    },
+    actions: {
+      items: [{
+        text: 'Change',
+        href: "evidence"
+      }]
+    }
+  } if data['editType'] == "dob-dqt" or data['editType'] == "name-dqt",
+  {
+    key: {
+      html: 'Email address'
+    },
+    value: {
+      html: data['email'] | title if data['email'] else 'johnsmith@gmail.com'
+    
+    },
+    actions: {
+      items: [{
+        text: 'Change',
+        href: "email"
+      }]
+    }
+  } if data['editType'] == "email",
+  {
+    key: {
+      html: 'Phone'
+    },
+    value: {
+      html: data['phone'] | title if data['phone'] else '07823939344'
+    
+    },
+    actions: {
+      items: [{
+        text: 'Change',
+        href: "phone"
+      }]
+    }
+  } if data['editType'] == "phone"
+  
+  ]
+}) }}
+
+
+{%- if data['editType'] == 'name-dqt' or  data['editType'] == 'dob-dqt' -%}
+  {{ govukInsetText({
+    html: 
+    "
+    <p>We'll review your request and get back to you within 5 working days.</p>
+    <p>Your certicates will be changed as soon as the update is confirmed.</p> 
+    "
+  }) }}
+{%- endif -%}
+
+{% endblock %}

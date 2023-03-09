@@ -1,0 +1,46 @@
+{% extends "layouts/forms.html" %}
+{% set title = 'Your date of birth' %}
+{% set signedIn = 'true' %}
+{% set notFullWidth = true %}
+{% set backlink = true %}
+{% set defaultData = {
+  day: "1",
+  month: "12",
+  year: "1989"
+} %}
+
+{% block form %}
+<p>If your date of birth is wrong, you’ll need to provide evidence to update it.</p>
+
+{{ govukDateInput({
+  id: "[dob]",
+  name: "[dob]",
+  fieldset: {
+  },
+  hint: {
+    text: "For example, 27 3 1987"
+  },
+  items: [
+    {
+      name: "[dob][day]",
+      label: "Day",
+      value: data.dob.day or defaultData.day,
+      classes: "govuk-input--width-2"
+    },
+    {
+      name: "[dob][month]",
+      label: "Month",
+      value: data.dob.month or defaultData.month,
+      classes: "govuk-input--width-2"
+    },
+    {
+      name: "[dob][year]",
+      label: "Year",
+      value: data.dob.year or defaultData.year,
+      classes: "govuk-input--width-4"
+    }
+  ]
+}) }}
+
+
+{% endblock %}

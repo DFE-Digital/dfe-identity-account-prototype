@@ -1,0 +1,47 @@
+{% extends "layouts/forms.html" %}
+{% set title = 'Name on certificates' %}
+{% set signedIn = 'true' %}
+{% set notFullWidth = true %}
+{% set backlink = true %}
+
+{% block form %}
+<p>If you’ve changed your name, you’ll need to provide evidence to update it.</p>
+{{ govukInput({
+  id: "[firstNameDQT]",
+  name: "[firstNameDQT]",
+  label: {
+    text: "First name",
+    classes: 'govuk-label--s'
+  },
+  hint: {
+    text: "Or given names"
+  },
+  value: 'Victoria' 
+}) }}
+
+{{ govukInput({
+  id: "[middleName]",
+  name: "[middleName]",
+  label: {
+    text: "Middle name (optional)",
+    classes: 'govuk-label--s'
+  },
+  value: '' 
+}) }}
+
+{{ govukInput({
+  id: "[lastNameDQT]",
+  name: "[lastNameDQT]",
+  label: {
+    text: "Last name",
+    classes: 'govuk-label--s'
+  },
+  hint: {
+    text: "Or family names"
+  },
+  value: 'Smith' 
+}) }}
+
+
+
+{% endblock %}
