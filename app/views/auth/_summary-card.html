@@ -123,7 +123,7 @@
           href: "have-qts"
         }]
       }
-    } if data['have-qts'] == 'Yes',
+    } if data['have-qts'] == 'No' or data['have-qts'] == 'Yes',
     {
       key: {
         html: 'Did a university, SCITT or school award your QTS?'
@@ -137,7 +137,7 @@
           href: "how-qts"
         }]
       }
-    } if data['has-qts-from-provider'] == 'Yes',
+    } if data['has-qts-from-provider'] != 'Yes' and data['have-qts'] != 'No',
     {
       key: {
         html: 'Where did you get your QTS?'
@@ -151,6 +151,6 @@
           href: "how-qts"
         }]
       }
-    } if data['has-qts-from-provider'] == 'Yes'
+    } if data['has-qts-from-provider'] == 'Yes' and data['have-qts'] == 'Yes'
   ]
 }) }}
