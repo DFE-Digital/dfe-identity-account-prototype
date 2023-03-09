@@ -6,7 +6,10 @@ module.exports = {
   'tsa': 'DfE Identity account',
   'tsaP': 'DfE Identity accounts',
   'qs': 'Access your teaching qualifications',
-  'emailExample': 'davesmith@school.sch.uk',
+  'emailExample': 'nameremovedh@school.sch.uk',
+  'dqtName': 'Name Removed',
+  'dqtFirstName': 'Name',
+  'dqtLastName': 'Removed',
 
   // Error messages
   'errorMessageCopy': 'Enter a personal email address. It cannot be one that other people may get access to.',
