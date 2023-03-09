@@ -11,7 +11,7 @@
   <div id="bannerBar">
    
 {%- if data['service'] == 'qs' -%}
-<a class="govuk-back-link" href="https://qualifications-prototype.herokuapp.com/landing-pages/v2/qualifications?alert=hide"> Back to Access your teaching qualifications</a>
+<a class="govuk-back-link" href="https://qualifications-prototype.herokuapp.com/landing-pages/v3/qualifications"> Back to Access your teaching qualifications</a>
 
 {%- else -%}
   <a class="govuk-back-link" href="/qts/apply-for-qts?alert=hide"> Back to {{ data.qtsLc }}</a>
@@ -27,4 +27,15 @@
 
   {% include 'account/_summary-card.html' %}
 
+
+{%- if data['service'] == 'qs' -%}
+  {{ govukButton({
+    html: 'Back to Access your teaching qualifications',
+    href: 'https://qualifications-prototype.herokuapp.com/landing-pages/v3/qualifications'
+  }) }}
+{%- else -%}
+  {{ govukButton({
+    html: 'Back to Apply for QTS service'
+  }) }}
+  {%- endif -%}
 {% endblock %}
