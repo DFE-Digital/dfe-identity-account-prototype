@@ -1,9 +1,27 @@
-{%- if auth -%}
-<p>Next time, you can sign in just using your email ({{ data.email or 'email@example.com' }}).</p>
-{%- endif -%}
 
-{%- if data['matchAccount'] == 'true' -%}
-    <p>Next time, sign into your account using {{ data.email or 'email@example.com' }}.  </p>
-{%- endif -%}
+<!-- title of page scenarios  -->
+  {%- if data['dqt-check'] == 'found' -%}
+  <!-- A DQT record has been found - user creates account - accesses service -->
+  Found
+  {%- elseif data['dqt-check'] == 'failed' -%}
+  <!-- No DQT record - account has been created - user can't access service -->
+  Failed
 
-<p class="govuk-!-margin-bottom-6">Continue to <strong>{{ data.onwardContinue or data.qts }}</strong>. </p>
+  {%- elseif data['dqt-check'] == 'pending' -%}
+  <!-- No DQT record found - account has been created - TRA sent ticket to locate user - user can't access service -->
+  Pending
+
+  {%- elseif not data['dqt-check'] or data['dqt-check'] == 'auth' -%}
+  <!-- basic auth journey - no DQT checks made -->
+    {%- if auth -%}
+    <p>Next time, you can sign in just using your email ({{ data.email or 'email@example.com' }}).</p>
+    {%- endif -%}
+    
+    {%- if data['matchAccount'] == 'true' -%}
+        <p>Next time, sign into your account using {{ data.email or 'email@example.com' }}.  </p>
+    {%- endif -%}
+    
+    <p class="govuk-!-margin-bottom-6">Continue to <strong>{{ data.onwardContinue or data.qts }}</strong>. </p>
+    
+
+  {%- endif -%}
