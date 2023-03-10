@@ -11,6 +11,10 @@
   .govuk-body,
   .govuk-label,
   .govuk-fieldset__legend,
+  .govuk-heading-l,
+  .govuk-heading-xl,
+  .govuk-heading-m,
+  .govuk-details__summary,
   .govuk-hint {
     color: govuk-colour("white");
   }
@@ -18,11 +22,15 @@
   a:not(:focus) {
     color: inherit;
   }
-
+.govuk-button {
+  color: govuk-colour("blue")!important;
+}
   *:last-child {
     margin-bottom: 0;
   }
-
+  .govuk-details__text {
+    border-left: 5px solid #ffffff;
+  }
   .govuk-radios__label::before,
   & ::after {
     color: govuk-colour("black");
