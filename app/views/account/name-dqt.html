@@ -5,7 +5,8 @@
 {% set backlink = true %}
 
 {% block form %}
-<p>If you’ve changed your name, you’ll need to provide evidence to update it.</p>
+<p>If you’ve changed your name, you’ll need to provide evidence to update it. We'll give you detailed information about providing evidence when you select continue. Changes can take up to 5 working days.</p>
+<p>First, tell us what you would like to change your name to.<p>
 {{ govukInput({
   id: "[firstNameDQT]",
   name: "[firstNameDQT]",
@@ -16,7 +17,7 @@
   hint: {
     text: "Or given names"
   },
-  value: 'Victoria' 
+  value: 'Victoria'
 }) }}
 
 {{ govukInput({
@@ -26,7 +27,7 @@
     text: "Middle name (optional)",
     classes: 'govuk-label--s'
   },
-  value: '' 
+  value: ''
 }) }}
 
 {{ govukInput({
@@ -39,7 +40,7 @@
   hint: {
     text: "Or family names"
   },
-  value: 'Smith' 
+  value: 'Smith'
 }) }}
 
 
