@@ -34,6 +34,24 @@
 <p><a href="/qts/eligibility/eligible">Eligible user start page </a> </p>
 <p><a href="/qts/apply-for-qts">QTS task list - account view </a> </p>
 
+<h2 class="govuk-heading-m">DQT end points </h2>
+<p>User creates account and a DQT look up occurs</p>
+<p>
+  <a href="/auth/finish?dqt-check=found">Dqt record found</a> <br>
+  <span class="govuk-hint">User creates account and continues into service</span>
+</p>
+<p>
+  <a href="/auth/finish?dqt-check=failed">Dqt record NOT found</a> <br>
+  <span class="govuk-hint">User is not permitted to continue</span>
+</p>
+<p>
+  <a href="/auth/finish?dqt-check=pending">Dqt record Pending</a> <br>
+  <span class="govuk-hint">User may be on the DQT - ticket raised for manual check - </span>
+</p>
+<p>
+  <a href="/auth/finish?dqt-check=auth">Basic auth - no DQT</a> <br>
+  <span class="govuk-hint">Standard pattern for basic auth</span>
+</p>
 <h2 class="govuk-heading-m">Edge cases </h2>
 <p>
   <a href="/user-research/qts/sign-in?email=new@email.com">Sign in (no account exists)</a> <br>

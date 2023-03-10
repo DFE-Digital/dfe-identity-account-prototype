@@ -1,8 +1,31 @@
 {% extends "layouts/forms-interrupt.html" %}
-{% set title %}You've created a {{ serviceName }}{% endset %}
 {% set hideBackLink = true %}
-{% set serviceNameOnwards = data.qts %}
 {% set auth = true %}
+{% set hideButton = true %}
+
+<!-- title of page scenarios  -->
+{% set title %} 
+  {%- if data['dqt-check'] == 'found' -%}
+  <!-- A DQT record has been found - user creates account - accesses service -->
+  Found
+  {%- elseif data['dqt-check'] == 'failed' -%}
+  <!-- No DQT record - account has been created - user can't access service -->
+  Failed
+
+  {%- elseif data['dqt-check'] == 'pending' -%}
+  <!-- No DQT record found - account has been created - TRA sent ticket to locate user - user can't access service -->
+  Pending
+
+  {%- elseif not data['dqt-check'] or data['dqt-check'] == 'auth' -%}
+  <!-- basic auth journey - no DQT checks made -->
+  You've created a {{ serviceName }}
+ 
+  {% set hideButton = false %}
+
+  {%- endif -%}
+{% endset %}
+
+
 
 {% block form %}
   {% include 'auth/_finish.html' %}

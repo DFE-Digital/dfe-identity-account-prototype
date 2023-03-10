@@ -1,3 +1,5 @@
+<p>Personal details</p>
+
 {{ govukSummaryList({
   classes: "govuk-!-margin-bottom-9",
   titleText: "Personal details",
@@ -18,7 +20,7 @@
   },
   {
     key: {
-      html: 'Name on certificates'
+      html: 'Official name'
     },
     value: {
       html: data['dqtName'] +'<p class="govuk-hint govuk-!-font-size-14">Displayed on teaching certificates </p>'
