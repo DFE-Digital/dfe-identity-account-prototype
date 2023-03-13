@@ -52,7 +52,7 @@ module.exports = router => {
   const data = req.session.data
   data.identityServiceName = data.qs
   data.onwardContinue = data.qs
-  data.returnToService = 'https://qualifications-prototype.herokuapp.com/landing-pages/v2/qualifications'
+  data.returnToService = 'https://qualifications-prototype.herokuapp.com/landing-pages/v3/qualifications'
   data.scenario = '5'
   data.signIn = 'true'
   res.redirect('/sign-in/email')

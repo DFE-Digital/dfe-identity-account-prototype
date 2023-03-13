@@ -1,4 +1,4 @@
-<p>Personal details</p>
+<h3 class="govuk-heading-m">Personal details</h3>
 
 {{ govukSummaryList({
   classes: "govuk-!-margin-bottom-9",
@@ -28,7 +28,7 @@
     actions: {
       items: [{
         text: 'Change',
-        href: "name-dqt"
+        href: "name-dqt-overview"
       }]
     }
   },
@@ -45,7 +45,16 @@
         href: "date-of-birth"
       }]
     }
-  },
+  }
+  ]
+}) }}
+
+<h3 class="govuk-heading-m">Sign in details</h3>
+
+{{ govukSummaryList({
+  classes: "govuk-!-margin-bottom-9",
+  titleText: "Personal details",
+  rows: [
   {
     key: {
       html: 'Email'

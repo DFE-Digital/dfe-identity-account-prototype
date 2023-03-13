@@ -1,13 +1,12 @@
 {% extends "layouts/forms.html" %}
-{% set title = 'Name on certificates' %}
+{% set title = 'Official name' %}
 {% set signedIn = 'true' %}
 {% set notFullWidth = true %}
 {% set backlink = true %}
 
 {% block form %}
-<p>If you’ve changed your name, you’ll need to provide evidence to update it.</p>
-<p>We'll give you detailed information about providing evidence when you select continue. Changes can take up to 5 working days.</p>
-<p>First, tell us what you would like to change your name to.<p>
+<p>Tell us what you would like to change your name to.<p>
+
 {{ govukInput({
   id: "[firstNameDQT]",
   name: "[firstNameDQT]",
