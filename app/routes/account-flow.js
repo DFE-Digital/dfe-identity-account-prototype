@@ -45,7 +45,9 @@ module.exports = router => {
   router.post(['/account/phone-code'], (req, res, next) => {
     res.redirect('/account/account-details')
   })
-
+  router.post(['/account/name-dqt-overview'], (req, res, next) => {
+    res.redirect('/account/name-dqt')
+  })
   router.post(['/account/name-dqt'], (req, res, next) => {
     const data = req.session.data
     data.alert = 'show'

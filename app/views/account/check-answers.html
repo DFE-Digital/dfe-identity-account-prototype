@@ -12,7 +12,7 @@
   rows: [
   {
     key: {
-      html: 'Name on certicate'
+      html: 'Official name'
     },
     value: {
       html: data['fullNameDQT'] | title if data['fullNameDQT'] else 'Victoria Smith'
@@ -103,13 +103,13 @@
 
 
 {%- if data['editType'] == 'name-dqt' or  data['editType'] == 'dob-dqt' -%}
-  {{ govukInsetText({
+  <!-- {{ govukInsetText({
     html: 
     "
     <p>We'll review your request and get back to you within 5 working days.</p>
     <p>Your certicates will be changed as soon as the update is confirmed.</p> 
     "
-  }) }}
+  }) }} -->
 {%- endif -%}
 
 {% endblock %}
