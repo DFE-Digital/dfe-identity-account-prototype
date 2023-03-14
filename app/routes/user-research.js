@@ -57,6 +57,7 @@ module.exports = router => {
   data.signIn = 'true'
   res.redirect('/sign-in/email')
 })
+ // Qual my account external link
 
 router.get('/user-research/qual/account', (req, res) => {
   const data = req.session.data
@@ -68,6 +69,17 @@ router.get('/user-research/qual/account', (req, res) => {
   data.service = 'qs'
   data.dqtName = 'show'
   res.redirect('/account/account-details')
+})
+ // Qual my sign out external link
+ router.get('/user-research/qual/sign-out', (req, res) => {
+  const data = req.session.data
+  data.identityServiceName = data.qs
+  data.onwardContinue = data.qs
+  data.returnToService = '/account/sign-out'
+  data.scenario = '6'
+  data.signIn = 'false'
+  data.service = 'qs'
+  res.redirect('/account/sign-out')
 })
 
 router.get('/auth/return-to-service', (req, res) => {
