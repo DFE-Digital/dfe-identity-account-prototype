@@ -1,3 +1,12 @@
+{% set officialName %}
+  {{ data.dqtName }} 
+  <p class="govuk-hint govuk-!-font-size-14">Displayed on teaching certificates </p>
+  {% if data['nameLozenge'] %}
+ {% include 'includes/_lozenge.html' %}
+  {% endif %}
+{% endset %}
+
+
 <h3 class="govuk-heading-m">Personal details</h3>
 
 {{ govukSummaryList({
@@ -23,15 +32,15 @@
       html: 'Official name'
     },
     value: {
-      html: data['dqtName'] +'<p class="govuk-hint govuk-!-font-size-14">Displayed on teaching certificates </p>'
+      html: officialName
     },
     actions: {
       items: [{
         text: 'Change',
         href: "name-dqt-overview"
       }]
-    }
-  },
+    } if data['nameLozenge'] != "show" 
+  } ,
   {
     key: {
       html: 'Date of birth'
@@ -45,7 +54,35 @@
         href: "date-of-birth"
       }]
     }
-  }
+  },
+  {
+    key: {
+      html: 'Date of birth'
+    },
+    value: {
+      html: (data['dob'] if data['dob'] else { day: 1, month: 12, year: 1989 }) | isoDateFromDateInput | govukDate + '<p class="govuk-hint govuk-!-font-size-14">Date of birth entered when creating account </p>'
+    },
+    actions: {
+      items: [{
+        text: 'Change',
+        href: "date-of-birth"
+      }]
+    } 
+  } if data['dob-dqt'] == "show",
+  {
+    key: {
+      html: 'Date of birth'
+    },
+    value: {
+      html: (data['dob'] if data['dob'] else { day: 1, month: 12, year: 1989 }) | isoDateFromDateInput | govukDate + '<p class="govuk-hint govuk-!-font-size-14">Date of birth DfE holds for you </p>'
+    },
+    actions: {
+      items: [{
+        text: 'Change',
+        href: "date-of-birth"
+      }]
+    } 
+  } if data['dob-dqt'] == "show" 
   ]
 }) }}
 
