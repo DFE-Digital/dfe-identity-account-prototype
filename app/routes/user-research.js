@@ -76,10 +76,10 @@ router.get('/user-research/qual/account', (req, res) => {
   data.identityServiceName = data.qs
   data.onwardContinue = data.qs
   data.returnToService = '/account/sign-out'
-  data.scenario = '6'
+  data.scenario = '7'
   data.signIn = 'false'
   data.service = 'qs'
-  res.redirect('/account/sign-out')
+  res.redirect('/account/signed-out')
 })
 
 router.get('/auth/return-to-service', (req, res) => {
