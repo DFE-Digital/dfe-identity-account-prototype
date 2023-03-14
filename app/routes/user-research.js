@@ -34,6 +34,32 @@ module.exports = router => {
   res.redirect('/auth/phone')
 })
 
+ // QTS my sign out external link
+ router.get('/user-research/qts/sign-out', (req, res) => {
+  const data = req.session.data
+  data.identityServiceName = data.qts
+  data.onwardContinue = data.qts
+  data.returnToService = '/account/sign-out'
+  data.scenario = '4'
+  data.signIn = 'false'
+  data.service = 'qts'
+  res.redirect('/account/signed-out')
+})
+
+ // Qual my account external link
+
+ router.get('/user-research/qts/account', (req, res) => {
+  const data = req.session.data
+  data.identityServiceName = data.qts
+  data.onwardContinue = data.qts
+  data.returnToService = '/account/account-details'
+  data.scenario = '7'
+  data.signIn = 'true'
+  data.service = 'qs'
+  data.showDqtName = 'false'
+  data.showDqtDob = 'hide'
+  res.redirect('/account/account-details')
+})
 
  // Qual create account
  router.get('/user-research/qual/create-account', (req, res) => {
@@ -41,7 +67,7 @@ module.exports = router => {
   data.identityServiceName = data.qs
   data.onwardContinue = data.qs
   data.returnToService = 'https://qualifications-prototype.herokuapp.com/user-research/mvp/'
-  data.scenario = '4'
+  data.scenario = '5'
   data.dqtCheck = 'true'
   data.signIn = 'true'
   res.redirect('/auth/email')
@@ -53,7 +79,7 @@ module.exports = router => {
   data.identityServiceName = data.qs
   data.onwardContinue = data.qs
   data.returnToService = 'https://qualifications-prototype.herokuapp.com/user-research/mvp/'
-  data.scenario = '5'
+  data.scenario = '6'
   data.signIn = 'true'
   res.redirect('/sign-in/email')
 })
@@ -64,10 +90,11 @@ router.get('/user-research/qual/account', (req, res) => {
   data.identityServiceName = data.qs
   data.onwardContinue = data.qs
   data.returnToService = '/account/account-details'
-  data.scenario = '6'
+  data.scenario = '7'
   data.signIn = 'true'
   data.service = 'qs'
-  data.dqtName = 'show'
+  data.showDqtName = 'show'
+  data.showDqtDob = 'hide'
   res.redirect('/account/account-details')
 })
  // Qual my sign out external link
@@ -76,7 +103,7 @@ router.get('/user-research/qual/account', (req, res) => {
   data.identityServiceName = data.qs
   data.onwardContinue = data.qs
   data.returnToService = '/account/sign-out'
-  data.scenario = '7'
+  data.scenario = '8'
   data.signIn = 'false'
   data.service = 'qs'
   res.redirect('/account/signed-out')

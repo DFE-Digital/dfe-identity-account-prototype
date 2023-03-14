@@ -1,0 +1,43 @@
+{% extends "layouts/forms.html" %}
+{% set title = 'Date of birth' %}
+{% set signedIn = 'true' %}
+{% set backlink = true %}
+
+{% block form %}
+<p>Tell us what you would like to change your date of birth to.<p>
+  {% set defaultDataDQT = {
+    day: "2",
+    month: "12",
+    year: "1989"
+  } %}
+
+  {{ govukDateInput({
+    id: "[dqtDob]",
+    name: "[dqtDob]",
+    fieldset: {
+    },
+    hint: {
+      text: "For example, 27 3 1987"
+    },
+    items: [
+      {
+        name: "[dobDqt][day]",
+        label: "Day",
+        value: data.dob.day or defaultDataDQT.day,
+        classes: "govuk-input--width-2"
+      },
+      {
+        name: "[dobDqt][month]",
+        label: "Month",
+        value: data.dob.month or defaultDataDQT.month,
+        classes: "govuk-input--width-2"
+      },
+      {
+        name: "[dobDqt][year]",
+        label: "Year",
+        value: data.dob.year or defaultDataDQT.year,
+        classes: "govuk-input--width-4"
+      }
+    ]
+  }) }}
+{% endblock %}

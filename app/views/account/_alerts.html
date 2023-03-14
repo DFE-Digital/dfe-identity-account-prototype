@@ -2,11 +2,11 @@
    {% set alertMessage %}
 
     
-   {% if data['editType'] == 'name-dqt' %}
+   {% if data['editType'] == 'name-dqt' or data['editType'] == 'dob-dqt'%}
     <h3 class="govuk-notification-banner__heading">
-      Your {{ data.alertType or 'name'}} has been sent
+      We’ve received your request to change your {{ data.alertType or 'name'}}
   </h3>
-    <p class="govuk-body">We'll review your request and get back to you within 5 working days.</p> 
+    <p class="govuk-body">We’ll review it and get back to you within 5 working days.</p> 
 
 
     {% else %}
@@ -20,5 +20,21 @@
     html: alertMessage,
     type: 'success'
   }) }}
+
+{% endif %}
+
+
+{% if data['showDqtDobAlert'] == 'show' %}
+{% set alertMessageDob %}
+<h3 class="govuk-notification-banner__heading">
+  Amend your date of birth
+</h3>
+<p class="govuk-body">We currently hold two different dates of birth.</p> 
+
+{% endset %}
+
+{{ govukNotificationBanner({
+  html: alertMessageDob
+}) }}
 
 {% endif %}
