@@ -58,6 +58,17 @@ module.exports = router => {
   res.redirect('/sign-in/email')
 })
 
+router.get('/user-research/qual/account', (req, res) => {
+  const data = req.session.data
+  data.identityServiceName = data.qs
+  data.onwardContinue = data.qs
+  data.returnToService = '/account/account-details'
+  data.scenario = '6'
+  data.signIn = 'true'
+  data.service = 'qs'
+  res.redirect('/account/account-details')
+})
+
 router.get('/auth/return-to-service', (req, res) => {
   res.redirect(req.session.data.returnToService)
 })
