@@ -66,6 +66,7 @@ router.get('/user-research/qual/account', (req, res) => {
   data.scenario = '6'
   data.signIn = 'true'
   data.service = 'qs'
+  data.dqtName = 'show'
   res.redirect('/account/account-details')
 })
 
