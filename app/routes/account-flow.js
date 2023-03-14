@@ -2,7 +2,16 @@ const _ = require('lodash')
 
 module.exports = router => {
 
-  
+  router.post('/account/interstitial', (req, res) => { 
+    const data = req.session.data
+    data.service = 'dqt'
+    data.showDqtName = 'hide'
+    res.redirect('/user-research/qts/account') 
+  })
+  router.post('/account/account-details', (req, res) => { 
+    res.redirect('/qts/apply-for-qts') 
+  })
+
   router.post(['/account/name'], (req, res, next) => {
     const data = req.session.data
     data.alert = 'show'
@@ -31,10 +40,22 @@ module.exports = router => {
     const data = req.session.data
     data.alert = 'show'
     data.editType = 'dob',
+    data.editType = 'dob',
+    data.showDqtDobAlert = 'show',
+    data.showDqtDob = 'show',
     data.alertType = 'date of birth'
     res.redirect('/account/check-answers')
   })
-
+  router.post(['/account/date-of-birth-duplicate'], (req, res, next) => {
+    const data = req.session.data
+    data.alert = 'show'
+    data.editType = 'dob',
+    data.editType = 'dob',
+    data.showDqtDobAlert = 'hide',
+    data.showDqtDob = 'hide',
+    data.alertType = 'date of birth'
+    res.redirect('/account/check-answers')
+  })
   router.post(['/account/phone'], (req, res, next) => {
     const data = req.session.data
     data.alert = 'show'
@@ -51,10 +72,23 @@ module.exports = router => {
   router.post(['/account/name-dqt'], (req, res, next) => {
     const data = req.session.data
     data.alert = 'show'
-    data.alertType = 'name',
+    data.alertType = 'official name',
     data.editType = 'name-dqt',
     req.session.data['fullNameDQT'] = `${req.body['firstNameDQT']} ${req.body['lastNameDQT']}`
     data.nameLozenge = 'show'
+    res.redirect('/account/evidence')
+  })
+
+  router.post(['/account/dob-dqt-overview'], (req, res, next) => {
+    res.redirect('/account/dob-dqt')
+  })
+  router.post(['/account/dob-dqt'], (req, res, next) => {
+    const data = req.session.data
+    data.alert = 'show'
+    data.alertType = 'date of birth',
+    data.editType = 'dob-dqt',
+    data.dobLozenge = 'show'
+    data.showDqtDobAlert = 'hide'
     res.redirect('/account/evidence')
   })
 

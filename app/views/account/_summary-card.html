@@ -6,6 +6,13 @@
   {% endif %}
 {% endset %}
 
+{% set officialDOB %}
+2 December 1989 
+  <p class="govuk-hint govuk-!-font-size-14">Date of birth DfE holds for you </p>
+  {% if data['dobLozenge'] %}
+ {% include 'includes/_lozenge.html' %}
+  {% endif %}
+{% endset %}
 
 <h3 class="govuk-heading-m">Personal details</h3>
 
@@ -40,7 +47,7 @@
         href: "name-dqt-overview"
       }]
     } if data['nameLozenge'] != "show" 
-  } if data['dqtName'] == "show",
+  } if data['showDqtName'] == "show",
   {
     key: {
       html: 'Date of birth'
@@ -54,7 +61,7 @@
         href: "date-of-birth"
       }]
     }
-  },
+  } if data['showDqtDob'] != "show",
   {
     key: {
       html: 'Date of birth'
@@ -65,24 +72,24 @@
     actions: {
       items: [{
         text: 'Change',
-        href: "date-of-birth"
+        href: "date-of-birth-duplicate"
       }]
     } 
-  } if data['DqtDob'] == "show",
+  } if data['showDqtDob'] == "show",
   {
     key: {
       html: 'Date of birth'
     },
     value: {
-      html: (data['dob'] if data['dob'] else { day: 1, month: 12, year: 1989 }) | isoDateFromDateInput | govukDate + '<p class="govuk-hint govuk-!-font-size-14">Date of birth DfE holds for you </p>'
+      html: officialDOB
     },
     actions: {
       items: [{
         text: 'Change',
-        href: "date-of-birth"
+        href: "dob-dqt-overview"
       }]
-    } 
-  } if data['DqtDob'] == "show" 
+    } if data['dobLozenge'] != "show" 
+  } if data['showDqtDob'] == "show" 
   ]
 }) }}
 

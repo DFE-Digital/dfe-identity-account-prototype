@@ -1,17 +1,15 @@
 {% extends "layouts/forms.html" %}
-{% set title %}You are now signed out{% endset %}
+{% set title %}Signed out{% endset %}
 {% set hideButton = "true" %}
 {% set hideBackLink = "true" %}
 
 
 {% block form %}
 
+<p>You are now signed out of <b>{{ data.onwardContinue  or 'Access your teaching qualifications' }}</b>.</p>
 
+<p>Back to <a href="#">{{data.onwardContinue  or 'Access your teaching qualifications' }}</a></p>
 
-{{ govukButton({
-    text: "Back to GOV.UK",
-    href: "/qts/eligibility/start-eligibility"
-}) }}
 
 
 {% endblock %}

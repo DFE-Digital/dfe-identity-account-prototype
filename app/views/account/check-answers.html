@@ -26,6 +26,20 @@
   } if data['editType'] == "name-dqt",
   {
     key: {
+      html: 'Date of birth'
+    },
+    value: {
+      html: data.dobDqt | isoDateFromDateInput | date if data['dobDqt'] else '2 January 1989'
+    },
+    actions: {
+      items: [{
+        text: 'Change',
+        href: "name"
+      }]
+    }
+  } if data['editType'] == "dob-dqt",
+  {
+    key: {
       html: 'Name'
     },
     value: {
@@ -102,14 +116,14 @@
 }) }}
 
 
-{%- if data['editType'] == 'name-dqt' or  data['editType'] == 'dob-dqt' -%}
-  <!-- {{ govukInsetText({
+{%- if data['showDqtDobAlert'] == 'show' -%}
+  {{ govukInsetText({
     html: 
     "
-    <p>We'll review your request and get back to you within 5 working days.</p>
-    <p>Your certicates will be changed as soon as the update is confirmed.</p> 
+    <p>You'll also need to amend the date of birth DfE holds for you on the next page</p>
+
     "
-  }) }} -->
+  }) }}
 {%- endif -%}
 
 {% endblock %}

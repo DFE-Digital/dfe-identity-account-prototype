@@ -1,0 +1,16 @@
+{% extends "layouts/forms.html" %}
+{% set signedIn = 'true' %}
+{% set account  = 'true' %}
+
+
+{% set title %}Your date of birth{% endset %}
+{% set defaultData = {
+  day: "1",
+  month: "12",
+  year: "1989"
+} %}
+
+
+{% block form %}
+  {% include 'auth/_date-of-birth.html' %}
+{% endblock %}
