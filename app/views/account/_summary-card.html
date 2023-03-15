@@ -131,3 +131,22 @@
   }
   ]
 }) }}
+{% if data['showDqtDob'] == "show" or data['showDqtName'] == "show" %}
+<h3 class="govuk-heading-m">Teacher reference number (TRN)</h3>
+
+{{ govukSummaryList({
+  classes: "govuk-!-margin-bottom-9",
+  titleText: "Personal details",
+  rows: [
+  {
+    key: {
+      html: 'TRN'
+    },
+    value: {
+      html: data['trn'] | title if data['trn'] else '1851018'
+    
+    }
+  }
+  ]
+}) }}
+{% endif %}
