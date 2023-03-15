@@ -94,6 +94,7 @@ router.get('/user-research/qual/account', (req, res) => {
   data.signIn = 'true'
   data.service = 'qs'
   data.showDqtName = 'show'
+  data.alert = 'hide'
   data.showDqtDob = 'hide'
   res.redirect('/account/account-details')
 })
