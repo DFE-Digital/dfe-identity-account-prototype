@@ -41,8 +41,6 @@ module.exports = router => {
     data.alert = 'show'
     data.editType = 'dob',
     data.editType = 'dob',
-    data.showDqtDobAlert = 'show',
-    data.showDqtDob = 'show',
     data.alertType = 'date of birth'
     res.redirect('/account/check-answers')
   })
@@ -59,7 +57,7 @@ module.exports = router => {
   router.post(['/account/phone'], (req, res, next) => {
     const data = req.session.data
     data.alert = 'show'
-    data.alertType = 'mobile phone'
+    data.alertType = 'mobile number'
     res.redirect('/account/phone-code')
   })
 
