@@ -1,5 +1,5 @@
 {% set officialName %}
-  {{ data.dqtName }} 
+  {{ data.dqtName }}
   <p class="govuk-hint govuk-!-font-size-14">Displayed on teaching certificates </p>
   {% if data['nameLozenge'] %}
  {% include 'includes/_lozenge.html' %}
@@ -7,8 +7,8 @@
 {% endset %}
 
 {% set officialDOB %}
-2 December 1989 
-  <p class="govuk-hint govuk-!-font-size-14">Date of birth DfE holds for you </p>
+2 December 1989
+  <p class="govuk-hint govuk-!-font-size-14">Date of birth already in our records </p>
   {% if data['dobLozenge'] %}
  {% include 'includes/_lozenge.html' %}
   {% endif %}
@@ -46,7 +46,7 @@
         text: 'Change',
         href: "name-dqt-overview"
       }]
-    } if data['nameLozenge'] != "show" 
+    } if data['nameLozenge'] != "show"
   } if data['showDqtName'] == "show",
   {
     key: {
@@ -67,14 +67,14 @@
       html: 'Date of birth'
     },
     value: {
-      html: (data['dob'] if data['dob'] else { day: 1, month: 12, year: 1989 }) | isoDateFromDateInput | govukDate + '<p class="govuk-hint govuk-!-font-size-14">Date of birth entered when creating account </p>'
+      html: (data['dob'] if data['dob'] else { day: 1, month: 12, year: 1989 }) | isoDateFromDateInput | govukDate + '<p class="govuk-hint govuk-!-font-size-14">Entered when creating account </p>'
     },
     actions: {
       items: [{
         text: 'Change',
         href: "date-of-birth-duplicate"
       }]
-    } 
+    }
   } if data['showDqtDob'] == "show",
   {
     key: {
@@ -88,8 +88,8 @@
         text: 'Change',
         href: "dob-dqt-overview"
       }]
-    } if data['dobLozenge'] != "show" 
-  } if data['showDqtDob'] == "show" 
+    } if data['dobLozenge'] != "show"
+  } if data['showDqtDob'] == "show"
   ]
 }) }}
 
@@ -105,7 +105,7 @@
     },
     value: {
       html: data['email'] | title if data['email'] else 'email@example.com'
-    
+
     },
     actions: {
       items: [{
@@ -120,7 +120,7 @@
     },
     value: {
       html: data['phone'] | title if data['phone'] else '07827999617'
-    
+
     },
     actions: {
       items: [{
@@ -144,7 +144,7 @@
     },
     value: {
       html: data['trn'] | title if data['trn'] else '1851018'
-    
+
     }
   }
   ]

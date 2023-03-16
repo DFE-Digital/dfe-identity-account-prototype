@@ -1,12 +1,12 @@
 {% if data['alert'] == 'show' %}
    {% set alertMessage %}
 
-    
+
    {% if data['editType'] == 'name-dqt' or data['editType'] == 'dob-dqt'%}
     <h3 class="govuk-notification-banner__heading">
       We’ve received your request to change your {{ data.alertType or 'name'}}
   </h3>
-    <p class="govuk-body">We’ll review it and get back to you within 5 working days.</p> 
+    <p class="govuk-body">We’ll review it and get back to you within 5 working days.</p>
 
 
     {% else %}
@@ -27,9 +27,9 @@
 {% if data['showDqtDobAlert'] == 'show' %}
 {% set alertMessageDob %}
 <h3 class="govuk-notification-banner__heading">
-  Amend your date of birth
+  Confirm your correct date of birth
 </h3>
-<p class="govuk-body">We currently hold two different dates of birth.</p> 
+<p class="govuk-body">We've got two different dates of birth for you. The one you entered when you created your DfE Identity account is different to the one already in our records. Change the incorrect date of birth.</p>
 
 {% endset %}
 
