@@ -26,6 +26,7 @@ module.exports = router => {
     const data = req.session.data
     data.alert = 'show'
     data.alertType = 'email'
+    data.editType = 'email',
     data.matchAccountEmail = 'false' 
     res.redirect('/account/email-code')
   })
@@ -57,6 +58,7 @@ module.exports = router => {
   router.post(['/account/phone'], (req, res, next) => {
     const data = req.session.data
     data.alert = 'show'
+    data.editType = 'phone',
     data.alertType = 'mobile number'
     res.redirect('/account/phone-code')
   })

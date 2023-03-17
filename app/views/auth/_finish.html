@@ -1,13 +1,12 @@
 
 <!-- title of page scenarios  -->
-  {%- if data['dqt-check'] == 'found' -%}
+  {%- if data['dqt-check'] == 'found' and  data['signIn'] != 'true' -%}
   <!-- A DQT record has been found - user creates account - accesses service -->
-  {%- if 'found' -%}
   <p>We’ve found your details in our records and linked them to your {{ serviceName }}.</p>
   <p>Next time, you can sign in just using your email ({{ data.email or 'email@example.com' }}).</p>
   <p class="govuk-!-margin-bottom-6">Continue to <strong>{{ data.onwardContinue or data.qs }}</strong>. </p>
-  {%- endif -%}
 
+  
 
   {%- elseif data['dqt-check'] == 'failed' -%}
   <!-- No DQT record - account has been created - user can't access service -->
@@ -26,14 +25,14 @@
   <p>You've created a {{ serviceName }}. To sign in to this service in the future, you’ll just need your email address ({{ data.email or 'email@example.com' }}).</p>
   {%- endif -%}
 
-  {%- elseif not data['dqt-check'] or data['dqt-check'] == 'auth' -%}
+  {%- elseif not data['dqt-check'] or data['dqt-check'] == 'auth' or data['signIn'] == 'true' -%}
   <!-- basic auth journey - no DQT checks made -->
     {%- if auth -%}
     <p>Next time, you can sign in just using your email ({{ data.email or 'email@example.com' }}).</p>
     {%- endif -%}
 
     {%- if data['matchAccount'] == 'true' -%}
-        <p>Next time, sign into your account using {{ data.email or 'email@example.com' }}.  </p>
+        <p>Next time, sign into your account using ({{ data.email or 'email@example.com' }}).  </p>
     {%- endif -%}
 
     <p class="govuk-!-margin-bottom-6">Continue to <strong>{{ data.onwardContinue or data.qs }}</strong>. </p>

@@ -37,6 +37,7 @@ module.exports = router => {
  // QTS my sign out external link
  router.get('/user-research/qts/sign-out', (req, res) => {
   const data = req.session.data
+  req.session.destroy()
   data.identityServiceName = data.qts
   data.onwardContinue = data.qts
   data.returnToService = '/account/sign-out'
@@ -103,7 +104,7 @@ router.get('/user-research/qual/account', (req, res) => {
   const data = req.session.data
   data.identityServiceName = data.qs
   data.onwardContinue = data.qs
-  data.returnToService = '/account/sign-out'
+  data.returnToService = 'https://get-an-identity-prototype.herokuapp.com/qualifications/ga-account?onwardContinue=Access%20your%20teaching%20qualifications'
   data.scenario = '8'
   data.signIn = 'false'
   data.service = 'qs'
