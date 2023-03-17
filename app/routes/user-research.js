@@ -90,7 +90,6 @@ router.get('/user-research/qual/account', (req, res) => {
   const data = req.session.data
   data.identityServiceName = data.qs
   data.onwardContinue = data.qs
-  data.returnToService = '/account/account-details'
   data.scenario = '7'
   data.signIn = 'true'
   data.service = 'qs'
@@ -104,11 +103,10 @@ router.get('/user-research/qual/account', (req, res) => {
   const data = req.session.data
   data.identityServiceName = data.qs
   data.onwardContinue = data.qs
-  data.returnToService = 'https://get-an-identity-prototype.herokuapp.com/qualifications/ga-account?onwardContinue=Access%20your%20teaching%20qualifications'
   data.scenario = '8'
   data.signIn = 'false'
   data.service = 'qs'
-  res.redirect('/account/signed-out')
+  res.redirect('https://get-an-identity-prototype.herokuapp.com/qualifications/ga-account?onwardContinue=Access%20your%20teaching%20qualifications')
 })
 
 router.get('/auth/return-to-service', (req, res) => {
