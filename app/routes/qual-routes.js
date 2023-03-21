@@ -70,7 +70,7 @@ module.exports = router => {
     data.scenario = '8'
     data.signIn = 'false'
     data.service = 'qs'
-    res.redirect('https://get-an-identity-prototype.herokuapp.com/qualifications/ga-account?onwardContinue=Access%20your%20teaching%20qualifications')
+    res.redirect('https://get-an-identity-prototype.herokuapp.com/auth/ga-account?onwardContinue=Access%20your%20teaching%20qualifications')
   })
   
   
