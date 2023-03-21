@@ -1,0 +1,25 @@
+{% extends "layouts/email.html" %}
+
+{% set subject = "Your QTS application was successful" %}
+
+
+{% block content %}
+  <p>Dear {{ data.emailName or 'Jane Smith' }},</p>
+  <p>The Teaching Regulation Agency (TRA) has awarded you qualified teacher status (QTS).</p>
+
+
+  <h2 class="govuk-heading-s">Get your QTS certificate</h2>
+
+  <p>You can now download your QTS certificate. You’ll need to retain a copy of your certificate to present to employers as evidence of your teaching status.
+  
+  <p>You can download your certificate In the Access your teaching qualifications service:
+  
+  <p> <a href='/user-research/qual/email'>www.access-your-teaching-qualifications.education.gov.uk</a></p>
+  
+  <p>To sign in, you’ll need to create a DfE Identity account - it will only take a few minutes. Once you have an account, you can use it to sign in to different DfE teacher services, for example, Apply for a national professional qualification (NPQ).</p>
+  
+  <p>Employers can contact the TRA independently to verify your teaching status.</p>
+  
+
+
+{% endblock %}

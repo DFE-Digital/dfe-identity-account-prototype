@@ -27,30 +27,41 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds-from-desktop">
 
-<h2 class="govuk-heading-m">{{ data.qs }}  </h2>
-<p>Journey includes basic auth + dqt lookup</p>
+<h2 class="govuk-heading-m">Basic auth + DQT lookup  </h2>
 <p class="govuk-hint">Password for qual service (qs)</p>
-<p><a href="/qualifications/start">Qualifications start page</a> </p>
+<p class="govuk-heading-s">Attained QTS email with magic link </p>
+<p class="govuk-hint">QTS Email + start page + name and date of birth</p>
+<p><a href="/auth/emails/qts-email">Email - access your QTS cert</a> </p>
+
+
+
+<p class="govuk-heading-s">Replacement journey for TSSP </p>
+<p class="govuk-hint">Gov start page +  full auth  DQT lookup</p>
+<p><a href="/user-research/qual/startpage">Qualifications start page</a> </p>
 <p><a href="/user-research/qual/account">Qualifications account-page</a> </p>
 <p><a target="_blank" href="https://lucid.app/lucidspark/b88634d8-2452-4ed6-9c7c-010383770731/edit?view_items=EA-zAgXC1i4K&invitationId=inv_9a36d007-204a-41ed-b8c3-1f49d5e63a05">Lucid ID flow for the qual service</a> </p>
+<hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+
+<h2 class="govuk-heading-m">Basic auth journey</h2>
+<p class="govuk-hint">Only email, mobile, name and date of birth are required to create an account</p>
+
+<p><a href="/user-research/qts/ga-account">Auth flow</a></p>
+  
+<p ><b>My account</b></p>
+<p>GAI account functionality integrated within a service</p>
+<p><a href="/user-research/qts/account">My Account</a></p>
+
+<hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+<h2 class="govuk-heading-m">ID scenarios and older work</h2>
+
 
 
 <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
 
-<h2 class="govuk-heading-m">{{ data.qts }}  </h2>
-<p>Journey incudes basic auth</p>
-
-<p><a href="/qts/eligibility/start-eligibility">Check eligibility start page</a> </p>
-<p><a href="/qts/eligibility/eligible">Eligible user start page </a> </p>
-<p><a href="/qts/apply-for-qts">QTS task list - account view </a> </p>
-<p><a  target="_blank" href="https://lucid.app/lucidspark/b88634d8-2452-4ed6-9c7c-010383770731/edit?view_items=KZDsx9Mr-.mh&invitationId=inv_9a36d007-204a-41ed-b8c3-1f49d5e63a05">Lucid flow of ID flow integrated with QTS </a> </p>
-
-<hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
-
-
-<h2 class="govuk-heading-m">Account created page + DQT end points scenarios </h2>
-<p>User creates account and a DQT look up occurs</p>
+<h2 class="govuk-heading-m">Account created page scenarios </h2>
+<p class="govuk-hint">User creates account and a DQT look up occurs</p>
 <p>
   <a href="/auth/finish?dqt-check=found">Dqt record found</a> <br>
   <span class="govuk-hint">User creates account and continues into service</span>
@@ -70,8 +81,8 @@
 
 
 <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
-<h2 class="govuk-heading-m">Basic edge cases </h2>
-<p>These scenarios demonstate the duplicate account prevention built into the basic auth flow</p>
+<h2 class="govuk-heading-m">Account duplication prevention </h2>
+<p class="govuk-hint">These scenarios demonstate the duplicate account prevention built into the basic auth flow</p>
 <p>
   <a href="/user-research/qts/sign-in?email=new@email.com">Sign in (no account exists)</a> <br>
   <span class="govuk-hint">User attempts to sign in but does not have an account ( new@email.com )</span>
@@ -96,26 +107,24 @@
 
 <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
-<h2 class="govuk-heading-m">DfE Identity account - scenarios </h2>
+<h2 class="govuk-heading-m">Account details - data scenarios </h2>
+<p class="govuk-hint">Users can amend their ID data and where relevant DTQ</p>
+
 <p><a href="/account/account-details?service=qs&showDqtDob=hide&showDqtName=show&showDqtDobAlert=hide&alert=hide">DQT name + ID Name & DOB data</a> </p>
 <p><a href="/account/account-details?service=qs&showDqtDob=show&showDqtName=show&showDqtDobAlert=show&alert=hide">DQT DOB & ID DOB</a> </p>
 <p> <a href="/account/account-details?service=qs&showDqtDob=hide&showDqtName=hide&showDqtDobAlert=hide&alert=hide">No DQT data</a> <br></p>
 
 
-<hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
-
-
-<h2 class="govuk-heading-m">Basic auth journey</h2>
-<p><a href="/auth/start">Auth flow</a></p>
-  
-
-
-<p >My account</p>
-<p>GAI account functionality integrated within a service</p>
-<p><a href="/account/account-details">My Account</a></p>
 
 <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
-<h2 class="govuk-heading-m">Older work</h2>
+
+
+<h2 class="govuk-heading-m">{{ data.qts }}  </h2>
+<p class="govuk-hint">Journey includes basic auth</p>
+<p><a href="/qts/eligibility/start-eligibility">Check eligibility start page</a> </p>
+<p><a href="/user-research/qts/startpage">Eligible user start page </a> </p>
+<p><a href="/qts/apply-for-qts">QTS task list - account view </a> </p>
+<p><a  target="_blank" href="https://lucid.app/lucidspark/b88634d8-2452-4ed6-9c7c-010383770731/edit?view_items=KZDsx9Mr-.mh&invitationId=inv_9a36d007-204a-41ed-b8c3-1f49d5e63a05">Lucid flow of ID flow integrated with QTS </a> </p>
 
 
 {% set archive %}

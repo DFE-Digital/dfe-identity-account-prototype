@@ -10,6 +10,7 @@ module.exports = {
   'dqtName': 'Name Removed',
   'dqtFirstName': 'Name',
   'dqtLastName': 'Removed',
+  'emailName': 'Ria Smith',
 
   // Error messages
   'errorMessageCopy': 'Enter a personal email address. It cannot be one that other people may get access to.',

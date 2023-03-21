@@ -21,6 +21,8 @@ module.exports = router => {
       data.phoneMatch = 'false'
       data.matchAccount = 'true'
       res.redirect('/auth/sign-in-interstitial')
+    } else if(req.session.data['emailAuth'] == 'true') {
+      res.redirect('/auth/check-answers')
     } else {
       res.redirect('/auth/phone')
     }
@@ -39,7 +41,10 @@ module.exports = router => {
       data.phoneMatch = 'true'
       data.matchAccount = 'true'
       res.redirect('/auth/sign-in-interstitial')
-    } else {
+    } else if(req.session.data['emailAuth'] == 'true') {
+      res.redirect('/auth/check-answers')
+    } 
+    else {
       res.redirect('/auth/name')
     }
   })
@@ -48,14 +53,21 @@ module.exports = router => {
 
   router.post(['/auth/name'], (req, res, next) => {
     req.session.data['fullName'] = `${req.body['firstName']} ${req.body['lastName']}`
-    res.redirect('/auth/date-of-birth')
+    if(req.session.data['emailAuth'] == 'true') {
+      res.redirect('/auth/phone')
+
+    } else {
+      res.redirect('/auth/date-of-birth')    }
+   
   })
 
   router.post('/auth/date-of-birth', (req, res) => { 
     if(req.session.data['fullName'] == 'Dave Smith') {
       res.redirect('/auth/check-account')
-    } else if (req.session.data['dqtCheck']) {
+    } else if (req.session.data['dqtCheck'] != 'false') {
       res.redirect('/auth/have-nino')
+    } else if(req.session.data['emailAuth'] == 'true') {
+      res.redirect('/auth/check-answers')
     } else {
       res.redirect('/auth/check-answers')
     }

@@ -1,3 +1,8 @@
+
+{%- if data['emailAuth'] == 'true' -%}
+<p>Please confirm your details entered and confirm the details we have for you.</p>
+{%- endif -%}
+
 {{ govukSummaryList({
   classes: "govuk-!-margin-bottom-9",
   titleText: "Personal details",
@@ -45,7 +50,7 @@
         html: 'Date of birth'
       },
       value: {
-        html:  (data['dob'] if data['dob'] else { day: 31, month: 12, year: 2021 }) | isoDateFromDateInput | govukDate
+        html:  (data['dob'] if data['dob'] else { day: 1, month: 12, year: 1989 }) | isoDateFromDateInput | govukDate
       },
       actions: {
         items: [{
@@ -153,4 +158,75 @@
       }
     } if data['has-qts-from-provider'] == 'Yes' and data['have-qts'] == 'Yes'
   ]
-}) }}
+}) if data['emailAuth'] != 'true' }} 
+
+
+
+
+{{ govukSummaryList({
+  classes: "govuk-!-margin-bottom-9",
+  titleText: "Personal details",
+  rows: [
+  {
+    key: {
+      html: 'Name'
+    },
+    value: {
+      html: data['fullName'] | title if data['firstName'] else 'Ria Smith'
+    },
+    actions: {
+      items: [{
+        text: 'Change',
+        href: "name"
+      }]
+    }
+  },
+  {
+    key: {
+      html: 'Mobile phone'
+    },
+    value: {
+      html: data['phone'] | title if data['phone'] else '07827999613'
+    
+    },
+    actions: {
+      items: [{
+        text: 'Change',
+        href: "phone"
+      }]
+    }
+  },
+  {
+    key: {
+      html: 'Email'
+    },
+    value: {
+      html: data['email'] | title if data['email'] else 'email@example.com'
+    
+    },
+    actions: {
+      items: [{
+        text: 'Change',
+        href: "email"
+      }]
+    }
+    
+  },  
+  
+    
+    {
+      key: {
+        html: 'Date of birth'
+      },
+      value: {
+        html:  (data['dob'] if data['dob'] else { day: 1, month: 12, year: 1989 }) | isoDateFromDateInput | govukDate
+      },
+      actions: {
+        items: [{
+          text: 'Change',
+          href: "date-of-birth"
+        }]
+      }
+    }
+  ]
+}) if data['emailAuth'] == 'true' or  data['dqt'] == 'false'}} 

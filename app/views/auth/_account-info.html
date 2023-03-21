@@ -1,4 +1,15 @@
 <p>It will only take a few minutes and you’ll need:</p>
+
+{%- if data['emailAuth'] == 'true' -%}
+<ul class="govuk-list govuk-list--bullet">
+  <li>
+    your name 
+  </li>
+  <li>
+    a mobile phone number (used for account security)
+  </li>
+</ul>
+{%- else -%}
 <ul class="govuk-list govuk-list--bullet">
   <li>
     an email address (used for contact and account security)
@@ -11,4 +22,7 @@
   </li>
 </ul>
 <p>We may ask some follow-up questions to see if you're already in our records.</p>
-  <p>Once you've created an account, you can continue to access your teaching qualifications.</p>
+
+{%- endif -%}
+
+<p>Once you've created an account, you can continue to <b>{{ data.onwardContinue or data.qa}}</b>.</p>
