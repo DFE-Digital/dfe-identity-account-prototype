@@ -70,9 +70,15 @@ module.exports = router => {
     data.scenario = '8'
     data.signIn = 'false'
     data.service = 'qs'
-    res.redirect('https://get-an-identity-prototype.herokuapp.com/auth/ga-account?onwardContinue=Access%20your%20teaching%20qualifications')
+    res.redirect('/user-research/qual/sign-out-account')
   })
   
+   // redirect to account page
+   router.get('/user-research/qual/sign-out-account', (req, res) => {
+    const data = req.session.data
+    data.onwardContinue = data.qs
+    res.redirect('/auth/ga-account')
+  })
   
    // qual email account my account external link
   
