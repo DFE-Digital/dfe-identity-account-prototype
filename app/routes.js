@@ -10,8 +10,8 @@ const router = govukPrototypeKit.requests.setupRouter()
 require('./routes/auth-lite')(router)
 require('./routes/account-flow')(router)
 require('./routes/sign-in')(router)
-require('./routes/qts')(router)
-require('./routes/user-research')(router)
+require('./routes/qts-routes')(router)
+require('./routes/qual-routes')(router)
 
 
 

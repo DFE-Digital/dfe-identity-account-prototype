@@ -8,9 +8,10 @@ module.exports = {
   'qs': 'Access your teaching qualifications',
   'emailExample': 'davesmith@school.sch.uk',
   'dqtName': 'Victoria Smith',
-  'dqtFirstName': 'Smith',
+  'dqtFirstName': 'Victoria',
   'dqtLastName': 'Smith',
-  
+  'emailName': 'Ria Smith',
+
   // Error messages
   'errorMessageCopy': 'Enter a personal email address. It cannot be one that other people may get access to.',
 
