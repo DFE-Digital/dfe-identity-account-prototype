@@ -77,6 +77,8 @@ module.exports = router => {
    router.get('/user-research/qual/sign-out-account', (req, res) => {
     const data = req.session.data
     data.onwardContinue = data.qs
+    data.createAccountURL = '/user-research/qual/create-account'
+    data.signInAccountURL = '/user-research/qual/sign-in'
     res.redirect('/auth/ga-account')
   })
   
