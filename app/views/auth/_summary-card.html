@@ -1,6 +1,6 @@
 
 {%- if data['emailAuth'] == 'true' -%}
-<p>Please confirm your details entered and confirm the details we have for you.</p>
+<p>Confirm the details you've entered are correct (your name and mobile phone number). Also, check the email address we have for you.</p>
 {%- endif -%}
 
 {{ govukSummaryList({
@@ -13,16 +13,16 @@
     },
     value: {
       html: data['email'] | title if data['email'] else 'email@example.com'
-    
+
     }
-  },  
+  },
   {
     key: {
       html: 'Mobile phone'
     },
     value: {
       html: data['phone'] | title if data['phone'] else '07827999613'
-    
+
     },
     actions: {
       items: [{
@@ -158,7 +158,7 @@
       }
     } if data['has-qts-from-provider'] == 'Yes' and data['have-qts'] == 'Yes'
   ]
-}) if data['emailAuth'] != 'true' }} 
+}) if data['emailAuth'] != 'true' }}
 
 
 
@@ -187,7 +187,7 @@
     },
     value: {
       html: data['phone'] | title if data['phone'] else '07827999613'
-    
+
     },
     actions: {
       items: [{
@@ -202,7 +202,7 @@
     },
     value: {
       html: data['email'] | title if data['email'] else 'email@example.com'
-    
+
     },
     actions: {
       items: [{
@@ -210,7 +210,7 @@
         href: "email"
       }]
     }
-    
+
   }
   ]
-}) if data['emailAuth'] == 'true' or  data['dqt'] == 'false'}} 
+}) if data['emailAuth'] == 'true' or  data['dqt'] == 'false'}}
