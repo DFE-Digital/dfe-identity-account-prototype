@@ -3,6 +3,12 @@ const addFilter = govukPrototypeKit.views.addFilter
 const { DateTime } = require("luxon")
 
 
+
+
+addFilter('stringify',function(object) {
+  return JSON.stringify(object)
+})
+
 addFilter('isoDateFromDateInput', function(object) {
     try {
       const year = parseInt(object.year) || new Date().getFullYear()
