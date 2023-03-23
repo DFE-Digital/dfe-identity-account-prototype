@@ -75,16 +75,16 @@ module.exports = router => {
    // QTS my sign out external link
    router.get('/user-research/qts/sign-out', (req, res) => {
     const data = req.session.data
-    req.session.destroy()
     data.identityServiceName = data.qts
     data.onwardContinue = data.qts
     data.returnToService = '/account/sign-out'
     data.scenario = '4'
     data.signIn = 'false'
     data.emailAuth = 'false'
-  
+    data.emailAuth = 'false'
+    data.dqtCheck = 'false'
     data.service = 'qts'
-    res.redirect('/account/signed-out')
+    res.redirect('/auth/ga-account')
   })
 
 
@@ -95,15 +95,16 @@ module.exports = router => {
   data.identityServiceName = data.qts
   data.onwardContinue = data.qts
   data.returnToService = '/qts/apply-for-qts'
-  data.scenario = '10'
+  data.scenario = '5'
   data.emailAuth = 'false'
   data.signIn = 'true'
   data.service = 'qts'
-  data.createAccountURL = '/auth/email'
+  data.createAccountURL = '/user-research/qts/create-account'
+  data.signInAccountURL = '/user-research/qts/sign-in'
   data.showDqtName = 'true'
   data.showDqtDob = 'hide'
   data.dqtCheck = 'false'
-  res.redirect('/qts/eligibility/eligible')
+  res.redirect('/qts/eligibility/start-eligibility')
 })
 
 
@@ -114,7 +115,7 @@ module.exports = router => {
   data.identityServiceName = data.qts
   data.onwardContinue = data.qts
   data.returnToService = '/qts/apply-for-qts'
-  data.scenario = '10'
+  data.scenario = '6'
   data.emailAuth = 'false'
   data.signIn = 'true'
   data.service = 'qts'
@@ -138,6 +139,8 @@ module.exports = router => {
     data.service = 'qts'
     data.showDqtName = 'show'
     data.emailAuth = 'false'
+    data.createAccountURL = '/user-research/qts/create-account'
+    data.signInAccountURL = '/user-research/qts/sign-in'
     data.alert = 'hide'
     data.showDqtDob = 'hide'
     res.redirect('/account/account-details')
@@ -150,7 +153,7 @@ module.exports = router => {
       data.identityServiceName = data.qts
       data.onwardContinue = data.qts
       data.returnToService = '/qts/apply-for-qts'
-      data.scenario = '10'
+      data.scenario = '8'
       data.emailAuth = 'false'
       data.signIn = 'true'
       data.service = 'qts'
