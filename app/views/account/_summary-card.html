@@ -13,6 +13,20 @@
  {% include 'includes/_lozenge.html' %}
   {% endif %}
 {% endset %}
+{% set IdDOB %}
+2 December 1989
+  <p class="govuk-hint govuk-!-font-size-14">Entered when creating account </p>
+  {% if data['dobLozenge'] %}
+ {% include 'includes/_lozenge.html' %}
+  {% endif %}
+{% endset %}
+{% set IdDOBMatch %}
+2 December 1989
+  <p class="govuk-hint govuk-!-font-size-14">Entered when creating account </p>
+  {% if data['dobLozenge'] %}
+ {% include 'includes/_lozenge.html' %}
+  {% endif %}
+{% endset %}
 
 <h3 class="govuk-heading-m">Personal details</h3>
 
@@ -67,14 +81,14 @@
       html: 'Date of birth'
     },
     value: {
-      html: (data['dob'] if data['dob'] else { day: 1, month: 12, year: 1989 }) | isoDateFromDateInput | govukDate + '<p class="govuk-hint govuk-!-font-size-14">Entered when creating account </p>'
+      html: IdDOB
     },
     actions: {
       items: [{
         text: 'Change',
         href: "date-of-birth-duplicate"
       }]
-    }
+    } if data['dobLozenge'] != "show"
   } if data['showDqtDob'] == "show",
   {
     key: {
