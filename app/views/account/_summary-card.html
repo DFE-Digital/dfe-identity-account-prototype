@@ -13,18 +13,19 @@
  {% include 'includes/_lozenge.html' %}
   {% endif %}
 {% endset %}
+
 {% set IdDOB %}
-2 December 1989
+{{ data.dob | isoDateFromDateInput | govukDate if data['dia'] else '1 December 1989' }}
   <p class="govuk-hint govuk-!-font-size-14">Entered when creating account </p>
   {% if data['dobLozenge'] %}
  {% include 'includes/_lozenge.html' %}
   {% endif %}
 {% endset %}
-{% set IdDOBMatch %}
-2 December 1989
-  <p class="govuk-hint govuk-!-font-size-14">Entered when creating account </p>
-  {% if data['dobLozenge'] %}
- {% include 'includes/_lozenge.html' %}
+
+{% set verifiedDOB %}
+{{ data.dob | isoDateFromDateInput | govukDate if data['dia'] else '1 December 1989' }}
+  {% if data['dqtCheck'] == 'true' %}
+  <p class="govuk-hint govuk-!-font-size-14">Your verified date of birth.<br> Contact us to change.</p>
   {% endif %}
 {% endset %}
 
@@ -67,14 +68,14 @@
       html: 'Date of birth'
     },
     value: {
-      html: (data['dob'] if data['dob'] else { day: 1, month: 12, year: 1989 }) | isoDateFromDateInput | govukDate
+      html: verifiedDOB
     },
     actions: {
       items: [{
         text: 'Change',
         href: "date-of-birth"
       }]
-    }
+    } if data['dqtCheck'] == "false"
   } if data['showDqtDob'] != "show",
   {
     key: {
