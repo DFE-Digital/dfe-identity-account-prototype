@@ -99,7 +99,6 @@ module.exports = router => {
     data.createAccountURL = '/auth/name'
     data.signInAccountURL = '/user-research/qual/sign-in'
     data.showDqtDob = 'hide'
-    data.dqtCheck = 'false'
     res.redirect('/qualifications/start')
   })
   
