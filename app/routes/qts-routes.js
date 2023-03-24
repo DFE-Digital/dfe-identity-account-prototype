@@ -167,5 +167,6 @@ module.exports = router => {
 
   router.get('/auth/return-to-service', (req, res) => {
     res.redirect(req.session.data.returnToService)
+
   })
 }
