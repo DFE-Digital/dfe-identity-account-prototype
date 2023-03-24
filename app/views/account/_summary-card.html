@@ -25,7 +25,7 @@
 {% set verifiedDOB %}
 {{ data.dob | isoDateFromDateInput | govukDate if data['dia'] else '1 December 1989' }}
   {% if data['dqtCheck'] == 'true' %}
-  <p class="govuk-hint govuk-!-font-size-14">Your verified date of birth.<br> Contact us to change.</p>
+  <p class="govuk-hint govuk-!-font-size-14">Your verified date of birth.</p>
   {% endif %}
 {% endset %}
 

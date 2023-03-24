@@ -1,6 +1,6 @@
 
 {%- if data['emailAuth'] == 'true' -%}
-<p>Confirm the details you've entered are correct (your name and mobile phone number). Also, check the email address we have for you.</p>
+<p>Confirm the details you've entered are correct (your name, date of birth and mobile phone number). Also, check the email address we have for you.</p>
 {%- endif -%}
 
 {{ govukSummaryList({
@@ -181,6 +181,20 @@
       }]
     }
   },
+    {
+      key: {
+        html: 'Date of birth'
+      },
+      value: {
+        html:  (data['dob'] if data['dob'] else { day: 1, month: 12, year: 1989 }) | isoDateFromDateInput | govukDate
+      },
+      actions: {
+        items: [{
+          text: 'Change',
+          href: "date-of-birth"
+        }]
+      }
+    },
   {
     key: {
       html: 'Mobile phone'
