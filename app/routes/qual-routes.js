@@ -94,6 +94,8 @@ module.exports = router => {
     data.emailAuth = 'true'
     data.signIn = 'true'
     data.service = 'qs'
+    data.dqtCheck = 'false'
+    
     data.showDqtName = 'true'
     data.createAccountURL = '/auth/name'
     data.signInAccountURL = '/user-research/qual/sign-in'
