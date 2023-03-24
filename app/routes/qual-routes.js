@@ -16,6 +16,7 @@ module.exports = router => {
     data.emailAuth = 'false'
     data.showDqtName = 'false'
     data.showDqtDob = 'hide'
+    data.verifiedDob = 'true'
     res.redirect('/account/account-details')
   })
   
@@ -29,6 +30,7 @@ module.exports = router => {
     data.dqtCheck = 'true'
     data.emailAuth = 'false'
     data.signIn = 'true'
+    data.verifiedDob = 'true'
     res.redirect('/auth/email')
   })
   
@@ -40,7 +42,7 @@ module.exports = router => {
     data.returnToService = 'https://qualifications-prototype.herokuapp.com/user-research/mvp/'
     data.scenario = '6'
     data.emailAuth = 'false'
-  
+    data.verifiedDob = 'true'
     data.signIn = 'true'
     res.redirect('/sign-in/email')
   })
@@ -58,6 +60,7 @@ module.exports = router => {
     data.emailAuth = 'false'
     data.alert = 'hide'
     data.showDqtDob = 'hide'
+    data.verifiedDob = 'true'
     res.redirect('/account/account-details')
   })
 
@@ -70,6 +73,7 @@ module.exports = router => {
     data.scenario = '8'
     data.signIn = 'false'
     data.service = 'qs'
+    data.verifiedDob = 'true'
     res.redirect('/user-research/qual/sign-out-account')
   })
   
@@ -79,6 +83,7 @@ module.exports = router => {
     data.onwardContinue = data.qs
     data.createAccountURL = '/user-research/qual/create-account'
     data.signInAccountURL = '/user-research/qual/sign-in'
+    data.verifiedDob = 'true'
     res.redirect('/auth/ga-account')
   })
   
@@ -94,11 +99,13 @@ module.exports = router => {
     data.emailAuth = 'true'
     data.signIn = 'true'
     data.service = 'qs'
-    data.dqtCheck = 'true'
     data.showDqtName = 'true'
     data.createAccountURL = '/auth/name'
     data.signInAccountURL = '/user-research/qual/sign-in'
     data.showDqtDob = 'hide'
+    data.dqtCheck = 'false'
+    data.verifiedDob = 'true'
+    
     res.redirect('/qualifications/start')
   })
   
@@ -118,6 +125,7 @@ module.exports = router => {
       data.showDqtName = 'true'
       data.showDqtDob = 'hide'
       data.dqtCheck = 'true'
+      data.verifiedDob = 'true'
       res.redirect('/qualifications/start')
     })
   

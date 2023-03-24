@@ -42,6 +42,7 @@ module.exports = router => {
     data.scenario = '1'
     data.signIn = 'true'
     data.emailAuth = 'false'
+    data.verifiedDob = 'false'
     res.redirect('/sign-in/email')
   })
     
@@ -56,6 +57,7 @@ module.exports = router => {
     data.createAccountURL = '/auth/email'
     data.signInAccountURL = '/user-research/qts/sign-in'
     data.emailAuth = 'false'
+    data.verifiedDob = 'false'
     res.redirect('/auth/email')
   })
 
@@ -68,7 +70,7 @@ module.exports = router => {
     data.scenario = '3'
     data.signIn = 'false'
     data.emailAuth = 'false'
-  
+    data.verifiedDob = 'false'
     res.redirect('/auth/phone')
   })
   
@@ -84,6 +86,7 @@ module.exports = router => {
     data.emailAuth = 'false'
     data.dqtCheck = 'false'
     data.service = 'qts'
+    data.verifiedDob = 'false'
     res.redirect('/auth/ga-account')
   })
 
@@ -104,6 +107,7 @@ module.exports = router => {
   data.showDqtName = 'true'
   data.showDqtDob = 'hide'
   data.dqtCheck = 'false'
+  data.verifiedDob = 'false'
   res.redirect('/qts/eligibility/start-eligibility')
 })
 
@@ -124,6 +128,7 @@ module.exports = router => {
   data.showDqtName = 'true'
   data.showDqtDob = 'hide'
   data.dqtCheck = 'false'
+  data.verifiedDob = 'false'
   res.redirect('/qts/eligibility/eligible')
 })
 
@@ -143,6 +148,7 @@ module.exports = router => {
     data.signInAccountURL = '/user-research/qts/sign-in'
     data.alert = 'hide'
     data.showDqtDob = 'hide'
+    data.verifiedDob = 'false'
     res.redirect('/account/account-details')
   })
 
@@ -162,6 +168,7 @@ module.exports = router => {
       data.showDqtName = 'true'
       data.showDqtDob = 'hide'
       data.dqtCheck = 'false'
+      data.verifiedDob = 'false'
       res.redirect('/auth/ga-account')
     })
 
