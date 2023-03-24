@@ -11,6 +11,7 @@ module.exports = {
   'dqtFirstName': 'Victoria',
   'dqtLastName': 'Smith',
   'emailName': 'Ria Smith',
+  'npq': 'Register for a national professional qualification',
 
   // Error messages
   'errorMessageCopy': 'Enter a personal email address. It cannot be one that other people may get access to.',

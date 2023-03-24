@@ -12,6 +12,7 @@ require('./routes/account-flow')(router)
 require('./routes/sign-in')(router)
 require('./routes/qts-routes')(router)
 require('./routes/qual-routes')(router)
+require('./routes/npq-routes')(router)
 
 
 
