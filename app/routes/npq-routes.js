@@ -27,7 +27,7 @@ module.exports = router => {
     const data = req.session.data
     data.identityServiceName = data.npq
     data.onwardContinue = data.npq
-    data.returnToService = 'https://npq-prototype.herokuapp.com/registration-status/registration-status'
+    data.returnToService = 'https://npq-prototype.herokuapp.com/user-research/npq/existing-user'
     data.scenario = '2'
     data.emailAuth = 'false'
     data.verifiedDob = 'true'
@@ -38,9 +38,9 @@ module.exports = router => {
    // NPQ create account
    router.get('/user-research/npq/create-account', (req, res) => {
     const data = req.session.data
-    data.identityServiceName = data.qs
-    data.onwardContinue = data.qs
-    data.returnToService = 'https://npq-prototype.herokuapp.com/chosen'
+    data.identityServiceName = data.npq
+    data.onwardContinue = data.npq
+    data.returnToService = 'https://npq-prototype.herokuapp.com/user-research/npq/new-user'
     data.scenario = '3'
     data.dqtCheck = 'true'
     data.emailAuth = 'false'
@@ -48,6 +48,34 @@ module.exports = router => {
     data.verifiedDob = 'true'
     res.redirect('/auth/email')
   })
+
+     // NPQ sign-out external link
+     router.get('/user-research/npq/sign-out', (req, res) => {
+      const data = req.session.data
+      data.identityServiceName = data.npq
+      data.onwardContinue = data.npq
+      data.emailAuth = 'false'
+      data.signIn = 'false'
+      data.service = 'npq'
+      data.verifiedDob = 'true'
+      data.createAccountURL = '/user-research/npq/create-account'
+      data.signInAccountURL = '/user-research/npq/sign-in'
+      res.redirect('/auth/ga-account')
+    })
+
+  // NPQ to my account
+  router.get('/user-research/npq/account', (req, res) => {
+    const data = req.session.data
+    data.identityServiceName = data.npq
+    data.onwardContinue = data.npq
+    data.signIn = 'true'
+    data.verifiedDob = 'true'
+    data.service = 'npq'
+    data.createAccountURL = '/user-research/npq/create-account'
+    data.signInAccountURL = '/user-research/npq/sign-in'
+    res.redirect('/account/interstitial')
+  })
+
 
   router.get('/auth/return-to-service', (req, res) => {
     res.redirect(req.session.data.returnToService)

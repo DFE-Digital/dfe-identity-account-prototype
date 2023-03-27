@@ -77,7 +77,7 @@ module.exports = router => {
     res.redirect('/user-research/qual/sign-out-account')
   })
   
-   // redirect to account page
+   // redirect to ga account page after signout
    router.get('/user-research/qual/sign-out-account', (req, res) => {
     const data = req.session.data
     data.onwardContinue = data.qs

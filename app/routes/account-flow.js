@@ -3,11 +3,14 @@ const _ = require('lodash')
 module.exports = router => {
 
   router.post('/account/interstitial', (req, res) => { 
-    const data = req.session.data
-    data.service = 'dqt'
-    data.showDqtName = 'hide'
+    if(req.session.data['service'] == 'npq') {
+    res.redirect('/account/account-details') 
+  } else {
     res.redirect('/user-research/qts/account') 
+  }
   })
+
+
   router.post('/account/account-details', (req, res) => { 
     res.redirect('/qts/apply-for-qts') 
   })
