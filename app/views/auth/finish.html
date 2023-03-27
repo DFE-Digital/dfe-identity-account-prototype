@@ -13,9 +13,15 @@
   <!-- No DQT record - account has been created - user can't access service -->
   You cannot access this service yet
 
-  {%- elseif data['dqt-check'] == 'pending' -%}
+  {%- elseif data['dqt-check'] == 'pending-qs' -%}
   <!-- No DQT record found - account has been created - TRA sent ticket to locate user - user can't access service -->
   You cannot access this service yet
+
+  {%- elseif data['dqt-check'] == 'pending-npq' -%}
+  <!-- No DQT record found - account has been created - TRA sent ticket to locate user - user CAN access service -->
+  You've created a {{ serviceName }}
+  {% set hideButton = false %}
+
 
   {%- elseif not data['dqt-check'] or data['dqt-check'] == 'auth' -%}
   <!-- basic auth journey - no DQT checks made -->
