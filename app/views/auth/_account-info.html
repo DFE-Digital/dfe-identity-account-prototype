@@ -24,7 +24,9 @@
     name and date of birth
   </li>
 </ul>
-<p>We may ask some follow-up questions to see if you're already in our records.</p>
+{%- if data['dqtCheck'] == 'true' -%}
+  <p>We may ask some follow-up questions to see if you're already in our records.</p>
+{%- endif -%}
 
 {%- endif -%}
 
