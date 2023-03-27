@@ -4,6 +4,8 @@ module.exports = router => {
 
   router.post('/account/interstitial', (req, res) => { 
     if(req.session.data['service'] == 'npq') {
+      const data = req.session.data
+      data.dqtName = 'show'
     res.redirect('/account/account-details') 
   } else {
     res.redirect('/user-research/qts/account') 
