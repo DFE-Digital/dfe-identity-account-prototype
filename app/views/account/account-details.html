@@ -11,7 +11,10 @@
   <div id="bannerBar">
    
 {%- if data['service'] == 'qs' -%}
-<a class="govuk-back-link" href="https://qualifications-prototype.herokuapp.com/user-research/mvp/"> Back to Access your teaching qualifications</a>
+<a class="govuk-back-link" href="https://qualifications-prototype.herokuapp.com/user-research/mvp/"> Back to {{ data.qs }}</a>
+
+{%- elseif data['service'] == 'npq' -%}
+<a class="govuk-back-link" href="https://npq-prototype.herokuapp.com/user-research/npq/new-user"> Back to {{ data.npq }}</a>
 
 {%- else -%}
   <a class="govuk-back-link" href="/qts/apply-for-qts?alert=hide"> Back to {{ data.qtsLc }}</a>
@@ -32,6 +35,12 @@
   {{ govukButton({
     html: 'Back to Access your teaching qualifications',
     href: 'https://qualifications-prototype.herokuapp.com/user-research/mvp/'
+  }) }}
+
+  {%- elseif data['service'] == 'npq'-%}
+  {{ govukButton({
+    html: 'Register for a national professional qualification',
+    href: 'https://npq-prototype.herokuapp.com/user-research/npq/new-user'
   }) }}
 {%- else -%}
   {{ govukButton({

@@ -1,17 +1,18 @@
 {% extends "layouts/forms-interrupt.html" %}
-{% set title %}DfE Identity account{% endset %}
+{% set title  = data.tsa %}
 {% set account  = 'true' %}
 {% set signedIn = 'true' %}
 {% set hideButton = 'true' %}
 
+{% set serviceName = data.onwardContinue or data.tsa %}
 
 
 
 {% block form %}
 
 
-<p class="govuk-!-margin-bottom-6">You can change sign in and personal details in your {{ serviceName }}. </p>
-<p class="govuk-!-margin-bottom-6">You use your {{ serviceName }} to sign in to <b>'{{ data.qts }}'</b>. </p>
+<p class="govuk-!-margin-bottom-6">You can change sign in and personal details in your {{ data.tsa }}. </p>
+<p class="govuk-!-margin-bottom-6">You use your {{ data.tsa }} to sign in to <b>'{{ data.onwardContinue or data.qts }}'</b>. </p>
 
 {{ govukButton({
     classes: "app-button--inverse govuk-!-margin-bottom-0",
