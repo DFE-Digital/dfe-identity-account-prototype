@@ -70,6 +70,7 @@ module.exports = router => {
     data.onwardContinue = data.npq
     data.signIn = 'true'
     data.verifiedDob = 'true'
+    data.showDqtName = 'show'
     data.service = 'npq'
     data.createAccountURL = '/user-research/npq/create-account'
     data.signInAccountURL = '/user-research/npq/sign-in'
