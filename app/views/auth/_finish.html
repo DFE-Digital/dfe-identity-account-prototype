@@ -8,9 +8,10 @@
 
   {%- elseif data['dqt-check'] == 'pending-npq' -%}
   <!-- A DQT record has been found - user creates account - accesses service -->
-  <p>You can continue anyway and we'll try to find your record. Some may be in touch to ask for more information</p>
-  <p>Next time, you can sign in just using your email ({{ data.email or 'email@example.com' }}).</p>
   <p class="govuk-!-margin-bottom-6">Continue to <strong>{{ data.onwardContinue or data.qs }}</strong>. </p>
+
+  <p>We could not find your existing details in our records. Our support staff may get in touch to ask for more information. This is so we can link your existing details to your DfE Identity account.</p>
+  <p>Next time, you can sign in just using your email ({{ data.email or 'email@example.com' }}).</p>
 
   
 
