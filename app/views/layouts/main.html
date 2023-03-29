@@ -22,7 +22,7 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
 
 {% block header %}
   {{ govukHeader({
-    homepageUrl: "#",
+    homepageUrl: "/",
     serviceName: serviceName,
     serviceUrl: '/',
     navigation: [
@@ -44,6 +44,14 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
   {{ govukFooter({
     meta: {
       items: [
+      {
+        href: "/legal/cookies",
+        text: "Cookies"
+      },
+      {
+        href: "/legal/privacy-notice",
+        text: "Privacy notice"
+      },
         {
           href: "/manage-prototype",
           text: "Manage your prototype"
