@@ -17,7 +17,7 @@
   hint: {
     text: "Or given names"
   },
-  value: 'Victoria'
+  value: data['dqtFirstName'] or 'Victoria'
 }) }}
 
 {{ govukInput({
@@ -40,7 +40,7 @@
   hint: {
     text: "Or family names"
   },
-  value: 'Smith'
+  value:  data['dqtLastName'] or 'Smith'
 }) }}
 
 
