@@ -19,7 +19,9 @@
 
 
   <p> <a href='/user-research/qual/email'>www.access-your-teaching-qualifications.education.gov.uk</a></p>
-
+  {{ govukInsetText({
+    text: "To return this service in future you will need to use the link above."
+  }) }}
   <h2 class="govuk-heading-s"> {{ data.tsa }}</h2>
 
   <p>To sign in to Access your teaching qualifications, you’ll need to create a {{ data.tsa }}. It only takes a minute to create an account and once you have one, you can use it to sign in to different DfE teacher services.</p>
