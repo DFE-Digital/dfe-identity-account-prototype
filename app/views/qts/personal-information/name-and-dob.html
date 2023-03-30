@@ -27,7 +27,7 @@
 		html: 'Name'
 	  },
 	  value: {
-		html: data['fullName'] | title if data['firstName'] else 'John Smith'
+		html: data['fullName'] | title if data['firstName'] else 'Ria Smith'
 	  }
 	},
 	{
@@ -35,7 +35,7 @@
 		html: 'Date of birth'
 	  },
 	  value: {
-		html: data.dob | isoDateFromDateInput | date if data['dob'] else '1 December 1989'
+        html:  (data['dob'] if data['dob'] else { day: 1, month: 12, year: 1989 }) | isoDateFromDateInput | govukDate
 	  }
 	}
 	]

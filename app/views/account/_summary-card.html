@@ -15,7 +15,7 @@
 {% endset %}
 
 {% set IdDOB %}
-{{ data.dob | isoDateFromDateInput | govukDate if data['dia'] else '1 December 1989' }}
+{{ data.dob | isoDateFromDateInput | govukDate if data['dob'] else '1 December 1989' }}
   <p class="govuk-hint govuk-!-font-size-14">Entered when creating account </p>
   {% if data['dobLozenge'] %}
  {% include 'includes/_lozenge.html' %}
@@ -23,7 +23,7 @@
 {% endset %}
 
 {% set verifiedDOB %}
-{{ data.dob | isoDateFromDateInput | govukDate if data['dia'] else '1 December 1989' }}
+{{ data.dob | isoDateFromDateInput | govukDate if data['dob'] else '1 December 1989' }}
   {% if data['verifiedDob'] == 'true' %}
   <p class="govuk-hint govuk-!-font-size-14">Your verified date of birth.</p>
   {% endif %}
