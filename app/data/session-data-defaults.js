@@ -7,10 +7,10 @@ module.exports = {
   'tsaP': 'DfE Identity accounts',
   'qs': 'Access your teaching qualifications',
   'emailExample': 'davesmith@school.sch.uk',
-  'dqtName': 'Andrea Armstrong',
-  'dqtFirstName': 'Andrea',
-  'dqtLastName': 'Armstrong',
-  'emailName': 'Ria Smith',
+  'dqtName': 'Amartey Wisdom',
+  'dqtFirstName': 'Amartey',
+  'dqtLastName': 'Wisdom',
+  'emailName': 'Amartey Wisdom',
   'npq': 'Register for a national professional qualification',
 
   // Error messages
