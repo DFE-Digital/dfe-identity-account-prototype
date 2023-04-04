@@ -6,11 +6,12 @@ module.exports = {
   'tsa': 'DfE Identity account',
   'tsaP': 'DfE Identity accounts',
   'qs': 'Access your teaching qualifications',
+<<<<<<< HEAD
   'emailExample': 'nameremovedh@school.sch.uk',
   'dqtName': 'Name Removed',
   'dqtFirstName': 'Name',
   'dqtLastName': 'Removed',
-  'emailName': 'Ria Smith',
+  'emailName': 'Namus Removed',
   'npq': 'Register for a national professional qualification',
 
   // Error messages
