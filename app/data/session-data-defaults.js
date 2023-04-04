@@ -10,7 +10,7 @@ module.exports = {
   'dqtName': 'Name Removed',
   'dqtFirstName': 'Name',
   'dqtLastName': 'Removed',
-  'emailName': 'Ria Smith',
+  'emailName': 'Namus Removed',
   'npq': 'Register for a national professional qualification',
 
   // Error messages
