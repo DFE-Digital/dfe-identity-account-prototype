@@ -7,7 +7,7 @@
 {% set title %}
   {%- if data['dqt-check'] == 'found' -%}
   <!-- A DQT record has been found - user creates account - accesses service -->
-  You've created a {{ serviceName }}
+  You’ve created a {{ serviceName }}
   {% set hideButton = false %}
   {%- elseif data['dqt-check'] == 'failed' -%}
   <!-- No DQT record - account has been created - user can't access service -->
@@ -19,13 +19,13 @@
 
   {%- elseif data['dqt-check'] == 'pending-npq' -%}
   <!-- No DQT record found - account has been created - TRA sent ticket to locate user - user CAN access service -->
-  You've created a {{ serviceName }}
+  You’ve created a {{ serviceName }}
   {% set hideButton = false %}
 
 
   {%- elseif not data['dqt-check'] or data['dqt-check'] == 'auth' -%}
   <!-- basic auth journey - no DQT checks made -->
-  You've created a {{ serviceName }}
+  You’ve created a {{ serviceName }}
 
   {% set hideButton = false %}
 

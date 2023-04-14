@@ -19,16 +19,16 @@
   {%- if 'failed' -%}
   <p>This could be because you do not have teaching qualifications, for example, qualified teacher status (QTS).</p>
   <h2 class="govuk-heading-s">Your {{ serviceName }}</h2>
-  <p>You've created a {{ serviceName }}. When you're eligible to use this service, you can sign in just using your email ({{ data.email or 'email@example.com' }}).</p>
+  <p>You’ve created a {{ serviceName }}. When you're eligible to use this service, you can sign in just using your email ({{ data.email or 'email@example.com' }}).</p>
   {%- endif -%}
 
   {%- elseif data['dqt-check'] == 'pending-qs' -%}
   <!-- No DQT record found - account has been created - TRA sent ticket to locate user - user can't access service -->
   {%- if 'pending' -%}
   <p>We need to do some more checks to see if your details are in our records.</p>
-  <p>We'll email you when we've completed those checks - we may need some more information.</p>
+  <p>We’ll email you when we’ve completed those checks - we may need some more information.</p>
   <h2 class="govuk-heading-s">Your {{ serviceName }}</h2>
-  <p>You've created a {{ serviceName }}. To sign in to this service in the future, you’ll just need your email address ({{ data.email or 'email@example.com' }}).</p>
+  <p>You’ve created a {{ serviceName }}. To sign in to this service in the future, you’ll just need your email address ({{ data.email or 'email@example.com' }}).</p>
   {%- endif -%}
 
   {%- elseif not data['dqt-check'] or data['dqt-check'] == 'auth' or data['signIn'] == 'true' -%}

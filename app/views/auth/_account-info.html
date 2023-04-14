@@ -1,33 +1,30 @@
-<p>It will only take a few minutes and you’ll need your:</p>
+
 
 {%- if data['emailAuth'] == 'true' -%}
-<ul class="govuk-list govuk-list--bullet">
-  <li>
-    name
-  </li>
-  <li>
-    date of birth
-  </li>
-  <li>
-    mobile phone number (used for account security)
-  </li>
-</ul>
+
+  <p class="govuk-body">It will only take a few minutes.</p>
+
+  <p class="govuk-body">You’ll need to provide your mobile phone number to keep your account secure. You’ll also need to confirm that the details we have for you are correct.</p>
+
 {%- else -%}
-<ul class="govuk-list govuk-list--bullet">
-  <li>
-    email address (used for contact and account security)
-  </li>
-  <li>
-    mobile phone number (used for account security)
-  </li>
-  <li>
-    name and date of birth
-  </li>
-</ul>
-{%- if data['dqtCheck'] == 'true' -%}
-  <p>We may ask some follow-up questions to see if you're already in our records.</p>
-{%- endif -%}
+
+  <p>It will only take a few minutes and you’ll need your:</p>
+
+  <ul class="govuk-list govuk-list--bullet">
+    <li>
+      email address (used for contact and account security)
+    </li>
+    <li>
+      mobile phone number (used for account security)
+    </li>
+    <li>
+      name and date of birth
+    </li>
+  </ul>
+  {%- if data['dqtCheck'] == 'true' -%}
+    <p>We may ask some follow-up questions to see if you’re already in our records.</p>
+  {%- endif -%}
 
 {%- endif -%}
 
-<p>Once you've created an account, you can continue to <b>{{ data.onwardContinue or data.qa}}</b>.</p>
+<p>Once you’ve created an account, you can continue to <b>{{ data.onwardContinue or data.qa}}</b>.</p>

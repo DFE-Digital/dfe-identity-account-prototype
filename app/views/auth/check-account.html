@@ -1,5 +1,5 @@
 {% extends "layouts/forms.html" %}
-{% set title %}We've found an account that matches your details{% endset %}
+{% set title %}We’ve found an account that matches your details{% endset %}
 {% set existingEmailExample %}
   {{data.emailExample | maskEmail}}
 {% endset %}
@@ -28,7 +28,7 @@
       value: "true",
       text: "Yes, sign in to this account",
       hint: {
-        text: "We'll send a security code to " + existingEmailExample
+        text: "We’ll send a security code to " + existingEmailExample
       }
     },
     {

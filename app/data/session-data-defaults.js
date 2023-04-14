@@ -12,6 +12,7 @@ module.exports = {
   'emailExample': process.env.email || 'davesmith@school.sch.uk',
   'dqtName': process.env.dqt_name || 'Victoria Smith',
   'dqtFirstName': process.env.dqt_first_name || 'Victoria',
+  'dqtMiddleName': process.env.dqt_middle_name || 'Nelson',
   'dqtLastName': process.env.dqt_last_name || 'Smith',
   'emailName': process.env.email_name || 'Victoria Smith',
   'npq': 'Register for a national professional qualification',

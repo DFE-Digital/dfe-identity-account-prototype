@@ -1,36 +1,36 @@
 
-{%- if data['emailAuth'] == 'true' -%}
-<p>Confirm the details you've entered are correct. Also, check the email address we have for you.</p>
-{%- endif -%}
+{# {%- if data['emailAuth'] == 'true' -%}
+<p>Confirm the details you’ve entered are correct. Also, check the email address we have for you.</p>
+{%- endif -%} #}
 
 {{ govukSummaryList({
   classes: "govuk-!-margin-bottom-9",
   titleText: "Personal details",
   rows: [
-  {
-    key: {
-      html: 'Email'
-    },
-    value: {
-      html: data['email'] | title if data['email'] else 'email@example.com'
+    {
+      key: {
+        html: 'Email'
+      },
+      value: {
+        html: data['email'] | title if data['email'] else 'email@example.com'
 
-    }
-  },
-  {
-    key: {
-      html: 'Mobile phone'
+      }
     },
-    value: {
-      html: data['phone'] | title if data['phone'] else '07827999613'
+    {
+      key: {
+        html: 'Mobile phone'
+      },
+      value: {
+        html: data['phone'] | title if data['phone'] else '07827999613'
 
+      },
+      actions: {
+        items: [{
+          text: 'Change',
+          href: "phone"
+        }]
+      }
     },
-    actions: {
-      items: [{
-        text: 'Change',
-        href: "phone"
-      }]
-    }
-  },
     {
       key: {
         html: 'Name'
@@ -160,7 +160,13 @@
   ]
 }) if data['emailAuth'] != 'true' }}
 
+<p class="govuk-body">
+  Change any details that are incorrect. For some name changes you’ll need to provide evidence, for example, change of last name due to marriage.
+</p>
 
+<p class="govuk-body">
+  You’ll need to provide evidence for changes to your date of birth.
+</p>
 
 
 {{ govukSummaryList({
@@ -169,10 +175,38 @@
   rows: [
   {
     key: {
-      html: 'Name'
+      html: 'First names'
     },
     value: {
-      html: data['fullName'] | title if data['firstName'] else 'Ria Smith'
+      html: data.dqtFirstName
+    },
+    actions: {
+      items: [{
+        text: 'Change',
+        href: "name"
+      }]
+    }
+  },
+  {
+    key: {
+      html: 'Middle names'
+    },
+    value: {
+      html: data.dqtMiddleName
+    },
+    actions: {
+      items: [{
+        text: 'Change',
+        href: "name"
+      }]
+    }
+  },
+  {
+    key: {
+      html: 'Last names'
+    },
+    value: {
+      html: data.dqtLastName
     },
     actions: {
       items: [{
@@ -200,7 +234,7 @@
       html: 'Mobile phone'
     },
     value: {
-      html: data['phone'] | title if data['phone'] else '07827999613'
+      html: data['phone'] if data['phone'] else '07827999613'
 
     },
     actions: {
@@ -215,7 +249,7 @@
       html: 'Email'
     },
     value: {
-      html: data['email'] | title if data['email'] else 'email@example.com'
+      html: data['email'] if data['email'] else 'email@example.com'
 
     },
     actions: {

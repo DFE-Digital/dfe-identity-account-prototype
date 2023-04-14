@@ -54,8 +54,8 @@ module.exports = router => {
   router.post(['/auth/name'], (req, res, next) => {
     req.session.data['fullName'] = `${req.body['firstName']} ${req.body['lastName']}`
     if(req.session.data['emailAuth'] == 'true') {
-      res.redirect('/auth/date-of-birth')
-
+      res.redirect('/auth/check-answers')
+      // res.redirect('/auth/date-of-birth')
     } else {
       res.redirect('/auth/date-of-birth')    }
    
@@ -67,11 +67,10 @@ module.exports = router => {
     } else if (req.session.data['dqtCheck'] != 'false') {
       res.redirect('/auth/have-nino')
     } else if(req.session.data['emailAuth'] == 'true') {
-      res.redirect('/auth/phone')
-
-    } else if(req.session.data['emailAuth'] == 'true') {
       res.redirect('/auth/check-answers')
-    } else {
+      // res.redirect('/auth/phone')
+
+    }  else {
       res.redirect('/auth/check-answers')
     }
   })
