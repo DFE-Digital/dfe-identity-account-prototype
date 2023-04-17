@@ -38,8 +38,8 @@ addFilter('isoDateFromDateInput', function(object) {
     var end = 5;
   
     var result = s.slice(1, start);
-    result += "*".repeat(s.length-start-end);
-    result += s.slice(s.length-end);
+    result += "*".repeat(s.length -start -end);
+    result += s.slice(s.length -end);
     return result;
   })
  

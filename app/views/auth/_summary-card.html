@@ -234,7 +234,7 @@
       html: 'Mobile phone'
     },
     value: {
-      html: data['phone'] if data['phone'] else '07827999613'
+      html: data.user.phone['phone'] or data.defaultData.phone
 
     },
     actions: {
@@ -249,7 +249,7 @@
       html: 'Email'
     },
     value: {
-      html: data['email'] if data['email'] else 'email@example.com'
+      html: data.user.email or 'email@example.com'
 
     },
     actions: {

@@ -1,5 +1,5 @@
-console.log(process.env.TEST_KEY)
-
+const users = require('./users.json')
+const dqtUsers = require('./dqtUsers.json')
 
 module.exports = {
 
@@ -16,8 +16,17 @@ module.exports = {
   'dqtLastName': process.env.dqt_last_name || 'Smith',
   'emailName': process.env.email_name || 'Victoria Smith',
   'npq': 'Register for a national professional qualification',
+  defaultData: {
+    firstNames: "Victoria",
+    middleNames: "Nelson",
+    lastNames: "Smith",
+    phone: "07700900782",
+    email: "v.smith@example.com"
+  },
 
   // Error messages
   'errorMessageCopy': 'Enter a personal email address. It cannot be one that other people may get access to.',
+  users,
+  dqtUsers
 
 }

@@ -1,0 +1,27 @@
+[
+ {
+    "id": "98610705-d34c-4282-8480-45646ed5cfe1",
+    "firstNames": "Sarah",
+    "middleNames": "Jane",
+    "lastNames": "S mith",
+    "email": "s.smith@example.com",
+    "dateOfBirth": "2001-01-11T00:34:54.089Z"
+  },
+  {
+    "id": "4838f398-ead5-4845-8a2d-fee87a0f922c",
+    "firstNames": "Emilia",
+    "middleNames": "",
+    "lastNames": "Rosembaum",
+    "email": "e.rosembaum@example.com",
+    "dateOfBirth": "1992-06-16T00:34:54.089Z"
+  },
+  {
+    "id": "e09a4127-5c50-4544-a414-b4d7e75f5c9f",
+    "firstNames": "Michael",
+    "middleNames": "",
+    "lastNames": "Berger",
+    "mobile": "07700 900 982",
+    "email": "m.berger@example.com",
+    "dateOfBirth": "1999-10-21T00:34:54.089Z"
+  }
+]

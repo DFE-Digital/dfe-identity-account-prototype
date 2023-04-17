@@ -2,7 +2,7 @@
   {{ data.dqtName }}
   <p class="govuk-hint govuk-!-font-size-14">Displayed on teaching certificates </p>
   {% if data['nameLozenge'] %}
- {% include 'includes/_lozenge.html' %}
+ {% include '_includes/_lozenge.html' %}
   {% endif %}
 {% endset %}
 
@@ -10,7 +10,7 @@
 2 December 1989
   <p class="govuk-hint govuk-!-font-size-14">Date of birth already in our records </p>
   {% if data['dobLozenge'] %}
- {% include 'includes/_lozenge.html' %}
+ {% include '_includes/_lozenge.html' %}
   {% endif %}
 {% endset %}
 
@@ -18,7 +18,7 @@
 {{ data.dob | isoDateFromDateInput | govukDate if data['dob'] else '1 December 1989' }}
   <p class="govuk-hint govuk-!-font-size-14">Entered when creating account </p>
   {% if data['dobLozenge'] %}
- {% include 'includes/_lozenge.html' %}
+ {% include '_includes/_lozenge.html' %}
   {% endif %}
 {% endset %}
 

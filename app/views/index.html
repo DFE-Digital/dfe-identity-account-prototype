@@ -1,5 +1,5 @@
 
-{% extends "layouts/main.html" %}
+{% extends "_layouts/main.html" %}
 {% block pageTitle %} {{serviceName}} prototype{% endblock %}
 
 {% block header %}
@@ -27,141 +27,150 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds-from-desktop">
 
-<h2 class="govuk-heading-m">Basic auth + DQT lookup  </h2>
-<p class="govuk-heading-s">Recieved QTS email </p>
-<p class="govuk-hint">QTS Email + start page + name and date of birth + quals service</p>
-<p><a href="/auth/emails/qts-email">Email - access your QTS cert</a> </p>
-<p class="govuk-hint">Password for qual service (qs)</p>
+  <h2 class="govuk-heading-m">Basic auth + DQT lookup</h2>
+
+  <p class="govuk-heading-s">Recieved QTS email </p>
+  <p class="govuk-hint">QTS Email + start page + name and date of birth + quals service</p>
+  <p>
+    <a href="/auth/emails/qts-email">Email - access your QTS cert</a>
+  </p>
+  <p class="govuk-hint">Password for qual service (qs)</p>
+
+  <p class="govuk-heading-s">Qualifications service (TSSP Replacement)</p>
+  <p class="govuk-hint">Gov start page +  full auth  DQT lookup + quals service</p>
+  <p>
+    <a href="/user-research/qual/startpage">Qualifications start page</a>
+  </p>
+  <p>
+    <a href="/user-research/qual/account">Qualifications account-page</a>
+  </p>
+  <p>
+    <a target="_blank" href="https://lucid.app/lucidspark/b88634d8-2452-4ed6-9c7c-010383770731/edit?view_items=EA-zAgXC1i4K&invitationId=inv_9a36d007-204a-41ed-b8c3-1f49d5e63a05">Lucid ID flow for the qual service</a>
+  </p>
+  <p class="govuk-hint">Password for qual service (qs)</p>
+
+  <p class="govuk-heading-s">NPQ</p>
+  <p class="govuk-hint">Gov start page +  Auth +  DQT lookup + NPQ service</p>
+
+  <p>
+    <a href="https://npq-prototype.herokuapp.com/start-id ">Qualifications start page</a>
+  </p>
+  <p class="govuk-hint">Password for npq service (npq)</p>
+
+
+  <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+
+  <h2 class="govuk-heading-m">Basic auth journey</h2>
+  <p class="govuk-hint">Only email, mobile, name and date of birth are required to create an account</p>
+
+  <p><a href="/user-research/qts/ga-account">Auth flow</a></p>
+    
+  <p ><b>My account</b></p>
+  <p>GAI account functionality integrated within a service</p>
+  <p><a href="/user-research/qts/account">My Account</a></p>
+
+  <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+  <h2 class="govuk-heading-m">ID scenarios and older work</h2>
 
 
 
-<p class="govuk-heading-s">Qualifications service (TSSP Replacement) </p>
-<p class="govuk-hint">Gov start page +  full auth  DQT lookup + quals service</p>
-<p><a href="/user-research/qual/startpage">Qualifications start page</a> </p>
-<p><a href="/user-research/qual/account">Qualifications account-page</a> </p>
-<p><a target="_blank" href="https://lucid.app/lucidspark/b88634d8-2452-4ed6-9c7c-010383770731/edit?view_items=EA-zAgXC1i4K&invitationId=inv_9a36d007-204a-41ed-b8c3-1f49d5e63a05">Lucid ID flow for the qual service</a> </p>
-<p class="govuk-hint">Password for qual service (qs)</p>
-
-<p class="govuk-heading-s">NPQ  </p>
-<p class="govuk-hint">Gov start page +  Auth +  DQT lookup + NPQ service</p>
-
-<p><a href="https://npq-prototype.herokuapp.com/start-id ">Qualifications start page</a> </p>
-<p class="govuk-hint">Password for npq service (npq)</p>
+  <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
 
-<hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+  <h2 class="govuk-heading-m">Account created page scenarios </h2>
+  <p class="govuk-hint">User creates account and a DQT look up occurs</p>
+  <p>
+    <a href="/auth/finish?dqt-check=found">Dqt record found</a> <br>
+    <span class="govuk-hint">User creates account and continues into service</span>
+  </p>
+  <p>
+    <a href="/auth/finish?dqt-check=failed">Dqt record NOT found</a> <br>
+    <span class="govuk-hint">User is not permitted to continue</span>
+  </p>
+  <p>
+    <a href="/auth/finish?dqt-check=pending-qs">Dqt record Pending (Quals version)</a> <br>
+    <span class="govuk-hint">User may be on the DQT - ticket raised for manual check - user NOT permitted to access service</span>
+  </p>
+  <p>
+    <a href="/auth/finish?dqt-check=pending-npq">Dqt record Pending (NPQ version)</a> <br>
+    <span class="govuk-hint">User may be on the DQT - ticket raised for manual check - user CAN access service</span>
+  </p>
+  <p>
+    <a href="/auth/finish?dqt-check=auth">Basic auth - no DQT</a> <br>
+    <span class="govuk-hint">Standard pattern for basic auth</span>
+  </p>
 
 
-<h2 class="govuk-heading-m">Basic auth journey</h2>
-<p class="govuk-hint">Only email, mobile, name and date of birth are required to create an account</p>
+  <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+  <h2 class="govuk-heading-m">Account duplication prevention </h2>
+  <p class="govuk-hint">These scenarios demonstate the duplicate account prevention built into the basic auth flow</p>
+  <p>
+    <a href="/user-research/qts/sign-in?email=new@email.com">Sign in (no account exists)</a> <br>
+    <span class="govuk-hint">User attempts to sign in but does not have an account ( new@email.com )</span>
+  </p>
+  <p>
+    <a href="/user-research/qts/create-account?email=existing@email.com&phone=07827999619">Create account (existing email match)</a> <br>
+    <span class="govuk-hint">User attempts to create an account with an existing email ( existing@email.com )</span>
+  </p>
 
-<p><a href="/user-research/qts/ga-account">Auth flow</a></p>
-  
-<p ><b>My account</b></p>
-<p>GAI account functionality integrated within a service</p>
-<p><a href="/user-research/qts/account">My Account</a></p>
+  <p>
+    <a href="/user-research/qts/create-account?phone=07827999618&email=new@email.com">Create account (existing mobile phone match)</a> <br>
+    <span class="govuk-hint">User attempts to create an account with an existing mobile phone number ( 07827999618 )</span>
+  </p>
+  <p>
+    <a href="/user-research/qts/create-account?email=davesmith@email.com&phone=07827999613&firstName=Dave&lastName=Smith">Create account (name and DOB match)</a> <br>
+    <span class="govuk-hint">User attempts to create an account and their name and Dob match a record  ( Dave Smith )</span>
+  </p>
+  <p>
+    <a href="/user-research/qts/create-account?email=head@school.com&phone=07827999613&firstName=Dave&lastName=Smith">Create account (shared email address)</a> <br>
+    <span class="govuk-hint">User attempts to create an account and enters a shared school email address  ( head@school.com )</span>
+  </p>
 
-<hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
-<h2 class="govuk-heading-m">ID scenarios and older work</h2>
+  <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
+  <h2 class="govuk-heading-m">Account details - data scenarios </h2>
+  <p class="govuk-hint">Users can amend their ID data and where relevant DTQ</p>
 
-
-<hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
-
-
-<h2 class="govuk-heading-m">Account created page scenarios </h2>
-<p class="govuk-hint">User creates account and a DQT look up occurs</p>
-<p>
-  <a href="/auth/finish?dqt-check=found">Dqt record found</a> <br>
-  <span class="govuk-hint">User creates account and continues into service</span>
-</p>
-<p>
-  <a href="/auth/finish?dqt-check=failed">Dqt record NOT found</a> <br>
-  <span class="govuk-hint">User is not permitted to continue</span>
-</p>
-<p>
-  <a href="/auth/finish?dqt-check=pending-qs">Dqt record Pending (Quals version)</a> <br>
-  <span class="govuk-hint">User may be on the DQT - ticket raised for manual check - user NOT permitted to access service</span>
-</p>
-<p>
-  <a href="/auth/finish?dqt-check=pending-npq">Dqt record Pending (NPQ version)</a> <br>
-  <span class="govuk-hint">User may be on the DQT - ticket raised for manual check - user CAN access service</span>
-</p>
-<p>
-  <a href="/auth/finish?dqt-check=auth">Basic auth - no DQT</a> <br>
-  <span class="govuk-hint">Standard pattern for basic auth</span>
-</p>
-
-
-<hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
-<h2 class="govuk-heading-m">Account duplication prevention </h2>
-<p class="govuk-hint">These scenarios demonstate the duplicate account prevention built into the basic auth flow</p>
-<p>
-  <a href="/user-research/qts/sign-in?email=new@email.com">Sign in (no account exists)</a> <br>
-  <span class="govuk-hint">User attempts to sign in but does not have an account ( new@email.com )</span>
-</p>
-<p>
-  <a href="/user-research/qts/create-account?email=existing@email.com&phone=07827999619">Create account (existing email match)</a> <br>
-  <span class="govuk-hint">User attempts to create an account with an existing email ( existing@email.com )</span>
-</p>
-
-<p>
-  <a href="/user-research/qts/create-account?phone=07827999618&email=new@email.com">Create account (existing mobile phone match)</a> <br>
-  <span class="govuk-hint">User attempts to create an account with an existing mobile phone number ( 07827999618 )</span>
-</p>
-<p>
-  <a href="/user-research/qts/create-account?email=davesmith@email.com&phone=07827999613&firstName=Dave&lastName=Smith">Create account (name and DOB match)</a> <br>
-  <span class="govuk-hint">User attempts to create an account and their name and Dob match a record  ( Dave Smith )</span>
-</p>
-<p>
-  <a href="/user-research/qts/create-account?email=head@school.com&phone=07827999613&firstName=Dave&lastName=Smith">Create account (shared email address)</a> <br>
-  <span class="govuk-hint">User attempts to create an account and enters a shared school email address  ( head@school.com )</span>
-</p>
-
-<hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
-
-<h2 class="govuk-heading-m">Account details - data scenarios </h2>
-<p class="govuk-hint">Users can amend their ID data and where relevant DTQ</p>
-
-<p><a href="/account/account-details?service=qs&showDqtDob=hide&showDqtName=show&showDqtDobAlert=hide&alert=hide&verifiedDob=true">DQT name + ID Name & DOB data</a> <span class="govuk-hint govuk-!-font-size-14">(DOB change link hidden - when DQT + ID match)</span></p>
-<p><a href="/account/account-details?service=qs&showDqtDob=show&showDqtName=show&showDqtDobAlert=show&alert=hidee&verifiedDob=true">DQT DOB & ID DOB</a> <span class="govuk-hint govuk-!-font-size-14">(Change link initially displayed - but hidden on match)</span> </p>
-<p> <a href="/account/account-details?service=qs&showDqtDob=hide&showDqtName=hide&showDqtDobAlert=hide&alert=hidee&verifiedDob=false">No DQT data</a> <span class="govuk-hint govuk-!-font-size-14">(Change link is displayed - even after ammending)</span><br></p>
+  <p><a href="/account/account-details?service=qs&showDqtDob=hide&showDqtName=show&showDqtDobAlert=hide&alert=hide&verifiedDob=true">DQT name + ID Name & DOB data</a> <span class="govuk-hint govuk-!-font-size-14">(DOB change link hidden - when DQT + ID match)</span></p>
+  <p><a href="/account/account-details?service=qs&showDqtDob=show&showDqtName=show&showDqtDobAlert=show&alert=hidee&verifiedDob=true">DQT DOB & ID DOB</a> <span class="govuk-hint govuk-!-font-size-14">(Change link initially displayed - but hidden on match)</span> </p>
+  <p> <a href="/account/account-details?service=qs&showDqtDob=hide&showDqtName=hide&showDqtDobAlert=hide&alert=hidee&verifiedDob=false">No DQT data</a> <span class="govuk-hint govuk-!-font-size-14">(Change link is displayed - even after ammending)</span><br></p>
 
 
 
-<hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+  <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
 
-<h2 class="govuk-heading-m">{{ data.qts }}  </h2>
-<p class="govuk-hint">Journey includes basic auth</p>
-<p><a href="/user-research/qts/startpage">Check eligibility start page</a> </p>
-<p><a href="/user-research/landingpage">Eligible user start page </a> </p>
-<p><a href="/qts/apply-for-qts">QTS task list - account view </a> </p>
-<p><a  target="_blank" href="https://lucid.app/lucidspark/b88634d8-2452-4ed6-9c7c-010383770731/edit?view_items=KZDsx9Mr-.mh&invitationId=inv_9a36d007-204a-41ed-b8c3-1f49d5e63a05">Lucid flow of ID flow integrated with QTS </a> </p>
+  <h2 class="govuk-heading-m">{{ data.qts }}  </h2>
+  <p class="govuk-hint">Journey includes basic auth</p>
+  <p><a href="/user-research/qts/startpage">Check eligibility start page</a> </p>
+  <p><a href="/user-research/landingpage">Eligible user start page </a> </p>
+  <p><a href="/qts/apply-for-qts">QTS task list - account view </a> </p>
+  <p><a  target="_blank" href="https://lucid.app/lucidspark/b88634d8-2452-4ed6-9c7c-010383770731/edit?view_items=KZDsx9Mr-.mh&invitationId=inv_9a36d007-204a-41ed-b8c3-1f49d5e63a05">Lucid flow of ID flow integrated with QTS </a> </p>
 
 
-{% set archive %}
-<h2 class="govuk-heading-m">Other features </h2>
-<p><a href="/auth/phone">Phone</a> Inpage form</p>
-<p><a href="/auth/phone">Phone</a> Radio option view</p>
-{% endset -%}
+  {% set archive %}
+  <h2 class="govuk-heading-m">Other features </h2>
+  <p><a href="/auth/phone">Phone</a> Inpage form</p>
+  <p><a href="/auth/phone">Phone</a> Radio option view</p>
+  {% endset -%}
 
-{{ govukDetails({
-  summaryText: "Archived",
-  html: archive
-}) }}
-</div>
-<div class="govuk-grid-column-one-third">
-  <h3 class="govuk-heading-s">Other links</h3>
-  <ul class="govuk-list govuk-list--bullet govuk-!-font-size-16">
-    <li>
-      <a href='https://tra-digital-design-history.herokuapp.com/get-an-identity/'>Design history for {{serviceName}}</a>
-    </li>
-    <li>
-      <a href='https://github.com/DFE-Digital/get-an-identity-prototype'>Github repo</a>
-    </li>
-  
-  </ul>
-</div>
+  {{ govukDetails({
+    summaryText: "Archived",
+    html: archive
+  }) }}
+  </div>
+  <div class="govuk-grid-column-one-third">
+    <h3 class="govuk-heading-s">Other links</h3>
+    <ul class="govuk-list govuk-list--bullet govuk-!-font-size-16">
+      <li>
+        <a href='https://tra-digital-design-history.herokuapp.com/get-an-identity/'>Design history for {{serviceName}}</a>
+      </li>
+      <li>
+        <a href='https://github.com/DFE-Digital/get-an-identity-prototype'>Github repo</a>
+      </li>
+    
+    </ul>
+  </div>
 </div>
 {% endblock %}
