@@ -36,7 +36,16 @@ module.exports = router => {
   router.post('/auth/phone', (req, res) => { res.redirect('/auth/phone-code') })
 
   router.post('/auth/phone-code', (req, res) => {
-    if(req.session.data['phone'] == '07827999618') {
+    const data = req.session.data
+
+    let phoneCode = data?.temp?.phoneCode
+
+    if (!phoneCode || phoneCode.length != 5){
+      console.log("Phone code missing or incorrect")
+      res.redirect('/auth/phone-code')
+    }
+    // Ed todo: this is probably broken now as I have changed the mobile numbers in use
+    else if(req.session.data['phone'] == '07827999618') {
       const data = req.session.data
       data.phoneMatch = 'true'
       data.matchAccount = 'true'

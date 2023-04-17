@@ -1,7 +1,27 @@
 const govukPrototypeKit = require('govuk-prototype-kit')
 const addFilter = govukPrototypeKit.views.addFilter
 const { DateTime } = require("luxon")
+const fs = require('fs')
+const path = require('path')
+const individualFiltersFolder = path.join(__dirname, './filters')
 
+
+
+// Import filters from filters folder
+if (fs.existsSync(individualFiltersFolder)) {
+  var files = fs.readdirSync(individualFiltersFolder)
+  files.forEach(file => {
+    let fileData = require(path.join(individualFiltersFolder, file))
+    // Loop through each exported function in file (likely just one)
+    Object.keys(fileData).forEach((filterGroup) => {
+      // Get each method from the file
+      Object.keys(fileData[filterGroup]).forEach(filterName => {
+        // filters[filterName] = fileData[filterGroup][filterName]
+        addFilter(filterName, fileData[filterGroup][filterName])
+      })
+    })
+  })
+}
 
 
 
@@ -29,7 +49,6 @@ addFilter('isoDateFromDateInput', function(object) {
   addFilter('date', function(date) {
     return DateTime.fromISO(date).toFormat('d MMMM yyyy')
   })
-
 
 
   addFilter('maskPhoneNumber', function(phoneNumber) {

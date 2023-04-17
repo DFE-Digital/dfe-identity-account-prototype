@@ -5,11 +5,11 @@
     "start": "govuk-prototype-kit start"
   },
   "dependencies": {
-    "govuk-frontend": "^4.4.1",
-    "govuk-prototype-filters": "^0.1.0",
-    "govuk-prototype-kit": "^13.0.1",
+    "govuk-frontend": "^4.5.0",
+    "govuk-prototype-kit": "^13.6.0",
     "lodash": "^4.17.21",
     "luxon": "^3.2.1",
+    "moment": "^2.29.4",
     "notifications-node-client": "^7.0.0"
   }
 }

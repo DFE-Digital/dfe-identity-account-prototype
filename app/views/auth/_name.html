@@ -11,8 +11,8 @@
 
 
 {{ govukInput({
-  id: "[firstName]",
-  name: "[firstName]",
+  id: "firstNames",
+  name: "user[firstNames]",
   hint: {
     text: "Or given names"
   },
@@ -20,31 +20,31 @@
     text: "First names",
     classes: 'govuk-label--s'
   },
-  value: data['firstName'] or defaultData.firstName 
+  value: data.user.firstNames
 }) }}
 
 {{ govukInput({
-  id: "[middleName]",
-  name: "[middleName]",
+  id: "middleNames",
+  name: "user[middleNames]",
   label: {
     text: "Middle names",
     classes: 'govuk-label--s'
   },
-  value: data['middleName'] or defaultData.middleName 
+  value: data.user.middleNames
 }) }}
 
 
 {{ govukInput({
-  id: "[lastName]",
-  name: "[lastName]",
+  id: "lastNames",
+  name: "[lastNames]",
   hint: {
-    text: "Or family name"
+    text: "Or family names"
   },
   label: {
-    text: "Last name",
+    text: "Last names",
     classes: 'govuk-label--s'
   },
-  value: data['lastName'] or defaultData.lastName 
+  value: data.user.lastNames
 }) }}
 
 

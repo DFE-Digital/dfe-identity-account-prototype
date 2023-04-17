@@ -178,12 +178,12 @@
       html: 'First names'
     },
     value: {
-      html: data.dqtFirstName
+      html: data.user.firstNames
     },
     actions: {
       items: [{
         text: 'Change',
-        href: "name"
+        href: "first names"
       }]
     }
   },
@@ -192,12 +192,12 @@
       html: 'Middle names'
     },
     value: {
-      html: data.dqtMiddleName
+      html: data.user.middleNames
     },
     actions: {
       items: [{
         text: 'Change',
-        href: "name"
+        href: "middle names"
       }]
     }
   },
@@ -206,12 +206,12 @@
       html: 'Last names'
     },
     value: {
-      html: data.dqtLastName
+      html: data.user.lastNames
     },
     actions: {
       items: [{
         text: 'Change',
-        href: "name"
+        href: "last names"
       }]
     }
   },
@@ -220,7 +220,7 @@
         html: 'Date of birth'
       },
       value: {
-        html:  (data['dob'] if data['dob'] else { day: 1, month: 12, year: 1989 }) | isoDateFromDateInput | govukDate
+        text: data.user.dateOfBirth | govukDate
       },
       actions: {
         items: [{
@@ -234,7 +234,7 @@
       html: 'Mobile phone'
     },
     value: {
-      html: data.user.phone['phone'] or data.defaultData.phone
+      html: data.user.phone or data.defaultData.phone
 
     },
     actions: {
@@ -249,7 +249,7 @@
       html: 'Email'
     },
     value: {
-      html: data.user.email or 'email@example.com'
+      html: data.user.email or data.defaultData.email
 
     },
     actions: {
