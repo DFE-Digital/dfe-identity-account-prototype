@@ -1,8 +1,8 @@
 {% set email %}
   {%- if data['matchAccountEmail'] == 'true' -%}
-    {{data.email | maskEmail}}
+    {{data.user.email | maskEmail}}
   {%- else -%}
-    {{ data.email or 'email@example.com' }}
+    {{ data.user.email or data.defaultData.email }}
   {%- endif -%}
 {% endset %}
 

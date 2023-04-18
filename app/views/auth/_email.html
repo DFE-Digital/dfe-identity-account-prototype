@@ -1,6 +1,6 @@
 {{ govukInput({
     id: "[email]",
-    name: "[email]",
+    name: "user[email]",
     label: {
       text: "",
       classes: "govuk-label--s "
@@ -13,7 +13,7 @@
       html: emailHint
     },
     classes: 'govuk-!-width-two-thirds',
-    value: data['email'] or email
+    value: data.user.email or email
   }) }}
 
 
