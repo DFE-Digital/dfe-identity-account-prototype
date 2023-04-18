@@ -1,9 +1,17 @@
 [
+  {
+    "id": "14f71042-3fc3-4671-98d7-bf9b117d5583",
+    "firstNames": "Victoria",
+    "middleNames": "",
+    "lastNames": "S mith",
+    "email": "v.smith@example.com",
+    "dateOfBirth": "2001-01-11T00:34:54.089Z"
+  },
  {
     "id": "98610705-d34c-4282-8480-45646ed5cfe1",
     "firstNames": "Sarah",
     "middleNames": "Jane",
-    "lastNames": "S mith",
+    "lastNames": "Smith",
     "email": "s.smith@example.com",
     "dateOfBirth": "2001-01-11T00:34:54.089Z"
   },

@@ -168,6 +168,15 @@
   You’ll need to provide evidence for changes to your date of birth.
 </p>
 
+{% set middleNamesHtml %}
+{% if data.user.middleNames %}
+  {{data.user.middleNames}}
+{% else %}
+  <span class="govuk-hint">Not provided</span>
+{% endif %}
+  
+{% endset %}
+
 
 {{ govukSummaryList({
   classes: "govuk-!-margin-bottom-9",
@@ -193,7 +202,7 @@
       html: 'Middle names'
     },
     value: {
-      html: data.user.middleNames
+      html: middleNamesHtml
     },
     actions: {
       items: [{

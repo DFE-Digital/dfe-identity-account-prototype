@@ -52,12 +52,18 @@ router.get('/invite/:uuid', (req, res) => {
   }
   else {
     let dqtUser = data.dqtUsers.find(user => user.id == uuid)
-    data.user = {
-      ...dqtUser,
-      id: faker.datatype.uuid(),
-      dqtUser
+    if (dqtUser){
+      data.user = {
+        ...dqtUser,
+        id: faker.datatype.uuid(),
+        dqtUser
+      }
+      res.redirect('/auth/emails/qts-email')
     }
-    res.redirect('/auth/emails/qts-email')
+    else {
+      console.log(`User ${uuid} could not be found`)
+      res.redirect('/')
+    }
   }
 })
 
