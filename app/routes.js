@@ -7,6 +7,8 @@ const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter()
 const _ = require('lodash')
 const url = require('url')
+const { faker } = require('@faker-js/faker')
+
 
 // Catch all route
 router.all('*', function(req, res, next){
@@ -38,6 +40,27 @@ router.get('/', (req, res) => {
   delete data.user
   res.render('index', data)
 })
+
+// A user from dqt is invited to ID
+router.get('/invite/:uuid', (req, res) => {
+  const data = req.session.data
+  const uuid = req.params.uuid
+  delete data.user
+
+  if (!uuid){
+    res.redirect('/')
+  }
+  else {
+    let dqtUser = data.dqtUsers.find(user => user.id == uuid)
+    data.user = {
+      ...dqtUser,
+      id: faker.datatype.uuid(),
+      dqtUser
+    }
+    res.redirect('/auth/emails/qts-email')
+  }
+})
+
 
 // Add your routes here
 require('./routes/auth-lite')(router)

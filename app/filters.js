@@ -23,7 +23,10 @@ if (fs.existsSync(individualFiltersFolder)) {
   })
 }
 
-
+addFilter('getShortName',function(user) {
+  if (!user) return ''
+  else return `${user.firstNames} ${user.lastNames}`
+})
 
 addFilter('stringify',function(object) {
   return JSON.stringify(object)

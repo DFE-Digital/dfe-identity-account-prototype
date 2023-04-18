@@ -16,11 +16,11 @@
       </div>
       <div>
         <dt>From:</dt>
-        <dd>{{ from or "GOV.UK <enquiries@education.gov.uk>" }}<dd>
+        <dd>{{ emailNameFrom or "GOV.UK <enquiries@education.gov.uk>" }}<dd>
       </div>
       <div>
         <dt>To:</dt>
-        <dd>{{ to or data.emailName + " <email@gmail.com>" }}</dd>
+        <dd>{{ emailNameTo or (data.user | getShortName) + " <email@gmail.com>" }}</dd>
       </div>
     </dl>
   </div>

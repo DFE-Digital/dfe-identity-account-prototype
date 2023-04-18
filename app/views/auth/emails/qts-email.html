@@ -2,9 +2,12 @@
 
 {% set subject = "Your QTS application was successful" %}
 
+{% set userShortName = (data.user or data.defaultData) | getShortName %}
+
+{% set emailNameTo = userShortName %}
 
 {% block content %}
-  <p>Dear {{ data.emailName or 'Jane Smith' }},</p>
+  <p>Dear {{ userShortName }},</p>
   <h1 class="govuk-heading-m">Congratulations on being awarded qualified teacher status (QTS)</h1>
   <p>The Teaching Regulation Agency (TRA) has awarded you qualified teacher status (QTS). The TRA is responsible for the regulation of the teaching profession in England and is sponsored by the Department for Education (DfE).</p>
 

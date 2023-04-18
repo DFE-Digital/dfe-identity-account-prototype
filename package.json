@@ -5,6 +5,7 @@
     "start": "govuk-prototype-kit start"
   },
   "dependencies": {
+    "@faker-js/faker": "^7.6.0",
     "govuk-frontend": "^4.5.0",
     "govuk-prototype-kit": "^13.6.0",
     "lodash": "^4.17.21",
