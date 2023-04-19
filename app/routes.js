@@ -45,7 +45,6 @@ router.get('/', (req, res) => {
 router.get('/clear', (req, res) => {
   req.session.data = {}
   
-  // redirect to referring url
   let referringUrl = req.get('Referrer')
 
   res.redirect(referringUrl || '/')

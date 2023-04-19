@@ -21,7 +21,8 @@ module.exports = {
     middleNames: "Nelson",
     lastNames: "Smith",
     phone: "07700900782",
-    email: "v.smith@example.com"
+    email: "v.smith@example.com",
+    dateOfBirth: "1999-10-21T00:00:00.000Z"
   },
 
   // Error messages

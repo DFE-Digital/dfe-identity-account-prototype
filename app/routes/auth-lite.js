@@ -151,12 +151,26 @@ module.exports = router => {
     return anyChanged
   }
 
+  const checkDateOfBirthChange = (previousUser, newUser) => {
+
+    let previousDate = new Date(previousUser.dateOfBirth)
+    let newDate = new Date(newUser.dateOfBirth)
+
+    // Normalise timestamps
+    previousDate.setHours(0,0,0,0)
+    newDate.setHours(0,0,0,0)
+
+    return previousDate.getTime() != newDate.getTime()
+  }
+
   router.post('/auth/check-answers', (req, res) => { 
     const data = req.session.data
 
     let nameChanged = checkNameChanges(data.user, data.user.dqtUser)
 
-    if (nameChanged){
+    let dateOfBirthChanged = checkDateOfBirthChange(data.user, data.user.dqtUser)
+
+    if (nameChanged || dateOfBirthChanged){
       res.redirect('evidence-needed')
     }
     else {
@@ -175,11 +189,15 @@ module.exports = router => {
       res.redirect('evidence')
     }
     else {
-      res.redirect('/auth/finish') 
+      res.redirect('evidence-later') 
     }
   })
 
-  router.post('/auth/evidence', (req, res) => { res.redirect('/auth/evidence-received') })
+  router.post('/auth/evidence-later', (req, res) => { res.redirect('/auth/finish') })
+  router.post('/auth/evidence-in-review', (req, res) => { res.redirect('/auth/finish') })
+
+
+  router.post('/auth/evidence', (req, res) => { res.redirect('/auth/evidence-in-review') })
 
   router.post('/auth/finish', (req, res) => { res.redirect('/auth/return-to-service') })
 
