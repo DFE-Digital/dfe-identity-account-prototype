@@ -41,6 +41,17 @@ router.get('/', (req, res) => {
   res.render('index', data)
 })
 
+// Clear user when on prototype index
+router.get('/clear', (req, res) => {
+  req.session.data = {}
+  
+  // redirect to referring url
+  let referringUrl = req.get('Referrer')
+
+  res.redirect(referringUrl || '/')
+})
+
+
 // A user from dqt is invited to ID
 router.get('/invite/:uuid', (req, res) => {
   const data = req.session.data

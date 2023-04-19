@@ -141,10 +141,46 @@ module.exports = router => {
     }
   })
 
+  const checkNameChanges = (previousUser, newUser) => {
+    const normaliseName = name => name.toLowerCase().trim()
 
+    let names = ['firstNames', 'middleNames', 'lastNames']
 
+    let anyChanged = names.some(name => normaliseName(previousUser[name]) != normaliseName(newUser[name]))
 
-   router.post('/auth/check-answers', (req, res) => { res.redirect('/auth/finish') })
+    return anyChanged
+  }
+
+  router.post('/auth/check-answers', (req, res) => { 
+    const data = req.session.data
+
+    let nameChanged = checkNameChanges(data.user, data.user.dqtUser)
+
+    if (nameChanged){
+      res.redirect('evidence-needed')
+    }
+    else {
+      res.redirect('/auth/finish') 
+    }
+
+  })
+
+  // 
+  router.post('/auth/evidence-needed', (req, res) => {
+    const data = req.session.data
+    console.log(data.user)
+    let provideEvidence = (data?.user?.provideEvidence == 'no') ? false : true
+
+    if (provideEvidence){
+      res.redirect('evidence')
+    }
+    else {
+      res.redirect('/auth/finish') 
+    }
+  })
+
+  router.post('/auth/evidence', (req, res) => { res.redirect('/auth/evidence-received') })
+
   router.post('/auth/finish', (req, res) => { res.redirect('/auth/return-to-service') })
 
   router.post('/auth/phone', (req, res) => { res.redirect('/auth/phone-code') })

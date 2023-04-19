@@ -1,0 +1,24 @@
+<p>Your evidence must be in pdf or jpeg format and be a photo or scan of 1 of the following:</p>
+
+<ul class="govuk-list govuk-list--bullet">
+  <li>birth certificate</li>
+  <li>civil partnership certificate</li>
+  <li>decree absolute</li>
+  <li>deed poll</li>
+  <li>marriage certificate</li>
+  <li>passport</li>
+  <li>statutory declaration</li>
+</ul>
+
+<p>Your scan must be readable and smaller than 5MB.</p>
+
+<h2 class="govuk-heading-s">Upload your evidence</h2>
+
+{{ govukFileUpload({
+  id: "fileUpload",
+  name: "fileUpload",
+  label: {
+    text: "Upload a file"
+  },
+  value: data['fileUpload'] or defaultData.fileUpload 
+}) }}
