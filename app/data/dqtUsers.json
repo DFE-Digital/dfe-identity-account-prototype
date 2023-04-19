@@ -5,7 +5,8 @@
     "middleNames": "",
     "lastNames": "S mith",
     "email": "v.smith@example.com",
-    "dateOfBirth": "2001-01-11T00:00:00.000Z"
+    "dateOfBirth": "2001-01-11T00:00:00.000Z",
+    "trn": "100300155"
   },
  {
     "id": "98610705-d34c-4282-8480-45646ed5cfe1",
@@ -13,7 +14,8 @@
     "middleNames": "Jane",
     "lastNames": "Smith",
     "email": "s.smith@example.com",
-    "dateOfBirth": "2001-01-11T00:00:00.000Z"
+    "dateOfBirth": "2001-01-11T00:00:00.000Z",
+    "trn": "032943032"
   },
   {
     "id": "4838f398-ead5-4845-8a2d-fee87a0f922c",
@@ -21,7 +23,8 @@
     "middleNames": "",
     "lastNames": "Rosembaum",
     "email": "e.rosembaum@example.com",
-    "dateOfBirth": "1992-06-16T00:00:00.000Z"
+    "dateOfBirth": "1992-06-16T00:00:00.000Z",
+    "trn": "139683472"
   },
   {
     "id": "e09a4127-5c50-4544-a414-b4d7e75f5c9f",
@@ -29,6 +32,7 @@
     "middleNames": "",
     "lastNames": "Berger",
     "email": "m.berger@example.com",
-    "dateOfBirth": "1999-10-21T00:00:00.000Z"
+    "dateOfBirth": "1999-10-21T00:00:00.000Z",
+    "trn": "100458383"
   }
 ]
