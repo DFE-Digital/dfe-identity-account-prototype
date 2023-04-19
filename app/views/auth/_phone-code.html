@@ -1,39 +1,34 @@
-{% set phonehtml %}
-  
+{% set phone %}
   {%- if signIn -%}
-    {{' ' + data.phone | maskPhoneNumber if data['phone'] else '**** ** 9615' }}
-
+    {{ (data.user.phone or data.defaultData.phone) | maskPhoneNumber }}
   {%- else -%}
-    {{' ' + data.phone if data['phone'] else '07827999615' }}
-
+    {{ data.user.phone or data.defaultData.phone }}
   {%- endif -%}
-
 {% endset -%}
 
 
-<p>We’ve sent you a text message with a security code to <strong>{{phonehtml}}</strong></p>
+<p>We’ve sent you a text message with a security code to <strong>{{phone}}</strong></p>
 
 {{ govukInput({
   label: {
     text: "Security code",
     classes: "govuk-label--s"
   },
-  
-  classes: 'govuk-!-width-one-quarter',
-  decorate: 'email-code'
+  name: "temp[phoneCode]",
+  classes: 'govuk-!-width-one-quarter'
 }) }}
 
 {%- if auth or account -%}
   <p>
-    <a href="/auth/resend-phone">I have not received an text message</a>
+    <a href="/auth/resend-phone">I have not received a text message</a>
   </p>
 {%- elseif signIn -%}
   <p>
-    <a href="/sign-in/resend-phone">I have not received an text message</a>
+    <a href="/sign-in/resend-phone">I have not received a text message</a>
   </p>
 
   <p>
-    <a href="/auth/change-email-request">I can't access this mobile number</a>
+    <a href="/auth/change-email-request">I cannot access this mobile number</a>
   </p>
 {%- endif -%}
 

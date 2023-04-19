@@ -2,7 +2,7 @@
   {{ data.dqtName }}
   <p class="govuk-hint govuk-!-font-size-14">Displayed on teaching certificates </p>
   {% if data['nameLozenge'] %}
- {% include 'includes/_lozenge.html' %}
+ {% include '_includes/_lozenge.html' %}
   {% endif %}
 {% endset %}
 
@@ -10,7 +10,7 @@
 2 December 1989
   <p class="govuk-hint govuk-!-font-size-14">Date of birth already in our records </p>
   {% if data['dobLozenge'] %}
- {% include 'includes/_lozenge.html' %}
+ {% include '_includes/_lozenge.html' %}
   {% endif %}
 {% endset %}
 
@@ -18,7 +18,7 @@
 {{ data.dob | isoDateFromDateInput | govukDate if data['dob'] else '1 December 1989' }}
   <p class="govuk-hint govuk-!-font-size-14">Entered when creating account </p>
   {% if data['dobLozenge'] %}
- {% include 'includes/_lozenge.html' %}
+ {% include '_includes/_lozenge.html' %}
   {% endif %}
 {% endset %}
 
@@ -40,7 +40,7 @@
       html: 'Name'
     },
     value: {
-      html: data['fullName'] | title if data['firstName'] else 'Ria Smith'
+      html: data['fullName'] if data['firstName'] else 'Ria Smith'
     },
     actions: {
       items: [{
@@ -119,7 +119,7 @@
       html: 'Email'
     },
     value: {
-      html: data['email'] | title if data['email'] else 'email@example.com'
+      html: data['email'] if data['email'] else 'email@example.com'
 
     },
     actions: {
@@ -134,7 +134,7 @@
       html: 'Mobile number'
     },
     value: {
-      html: data['phone'] | title if data['phone'] else '07827999617'
+      html: data['phone'] if data['phone'] else '07827999617'
 
     },
     actions: {
@@ -158,7 +158,7 @@
       html: 'TRN'
     },
     value: {
-      html: data['trn'] | title if data['trn'] else '1851018'
+      html: data['trn'] if data['trn'] else '1851018'
 
     }
   }

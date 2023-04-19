@@ -1,7 +1,9 @@
 
+{% set dateOfBirthArray = (data.user.dateOfBirth or data.defaultData.dateOfBirth) | toDateArray %}
+
 {{ govukDateInput({
   id: "[dob]",
-  name: "[dob]",
+  namePrefix: "user[dateOfBirth]",
   fieldset: {
   },
   hint: {
@@ -9,21 +11,21 @@
   },
   items: [
     {
-      name: "[dob][day]",
+      name: "day",
       label: "Day",
-      value: data.dob.day or defaultData.day,
+      value: dateOfBirthArray["0"],
       classes: "govuk-input--width-2"
     },
     {
-      name: "[dob][month]",
+      name: "month",
       label: "Month",
-      value: data.dob.month or defaultData.month,
+      value: dateOfBirthArray["1"],
       classes: "govuk-input--width-2"
     },
     {
-      name: "[dob][year]",
+      name: "year",
       label: "Year",
-      value: data.dob.year or defaultData.year,
+      value: dateOfBirthArray["2"],
       classes: "govuk-input--width-4"
     }
   ]

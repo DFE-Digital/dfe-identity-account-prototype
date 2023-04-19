@@ -3,13 +3,13 @@
   {%- if data['dqt-check'] == 'found' and  data['signIn'] != 'true' -%}
   <!-- A DQT record has been found - user creates account - accesses service -->
   <p>We’ve found your details in our records and linked them to your {{ serviceName }}.</p>
-  <p>Next time, you can sign in just using your email ({{ data.email or 'email@example.com' }}).</p>
+  <p>Next time, you can sign in just using your email ({{ data.user.email or data.defaultData.email }}).</p>
   <p class="govuk-!-margin-bottom-6">Continue to <strong>{{ data.onwardContinue or data.qs }}</strong>. </p>
 
   {%- elseif data['dqt-check'] == 'pending-npq' -%}
   <!-- A DQT record has been found - user creates account - accesses service -->
   <p>We could not find your details in our records. Our support staff may get in touch to ask for more information. This is so we can link your existing details to your DfE Identity account.</p>
-  <p>Next time, you can sign in just using your email ({{ data.email or 'email@example.com' }}).</p>
+  <p>Next time, you can sign in just using your email ({{ data.user.email or data.defaultData.email }}).</p>
   <p class="govuk-!-margin-bottom-6">Continue to <strong>{{ data.onwardContinue or data.qs }}</strong>. </p>
 
   
@@ -19,32 +19,33 @@
   {%- if 'failed' -%}
   <p>This could be because you do not have teaching qualifications, for example, qualified teacher status (QTS).</p>
   <h2 class="govuk-heading-s">Your {{ serviceName }}</h2>
-  <p>You've created a {{ serviceName }}. When you're eligible to use this service, you can sign in just using your email ({{ data.email or 'email@example.com' }}).</p>
+  <p>You’ve created a {{ serviceName }}. When you're eligible to use this service, you can sign in just using your email ({{ data.email or 'email@example.com' }}).</p>
   {%- endif -%}
 
   {%- elseif data['dqt-check'] == 'pending-qs' -%}
   <!-- No DQT record found - account has been created - TRA sent ticket to locate user - user can't access service -->
   {%- if 'pending' -%}
   <p>We need to do some more checks to see if your details are in our records.</p>
-  <p>We'll email you when we've completed those checks - we may need some more information.</p>
+  <p>We’ll email you when we’ve completed those checks - we may need some more information.</p>
   <h2 class="govuk-heading-s">Your {{ serviceName }}</h2>
-  <p>You've created a {{ serviceName }}. To sign in to this service in the future, you’ll just need your email address ({{ data.email or 'email@example.com' }}).</p>
+  <p>You’ve created a {{ serviceName }}. To sign in to this service in the future, you’ll just need your email address ({{ data.email or 'email@example.com' }}).</p>
   {%- endif -%}
 
   {%- elseif not data['dqt-check'] or data['dqt-check'] == 'auth' or data['signIn'] == 'true' -%}
   <!-- basic auth journey - no DQT checks made -->
     {%- if auth -%}
-    <p>Next time, you can sign in just using your email ({{ data.email or 'email@example.com' }}).</p>
+    <p>Next time, you can sign in just using your email ({{ data.user.email or data.defaultData.email }}).</p>
     {%- endif -%}
 
     {%- if data['matchAccount'] == 'true' -%}
-        <p>Next time, sign into your account using ({{ data.email or 'email@example.com' }}).  </p>
+        <p>Next time, sign into your account using ({{ data.user.email or data.defaultData.email }}).  </p>
     {%- endif -%}
 
 
     <p class="govuk-!-margin-bottom-6">Continue to <strong>{{ data.onwardContinue or data.qs }}</strong>. </p>
-    
-    <input type="hidden" name="account-data" value="{{ data | stringify }}">
+    {{identityAccountUrl | safe | log}}
+    <input type="hidden" name="userDataFromIdentityAccount" value="{{ data.user | stringify }}">
+    <input type="hidden" name="identityAccountUrl" value="{{identityAccountUrl}}">
 
 
   {%- endif -%}

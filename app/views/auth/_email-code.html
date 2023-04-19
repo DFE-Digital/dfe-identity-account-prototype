@@ -1,8 +1,8 @@
 {% set email %}
   {%- if data['matchAccountEmail'] == 'true' -%}
-    {{data.email | maskEmail}}
+    {{data.user.email | maskEmail}}
   {%- else -%}
-    {{ data.email or 'email@example.com' }}
+    {{ data.user.email or data.defaultData.email }}
   {%- endif -%}
 {% endset %}
 
@@ -23,7 +23,7 @@
 </p>
 
 {%- if signIn -%}
-<p>
-  <a href="/sign-in/resend-phone">I can't access this email address</a>
-</p>
+  <p>
+    <a href="/sign-in/resend-phone">I cannot access this email address</a>
+  </p>
 {%- endif -%}

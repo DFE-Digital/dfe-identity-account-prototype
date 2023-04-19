@@ -1,28 +1,50 @@
+<p class="govuk-body">
+  Use the name on your official documents, for example, your passport. 
+</p>
+
+<p class="govuk-body">
+  For some name changes you’ll need to provide evidence, for example, change of last name due to marriage.
+</p>
+
+{{ formAction | log}}
+
+
 
 {{ govukInput({
-  id: "[firstName]",
-  name: "[firstName]",
+  id: "firstNames",
+  name: "user[firstNames]",
   hint: {
     text: "Or given names"
   },
   label: {
-    text: "First name",
+    text: "First names",
     classes: 'govuk-label--s'
   },
-  value: data['firstName'] or defaultData.firstName 
+  value: data.user.firstNames
 }) }}
 
 {{ govukInput({
-  id: "[lastName]",
-  name: "[lastName]",
+  id: "middleNames",
+  name: "user[middleNames]",
+  label: {
+    text: "Middle names",
+    classes: 'govuk-label--s'
+  },
+  value: data.user.middleNames
+}) }}
+
+
+{{ govukInput({
+  id: "lastNames",
+  name: "user[lastNames]",
   hint: {
     text: "Or family names"
   },
   label: {
-    text: "Last name",
+    text: "Last names",
     classes: 'govuk-label--s'
   },
-  value: data['lastName'] or defaultData.lastName 
+  value: data.user.lastNames
 }) }}
 
 

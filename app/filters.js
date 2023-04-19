@@ -1,9 +1,36 @@
 const govukPrototypeKit = require('govuk-prototype-kit')
 const addFilter = govukPrototypeKit.views.addFilter
 const { DateTime } = require("luxon")
+const fs = require('fs')
+const path = require('path')
+const individualFiltersFolder = path.join(__dirname, './filters')
+
+// Utils has a bunch of shared functions used by filters and routes
+const utils = require('./lib/utils.js')
+
+Object.keys(utils).forEach(filterName => addFilter(filterName, utils[filterName]))
 
 
+// Import filters from filters folder
+if (fs.existsSync(individualFiltersFolder)) {
+  var files = fs.readdirSync(individualFiltersFolder)
+  files.forEach(file => {
+    let fileData = require(path.join(individualFiltersFolder, file))
+    // Loop through each exported function in file (likely just one)
+    Object.keys(fileData).forEach((filterGroup) => {
+      // Get each method from the file
+      Object.keys(fileData[filterGroup]).forEach(filterName => {
+        // filters[filterName] = fileData[filterGroup][filterName]
+        addFilter(filterName, fileData[filterGroup][filterName])
+      })
+    })
+  })
+}
 
+addFilter('getShortName',function(user) {
+  if (!user) return ''
+  else return `${user.firstNames} ${user.lastNames}`
+})
 
 addFilter('stringify',function(object) {
   return JSON.stringify(object)
@@ -31,15 +58,14 @@ addFilter('isoDateFromDateInput', function(object) {
   })
 
 
-
   addFilter('maskPhoneNumber', function(phoneNumber) {
     var s = phoneNumber;
     var start = 1;
     var end = 5;
   
     var result = s.slice(1, start);
-    result += "*".repeat(s.length-start-end);
-    result += s.slice(s.length-end);
+    result += "*".repeat(s.length -start -end);
+    result += s.slice(s.length -end);
     return result;
   })
  

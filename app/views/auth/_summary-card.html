@@ -1,36 +1,36 @@
 
-{%- if data['emailAuth'] == 'true' -%}
-<p>Confirm the details you've entered are correct. Also, check the email address we have for you.</p>
-{%- endif -%}
+{# {%- if data['emailAuth'] == 'true' -%}
+<p>Confirm the details you’ve entered are correct. Also, check the email address we have for you.</p>
+{%- endif -%} #}
 
 {{ govukSummaryList({
   classes: "govuk-!-margin-bottom-9",
   titleText: "Personal details",
   rows: [
-  {
-    key: {
-      html: 'Email'
-    },
-    value: {
-      html: data['email'] | title if data['email'] else 'email@example.com'
+    {
+      key: {
+        html: 'Email'
+      },
+      value: {
+        html: data['email'] | title if data['email'] else 'email@example.com'
 
-    }
-  },
-  {
-    key: {
-      html: 'Mobile phone'
+      }
     },
-    value: {
-      html: data['phone'] | title if data['phone'] else '07827999613'
+    {
+      key: {
+        html: 'Mobile phone'
+      },
+      value: {
+        html: data['phone'] | title if data['phone'] else '07827999613'
 
+      },
+      actions: {
+        items: [{
+          text: 'Change',
+          href: "phone"
+        }]
+      }
     },
-    actions: {
-      items: [{
-        text: 'Change',
-        href: "phone"
-      }]
-    }
-  },
     {
       key: {
         html: 'Name'
@@ -160,7 +160,22 @@
   ]
 }) if data['emailAuth'] != 'true' }}
 
+<p class="govuk-body">
+  Check the details we have you from your DfE teacher record.
+</p>
 
+<p class="govuk-body">
+  You’ll need to provide evidence for some name changes and all date of birth changes. 
+</p>
+
+{% set middleNamesHtml %}
+{% if data.user.middleNames %}
+  {{data.user.middleNames}}
+{% else %}
+  <span class="govuk-hint">Not provided</span>
+{% endif %}
+  
+{% endset %}
 
 
 {{ govukSummaryList({
@@ -169,15 +184,46 @@
   rows: [
   {
     key: {
-      html: 'Name'
+      html: 'First names'
     },
     value: {
-      html: data['fullName'] | title if data['firstName'] else 'Ria Smith'
+      html: data.user.firstNames
     },
     actions: {
       items: [{
         text: 'Change',
-        href: "name"
+        href: "name",
+        visuallyHiddenText: "first names"
+      }]
+    }
+  },
+  {
+    key: {
+      html: 'Middle names'
+    },
+    value: {
+      html: middleNamesHtml
+    },
+    actions: {
+      items: [{
+        text: 'Change',
+        href: "name",
+        visuallyHiddenText: "middle names"
+      }]
+    }
+  },
+  {
+    key: {
+      html: 'Last names'
+    },
+    value: {
+      html: data.user.lastNames
+    },
+    actions: {
+      items: [{
+        text: 'Change',
+        href: "name",
+        visuallyHiddenText: "last names"
       }]
     }
   },
@@ -186,12 +232,13 @@
         html: 'Date of birth'
       },
       value: {
-        html:  (data['dob'] if data['dob'] else { day: 1, month: 12, year: 1989 }) | isoDateFromDateInput | govukDate
+        text: data.user.dateOfBirth | govukDate
       },
       actions: {
         items: [{
           text: 'Change',
-          href: "date-of-birth"
+          href: "date-of-birth",
+          visuallyHiddenText: "date of birth"
         }]
       }
     },
@@ -200,13 +247,14 @@
       html: 'Mobile phone'
     },
     value: {
-      html: data['phone'] | title if data['phone'] else '07827999613'
+      html: data.user.phone or data.defaultData.phone
 
     },
     actions: {
       items: [{
         text: 'Change',
-        href: "phone"
+        href: "phone",
+        visuallyHiddenText: "mobile phone"
       }]
     }
   },
@@ -215,13 +263,14 @@
       html: 'Email'
     },
     value: {
-      html: data['email'] | title if data['email'] else 'email@example.com'
+      html: data.user.email or data.defaultData.email
 
     },
     actions: {
       items: [{
         text: 'Change',
-        href: "email"
+        href: "email",
+        visuallyHiddenText: "email"
       }]
     }
 
