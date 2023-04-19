@@ -1,5 +1,6 @@
 const users = require('./users.json')
 const dqtUsers = require('./dqtUsers.json')
+const services = require('./services.json')
 
 module.exports = {
 
@@ -28,6 +29,7 @@ module.exports = {
   // Error messages
   'errorMessageCopy': 'Enter a personal email address. It cannot be one that other people may get access to.',
   users,
-  dqtUsers
+  dqtUsers,
+  services
 
 }

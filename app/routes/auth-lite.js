@@ -1,4 +1,5 @@
 const _ = require('lodash')
+const utils = require('./../lib/utils')
 
 module.exports = router => {
 
@@ -28,6 +29,23 @@ module.exports = router => {
     }
   })
   router.post('/auth/sign-in-interstitial', (req, res) => { res.redirect('/sign-in/finish') })
+
+  router.get('/auth/finish', (req, res) => {
+
+    const data = req.session.data
+
+    const currentDomain = _.clone( `${req.protocol}://${req.get('host')}` )
+
+    // currentDomain = 'http://localhost:5000'
+
+    let identityAccountUrl = `${currentDomain}/user-research/qual/account`
+
+    console.log(identityAccountUrl)
+
+    res.render('auth/finish', {
+      identityAccountUrl: identityAccountUrl
+    })
+  })
 
   router.post('/auth/resend-email', (req, res) => { res.redirect('/auth/email-code') })
 
@@ -141,40 +159,40 @@ module.exports = router => {
     }
   })
 
-  const checkNameChanges = (previousUser, newUser) => {
-    const normaliseName = name => name.toLowerCase().trim()
+  // const nameHasChanged = (previousUser, newUser) => {
+  //   const normaliseName = name => name.toLowerCase().trim()
 
-    let names = ['firstNames', 'middleNames', 'lastNames']
+  //   let names = ['firstNames', 'middleNames', 'lastNames']
 
-    let anyChanged = names.some(name => normaliseName(previousUser[name]) != normaliseName(newUser[name]))
+  //   let anyChanged = names.some(name => normaliseName(previousUser[name]) != normaliseName(newUser[name]))
 
-    return anyChanged
-  }
+  //   return anyChanged
+  // }
 
-  const checkDateOfBirthChange = (previousUser, newUser) => {
+  // const dateOfBirthHasChanged = (previousUser, newUser) => {
 
-    let previousDate = new Date(previousUser.dateOfBirth)
-    let newDate = new Date(newUser.dateOfBirth)
+  //   let previousDate = new Date(previousUser.dateOfBirth)
+  //   let newDate = new Date(newUser.dateOfBirth)
 
-    // Normalise timestamps
-    previousDate.setHours(0,0,0,0)
-    newDate.setHours(0,0,0,0)
+  //   // Normalise timestamps
+  //   previousDate.setHours(0,0,0,0)
+  //   newDate.setHours(0,0,0,0)
 
-    return previousDate.getTime() != newDate.getTime()
-  }
+  //   return previousDate.getTime() != newDate.getTime()
+  // }
 
   router.post('/auth/check-answers', (req, res) => { 
     const data = req.session.data
 
-    let nameChanged = checkNameChanges(data.user, data.user.dqtUser)
+    let nameChanged = utils.nameHasChanged(data.user, data.user.dqtUser)
 
-    let dateOfBirthChanged = checkDateOfBirthChange(data.user, data.user.dqtUser)
+    let dateOfBirthChanged = utils.dateOfBirthHasChanged(data.user, data.user.dqtUser)
 
     if (nameChanged || dateOfBirthChanged){
       res.redirect('evidence-needed')
     }
     else {
-      res.redirect('/auth/finish') 
+      res.redirect('/auth/create') 
     }
 
   })
@@ -193,11 +211,27 @@ module.exports = router => {
     }
   })
 
-  router.post('/auth/evidence-later', (req, res) => { res.redirect('/auth/finish') })
-  router.post('/auth/evidence-in-review', (req, res) => { res.redirect('/auth/finish') })
+  router.post('/auth/evidence-later', (req, res) => { res.redirect('/auth/create') })
+  router.post('/auth/evidence-in-review', (req, res) => { res.redirect('/auth/create') })
 
 
   router.post('/auth/evidence', (req, res) => { res.redirect('/auth/evidence-in-review') })
+
+  router.get('/auth/create', (req, res) => {
+    const data = req.session.data
+    const user = data.user
+
+    let existingUserIndex = data.users.findIndex(existingUser => user.id == existingUser.id)
+    if (existingUserIndex > 0) {
+      console.log(`Existing user (${existingUserIndex} found, overwritting`)
+      data.users[existingUserIndex] = user
+    }
+    else {
+      data.users.push(user)
+    }
+
+    res.redirect('/auth/finish') 
+  })
 
   router.post('/auth/finish', (req, res) => { res.redirect('/auth/return-to-service') })
 

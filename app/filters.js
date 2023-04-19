@@ -5,6 +5,10 @@ const fs = require('fs')
 const path = require('path')
 const individualFiltersFolder = path.join(__dirname, './filters')
 
+// Utils has a bunch of shared functions used by filters and routes
+const utils = require('./lib/utils.js')
+
+Object.keys(utils).forEach(filterName => addFilter(filterName, utils[filterName]))
 
 
 // Import filters from filters folder

@@ -43,8 +43,9 @@
 
 
     <p class="govuk-!-margin-bottom-6">Continue to <strong>{{ data.onwardContinue or data.qs }}</strong>. </p>
-    
-    <input type="hidden" name="account-data" value="{{ data | stringify }}">
+    {{identityAccountUrl | safe | log}}
+    <input type="hidden" name="userDataFromIdentityAccount" value="{{ data.user | stringify }}">
+    <input type="hidden" name="identityAccountUrl" value="{{identityAccountUrl}}">
 
 
   {%- endif -%}

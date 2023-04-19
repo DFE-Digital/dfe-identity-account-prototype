@@ -1,5 +1,17 @@
 {% extends "_layouts/forms.html" %}
-{% set title %}You’ll need to provide evidence for this name change{% endset %}
+
+{% set nameChanged = data.user | nameHasChanged(data.user.dqtUser) %}
+{% set dobChanged = data.user | dateOfBirthHasChanged(data.user.dqtUser) %}
+
+{% if nameChanged and dobChanged %}
+  {% set title = "You’ll need to provide evidence for this name and date of birth change" %}
+{% elseif nameChanged %}
+  {% set title = "You’ll need to provide evidence for this name change" %}
+{% elseif dobChanged %}
+  {% set title = "You’ll need to provide evidence for this date of birth change" %}
+  
+{% endif %}
+
 
 
 {% block form %}
