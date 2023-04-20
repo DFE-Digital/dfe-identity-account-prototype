@@ -5,7 +5,7 @@
     "middleNames": "",
     "lastNames": "S mith",
     "email": "v.smith@example.com",
-    "dateOfBirth": "2001-01-11T00:00:00.000Z",
+    "dateOfBirth": "1990-01-11T00:00:00.000Z",
     "trn": "100300155"
   },
  {
@@ -14,7 +14,7 @@
     "middleNames": "Jane",
     "lastNames": "Smith",
     "email": "s.smith@example.com",
-    "dateOfBirth": "2001-01-11T00:00:00.000Z",
+    "dateOfBirth": "1996-01-11T00:00:00.000Z",
     "trn": "032943032"
   },
   {
@@ -30,7 +30,7 @@
     "id": "e09a4127-5c50-4544-a414-b4d7e75f5c9f",
     "firstNames": "Michael",
     "middleNames": "",
-    "lastNames": "Berger",
+    "lastNames": "B erger",
     "email": "m.berger@example.com",
     "dateOfBirth": "1999-10-21T00:00:00.000Z",
     "trn": "100458383"
