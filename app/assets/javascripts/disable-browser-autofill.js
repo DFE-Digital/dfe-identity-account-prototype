@@ -22,8 +22,6 @@ function disableBrowserAutofill () {
     window.NodeList.prototype.forEach = Array.prototype.forEach
   }
 
-  console.log("Running!")
-
   document.querySelectorAll('form').forEach(form => {
 
     let inputs = [...form.querySelectorAll('input')]

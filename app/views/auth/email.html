@@ -2,6 +2,10 @@
 {% set title %}Your email address{% endset %}
 {% set emailHint %}We’ll use this to send you a code to confirm your email address. Do not use a work or university email that you might lose access to.{% endset %}
 
+{% block pageScripts %}
+  <script src="/public/javascripts/disable-browser-autofill.js"></script>
+{% endblock %}
+
 {% block form %}
   {% include 'auth/_email.html' %}
 {% endblock %}
