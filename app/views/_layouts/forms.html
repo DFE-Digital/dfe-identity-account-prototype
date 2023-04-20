@@ -34,7 +34,7 @@
        {% endif %}
 
 
-      <form {{formActionHtml | safe }} method="post" novalidate spellcheck="false">
+      <form {{formActionHtml | safe }} method="post" novalidate spellcheck="false" data-js-disable-browser-autofill="on">
         {% block form %}{% endblock %}
         {% if not hideButton %}
         {{ govukButton({

@@ -1,3 +1,5 @@
+
+
 {%- if auth -%}
   <p>Add your mobile number to make your account more secure. We’ll send a security code to this number by text message. </p>
 {%- else -%}
@@ -12,7 +14,7 @@
       classes: "govuk-label--s"
     },
     type: "tel",
-    autocomplete: "tel",
+    autocomplete: "off",
     hint: {
       html: "For international numbers include the country code"
     },

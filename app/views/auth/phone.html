@@ -2,6 +2,10 @@
 {% set title %}Your mobile number{% endset %}
 {% set auth = 'true' %}
 
+{% block pageScripts %}
+  <script src="/public/javascripts/disable-browser-autofill.js"></script>
+{% endblock %}
+
 {% block form %}
   {% include 'auth/_phone.html' %}
 {% endblock %}
