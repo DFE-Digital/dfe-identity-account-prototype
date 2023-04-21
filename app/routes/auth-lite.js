@@ -7,9 +7,9 @@ module.exports = router => {
   router.get('/auth/start', (req, res) => { 
     const data = req.session.data
 
-    let user = data.user
+    let user = data.user || {}
 
-    let emailIsEducationDomain = utils.emailIsEducationDomain(user.email)
+    let emailIsEducationDomain = utils.emailIsEducationDomain(user?.email)
 
     if (emailIsEducationDomain){
       res.redirect('/auth/institution-email')
