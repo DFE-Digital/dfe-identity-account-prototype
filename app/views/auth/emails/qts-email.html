@@ -4,7 +4,9 @@
 
 {% set userShortName = (data.user or data.defaultData) | getShortName %}
 
-{% set emailNameTo = userShortName %}
+{% set emailNameTo %}
+  {{userShortName}} <{{data.user.email}}>
+{% endset %}
 
 {% block content %}
   <p>Dear {{ userShortName }},</p>

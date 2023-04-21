@@ -1,0 +1,10 @@
+{% extends "_layouts/forms.html" %}
+{% set title %}Your email address looks like it’s from a work or education setting{% endset %}
+
+{% block pageScripts %}
+  <script src="/public/javascripts/disable-browser-autofill.js"></script>
+{% endblock %}
+
+{% block form %}
+  {% include 'auth/_institution-email.html' %}
+{% endblock %}

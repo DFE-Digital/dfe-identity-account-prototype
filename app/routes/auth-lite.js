@@ -3,28 +3,69 @@ const utils = require('./../lib/utils')
 
 module.exports = router => {
 
+
+  router.get('/auth/start', (req, res) => { 
+    const data = req.session.data
+
+    let user = data.user
+
+    let emailIsEducationDomain = utils.emailIsEducationDomain(user.email)
+
+    if (emailIsEducationDomain){
+      res.redirect('/auth/institution-email')
+    }
+    else {
+      res.redirect('/auth/phone')
+    }
+  })
+
   router.post('/auth/email', (req, res) => {
-    if(req.session.data['email'] == 'head@school.com') {
+    const data = req.session.data
+    if(req.session.data?.user?.email == 'head@school.com') {
       const data = req.session.data
       data.errorMessage = 'true'
       res.redirect('/auth/email')
     } else {
-      const data = req.session.data
       data.matchAccountEmail = 'false'
       data.errorMessage = 'false'
       res.redirect('/auth/email-code')     
     }
     })
 
+  router.post('/auth/institution-email', (req, res) => {
+    const data = req.session.data
+
+    if (data.user.changeEmail == 'yes'){
+      
+      data.user.email = data.user.newEmail
+      delete data.user.changeEmail
+      delete dta.user.newEmail
+      res.redirect('/auth/email-code')   
+    }
+    else {
+      delete data.user.changeEmail
+      res.redirect('/auth/phone')
+    }
+    })
+
   router.post('/auth/email-code', (req, res) => {
-    if(req.session.data['email'] == 'existing@email.com') {
-      const data = req.session.data
-      data.phoneMatch = 'false'
-      data.matchAccount = 'true'
-      res.redirect('/auth/sign-in-interstitial')
-    } else if(req.session.data['emailAuth'] == 'true') {
+    // if(req.session.data['email'] == 'existing@email.com') {
+    //   const data = req.session.data
+    //   data.phoneMatch = 'false'
+    //   data.matchAccount = 'true'
+    //   res.redirect('/auth/sign-in-interstitial')
+    // } else if(req.session.data['emailAuth'] == 'true') {
+    //   // res.redirect('/auth/check-answers')
+    //   res.redirect('/auth/phone')
+    // } else {
+    //   res.redirect('/auth/phone')
+    // }
+    const data = req.session.data
+
+    if (data?.user?.phone){
       res.redirect('/auth/check-answers')
-    } else {
+    }
+    else {
       res.redirect('/auth/phone')
     }
   })
