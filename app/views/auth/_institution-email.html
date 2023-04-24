@@ -1,0 +1,55 @@
+<p class="govuk-body">
+We recommend setting your DfE Identity account up with a personal email address. This is so you will not lose access to it if you move to another work or education setting.
+</p>
+
+{% set emailHtml %}
+  {{ govukInput({
+    id: "[email]",
+    name: "user[newEmail]",
+    label: {
+      text: "Email address"
+    },
+    type: "email",
+    autocomplete: "off",
+    errorMessage: {
+      text: data['errorMessageCopy']
+    } if data['errorMessage'] == 'true'
+    ,
+    hint: {
+      html: emailHint
+    },
+    classes: 'govuk-!-width-two-thirds'
+  }) }}
+
+{% endset %}
+
+{% set labelForNo %}
+  Use <span class="govuk-!-font-weight-bold">{{data.user.email}}</span>
+{% endset %}
+
+{{ govukRadios({
+  name: "user[changeEmail]",
+  fieldset: {
+    legend: {
+      text: "Which email address would you like to use for your DfE Identity account?",
+      isPageHeading: false,
+      classes: "govuk-fieldset__legend--s"
+    }
+  },
+  items: [
+    {
+      value: "yes",
+      text: "Enter a personal email address",
+      conditional: {
+        html: emailHtml
+      }
+    },
+    {
+      value: "no",
+      html: labelForNo
+    }
+  ]
+}) }}
+
+
+

@@ -161,7 +161,7 @@
 }) if data['emailAuth'] != 'true' }}
 
 <p class="govuk-body">
-  Check the details we have you from your DfE teacher record.
+  Check the details we have for you from your DfE teacher record.
 </p>
 
 <p class="govuk-body">
@@ -177,7 +177,7 @@
   
 {% endset %}
 
-
+<h2 class="govuk-heading-m">Personal details</h2>
 {{ govukSummaryList({
   classes: "govuk-!-margin-bottom-9",
   titleText: "Personal details",
@@ -227,53 +227,60 @@
       }]
     }
   },
+  {
+    key: {
+      html: 'Date of birth'
+    },
+    value: {
+      text: data.user.dateOfBirth | govukDate
+    },
+    actions: {
+      items: [{
+        text: 'Change',
+        href: "date-of-birth",
+        visuallyHiddenText: "date of birth"
+      }]
+    }
+  }
+  ]
+})}}
+
+
+<h2 class="govuk-heading-m">Sign in details</h2>
+{{ govukSummaryList({
+  classes: "govuk-!-margin-bottom-9",
+  rows: [
     {
       key: {
-        html: 'Date of birth'
+        html: 'Email'
       },
       value: {
-        text: data.user.dateOfBirth | govukDate
+        html: data.user.email or data.defaultData.email
+
       },
       actions: {
         items: [{
           text: 'Change',
-          href: "date-of-birth",
-          visuallyHiddenText: "date of birth"
+          href: "email",
+          visuallyHiddenText: "email"
         }]
       }
     },
-  {
-    key: {
-      html: 'Mobile phone'
-    },
-    value: {
-      html: data.user.phone or data.defaultData.phone
+    {
+      key: {
+        html: 'Mobile phone'
+      },
+      value: {
+        html: data.user.phone or data.defaultData.phone
 
-    },
-    actions: {
-      items: [{
-        text: 'Change',
-        href: "phone",
-        visuallyHiddenText: "mobile phone"
-      }]
+      },
+      actions: {
+        items: [{
+          text: 'Change',
+          href: "phone",
+          visuallyHiddenText: "mobile phone"
+        }]
+      }
     }
-  },
-  {
-    key: {
-      html: 'Email'
-    },
-    value: {
-      html: data.user.email or data.defaultData.email
-
-    },
-    actions: {
-      items: [{
-        text: 'Change',
-        href: "email",
-        visuallyHiddenText: "email"
-      }]
-    }
-
-  }
   ]
-}) if data['emailAuth'] == 'true' or  data['dqt'] == 'false'}}
+})}}
