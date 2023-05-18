@@ -1,0 +1,45 @@
+{% set freeTextInput %}
+  {{ govukInput({
+    label: {
+      text: "Your preferred name",
+      _classes: "govuk-label--l",
+      isPageHeading: false
+    },
+    value: data.user.preferredName,
+    id: "custom-preferred-name",
+    name: "user[preferredNameCustom]"
+  }) }}
+{% endset %}
+
+{{ govukRadios({
+  name: "user[preferredName]",
+  fieldset: {
+    legend: {
+      text: title,
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  hint: {
+    html: "For example, Mike Smith instead of Michael Smith.<br><br>We’ll use this in correspondence, it will not be displayed on your teaching certificates."
+  },
+  items: [
+    {
+      value: "Victoria Smith",
+      text: "Use Victoria Smith"
+    },
+    {
+      value: "Victoria Nelson Smith",
+      text: "Use Victoria Nelson Smith"
+    },
+    {
+      value: "custom",
+      text: "Other",
+      conditional: {
+        html: freeTextInput
+      },
+      checked: true if data.user.preferredName
+    }
+  ],
+  value: data.user.preferredName
+}) }}

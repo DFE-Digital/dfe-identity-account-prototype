@@ -169,12 +169,19 @@
 </p>
 
 {% set middleNamesHtml %}
-{% if data.user.middleNames %}
-  {{data.user.middleNames}}
-{% else %}
-  <span class="govuk-hint">Not provided</span>
-{% endif %}
-  
+  {% if data.user.middleNames %}
+    {{data.user.middleNames}}
+  {% else %}
+    <span class="govuk-hint">Not provided</span>
+  {% endif %}
+{% endset %}
+
+{% set preferredNameHtml %}
+  {% if data.user.preferredName %}
+    {{data.user.preferredName}}
+  {% else %}
+    <span class="govuk-hint">Not provided</span>
+  {% endif %}
 {% endset %}
 
 <h2 class="govuk-heading-m">Personal details</h2>
@@ -224,6 +231,21 @@
         text: 'Change',
         href: "name",
         visuallyHiddenText: "last names"
+      }]
+    }
+  },
+  {
+    key: {
+      html: 'Preferred name'
+    },
+    value: {
+      html: preferredNameHtml
+    },
+    actions: {
+      items: [{
+        text: 'Change',
+        href: "preferred-name",
+        visuallyHiddenText: "preferredName"
       }]
     }
   },

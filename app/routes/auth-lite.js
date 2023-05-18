@@ -104,19 +104,44 @@ module.exports = router => {
       res.redirect('/auth/phone-code')
     }
     // Ed todo: this is probably broken now as I have changed the mobile numbers in use
-    else if(req.session.data['phone'] == '07827999618') {
-      const data = req.session.data
-      data.phoneMatch = 'true'
-      data.matchAccount = 'true'
-      res.redirect('/auth/sign-in-interstitial')
-    } else if(req.session.data['emailAuth'] == 'true') {
-      res.redirect('/auth/check-answers')
-    } 
+    // else if(req.session.data['phone'] == '07827999618') {
+    //   const data = req.session.data
+    //   data.phoneMatch = 'true'
+    //   data.matchAccount = 'true'
+    //   res.redirect('/auth/sign-in-interstitial')
+    // } 
+
     else {
-      res.redirect('/auth/name')
+      if (data.user.preferredName){
+        res.redirect('/auth/check-answers')
+      }
+      else res.redirect('/auth/preferred-name')
     }
+
   })
 
+  router.post('/auth/preferred-name', (req, res) => {
+    const data = req.session.data
+
+    let preferredName = data.user.preferredName
+
+    console.log(`Preferred name was ${preferredName}`)
+
+    if (preferredName == 'custom'){
+      if (!data.user.preferredNameCustom){
+        res.redirect('/auth/preferred-name')
+      }
+      else {
+        data.user.preferredName = data.user.preferredNameCustom
+        delete data.user.preferredNameCustom
+        res.redirect('/auth/check-answers')
+      }
+    }
+    else {
+      res.redirect('/auth/check-answers')
+    }
+
+  })
 
 
   router.post(['/auth/name'], (req, res, next) => {
@@ -277,6 +302,8 @@ module.exports = router => {
   router.post('/auth/finish', (req, res) => { res.redirect('/auth/return-to-service') })
 
   router.post('/auth/phone', (req, res) => { res.redirect('/auth/phone-code') })
+
+  router.post('/auth/preferred-name', (req, res) => { res.redirect('/auth/check-answers') })
   router.post('/auth/phone-radio', (req, res) => { res.redirect('/auth/phone-code') })
 
 }
