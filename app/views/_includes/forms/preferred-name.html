@@ -11,6 +11,11 @@
   }) }}
 {% endset %}
 
+{% set shortName = data.user | getShortName %}
+{% set fullName = data.user | getFullName %}
+
+{% set preferredName = data.user.preferredName %}
+
 {{ govukRadios({
   name: "user[preferredName]",
   fieldset: {
@@ -25,21 +30,22 @@
   },
   items: [
     {
-      value: "Victoria Smith",
-      text: "Use Victoria Smith"
+      value: shortName,
+      text: "Use " + shortName
     },
     {
-      value: "Victoria Nelson Smith",
-      text: "Use Victoria Nelson Smith"
-    },
+      value: fullName,
+      text: "Use " + fullName
+    } if fullName != shortName,
     {
       value: "custom",
       text: "Other",
       conditional: {
         html: freeTextInput
       },
-      checked: true if data.user.preferredName
+      checked: true if (preferredName and preferredName != shortName and preferredName != fullName)
     }
   ],
-  value: data.user.preferredName
+  value: preferredName
 }) }}
+
