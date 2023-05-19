@@ -4,9 +4,9 @@
 {% set dobChanged = data.user | dateOfBirthHasChanged(data.user.dqtUser) %}
 
 {% if nameChanged and dobChanged %}
-  {% set title = "You’ll need to provide evidence for this name and date of birth change" %}
+  {% set title = "You’ll need to provide evidence for this official name and date of birth change" %}
 {% elseif nameChanged %}
-  {% set title = "You’ll need to provide evidence for this name change" %}
+  {% set title = "You’ll need to provide evidence for this official name change" %}
 {% elseif dobChanged %}
   {% set title = "You’ll need to provide evidence for this date of birth change" %}
   

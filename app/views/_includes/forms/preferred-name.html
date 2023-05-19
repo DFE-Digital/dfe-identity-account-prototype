@@ -1,3 +1,7 @@
+{% set shortName = data.user | getShortName %}
+{% set fullName = data.user | getFullName %}
+{% set preferredName = data.user.preferredName %}
+
 {% set freeTextInput %}
   {{ govukInput({
     label: {
@@ -11,11 +15,6 @@
   }) }}
 {% endset %}
 
-{% set shortName = data.user | getShortName %}
-{% set fullName = data.user | getFullName %}
-
-{% set preferredName = data.user.preferredName %}
-
 {{ govukRadios({
   name: "user[preferredName]",
   fieldset: {
@@ -26,7 +25,7 @@
     }
   },
   hint: {
-    html: "For example, Mike Smith instead of Michael Smith.<br><br>We’ll use this in correspondence, it will not be displayed on your teaching certificates."
+    html: "For example, Mike Smith instead of Michael Smith.<br><br>We’ll use your preferred name in correspondence. We use official names on teaching certificates."
   },
   items: [
     {
@@ -48,4 +47,3 @@
   ],
   value: preferredName
 }) }}
-

@@ -1,5 +1,5 @@
 {% set officialName %}
-  {{ data.dqtName }}
+  {{ data.user | getFullName }}
   <p class="govuk-hint govuk-!-font-size-14">Displayed on teaching certificates </p>
   {% if data['nameLozenge'] %}
  {% include '_includes/_lozenge.html' %}
@@ -23,13 +23,18 @@
 {% endset %}
 
 {% set verifiedDOB %}
-{{ data.dob | isoDateFromDateInput | govukDate if data['dob'] else '1 December 1989' }}
-  {% if data['verifiedDob'] == 'true' %}
-  <p class="govuk-hint govuk-!-font-size-14">Your verified date of birth.</p>
+  {{ data.dob | isoDateFromDateInput | govukDate if data['dob'] else '1 December 1989' }}
+{% endset %}
+
+{% set middleNamesHtml %}
+  {% if data.user.middleNames %}
+    {{data.user.middleNames}}
+  {% else %}
+    <span class="govuk-hint">Not provided</span>
   {% endif %}
 {% endset %}
 
-<h3 class="govuk-heading-m">Personal details</h3>
+<h3 class="govuk-heading-m">Teaching record</h3>
 
 {{ govukSummaryList({
   classes: "govuk-!-margin-bottom-9",
@@ -37,21 +42,7 @@
   rows: [
   {
     key: {
-      html: 'Name'
-    },
-    value: {
-      html: data['fullName'] if data['firstName'] else 'Ria Smith'
-    },
-    actions: {
-      items: [{
-        text: 'Change',
-        href: "name"
-      }]
-    }
-  },
-  {
-    key: {
-      html: 'Official name'
+      html: 'Full name'
     },
     value: {
       html: officialName
@@ -62,7 +53,52 @@
         href: "name-dqt-overview"
       }]
     } if data['nameLozenge'] != "show"
-  } if data['showDqtName'] == "show",
+  } if data['showDqtName'] == "show" and false,
+  {
+    key: {
+      html: 'First names'
+    },
+    value: {
+      html: data.user.firstNames
+    },
+    actions: {
+      items: [{
+        text: 'Change',
+        href: "name",
+        visuallyHiddenText: "first names"
+      }]
+    }
+  },
+  {
+    key: {
+      html: 'Middle names'
+    },
+    value: {
+      html: middleNamesHtml
+    },
+    actions: {
+      items: [{
+        text: 'Change',
+        href: "name",
+        visuallyHiddenText: "middle names"
+      }]
+    }
+  },
+  {
+    key: {
+      html: 'Last names'
+    },
+    value: {
+      html: data.user.lastNames
+    },
+    actions: {
+      items: [{
+        text: 'Change',
+        href: "name",
+        visuallyHiddenText: "last names"
+      }]
+    }
+  },
   {
     key: {
       html: 'Date of birth'
@@ -75,7 +111,7 @@
         text: 'Change',
         href: "date-of-birth"
       }]
-    } if data['verifiedDob'] == "false"
+    }
   } if data['showDqtDob'] != "show",
   {
     key: {
@@ -108,60 +144,84 @@
   ]
 }) }}
 
-<h3 class="govuk-heading-m">Sign in details</h3>
+<h3 class="govuk-heading-m">Account details</h3>
+{% set preferredNameHtml %}
+  {% if data.user.preferredName %}
+    {{data.user.preferredName}}
+  {% else %}
+    <span class="govuk-hint">Not provided</span>
+  {% endif %}
+{% endset %}
 
 {{ govukSummaryList({
   classes: "govuk-!-margin-bottom-9",
   titleText: "Personal details",
   rows: [
-  {
-    key: {
-      html: 'Email'
+    {
+      key: {
+        html: 'Preferred name'
+      },
+      value: {
+        html: preferredNameHtml
+      },
+      actions: {
+        items: [{
+          text: 'Change',
+          href: "preferred-name",
+          visuallyHiddenText: "preferredName"
+        }]
+      }
     },
-    value: {
-      html: data['email'] if data['email'] else 'email@example.com'
+    {
+      key: {
+        html: 'Email'
+      },
+      value: {
+        html: data.user.email
 
+      },
+      actions: {
+        items: [{
+          text: 'Change',
+          href: "email"
+        }]
+      }
     },
-    actions: {
-      items: [{
-        text: 'Change',
-        href: "email"
-      }]
+    {
+      key: {
+        html: 'Mobile number'
+      },
+      value: {
+        html: data.user.phone
+
+      },
+      actions: {
+        items: [{
+          text: 'Change',
+          href: "phone"
+        }]
+      }
     }
-  },
-  {
-    key: {
-      html: 'Mobile number'
-    },
-    value: {
-      html: data['phone'] if data['phone'] else '07827999617'
+    ]
+  }) }}
+{# {% if data['showDqtDob'] == "show" or data['showDqtName'] == "show" %} #}
+{% if data.user.trn %}
 
-    },
-    actions: {
-      items: [{
-        text: 'Change',
-        href: "phone"
-      }]
+  <h3 class="govuk-heading-m">Teacher reference number (TRN)</h3>
+
+  {{ govukSummaryList({
+    classes: "govuk-!-margin-bottom-9",
+    titleText: "Personal details",
+    rows: [
+    {
+      key: {
+        html: 'TRN'
+      },
+      value: {
+        html: data.user.trn
+
+      }
     }
-  }
-  ]
-}) }}
-{% if data['showDqtDob'] == "show" or data['showDqtName'] == "show" %}
-<h3 class="govuk-heading-m">Teacher reference number (TRN)</h3>
-
-{{ govukSummaryList({
-  classes: "govuk-!-margin-bottom-9",
-  titleText: "Personal details",
-  rows: [
-  {
-    key: {
-      html: 'TRN'
-    },
-    value: {
-      html: data['trn'] if data['trn'] else '1851018'
-
-    }
-  }
-  ]
-}) }}
+    ]
+  }) }}
 {% endif %}
