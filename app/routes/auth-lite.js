@@ -39,7 +39,7 @@ module.exports = router => {
       
       data.user.email = data.user.newEmail
       delete data.user.changeEmail
-      delete dta.user.newEmail
+      delete data.user.newEmail
       res.redirect('/auth/email-code')   
     }
     else {
