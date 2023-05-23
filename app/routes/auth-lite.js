@@ -120,22 +120,40 @@ module.exports = router => {
 
   })
 
+  let updatePreferredName = user => {
+
+    let preferredName = user.preferredName
+
+    if (preferredName == 'custom'){
+      user.preferredName = user.preferredNameCustom
+      delete user.preferredNameCustom
+    }
+
+    return user
+
+  }
+
   router.post('/auth/preferred-name', (req, res) => {
     const data = req.session.data
 
-    let preferredName = data.user.preferredName
+    data.user = updatePreferredName(data.user)
 
-    console.log(`Preferred name was ${preferredName}`)
+    if (!data.user.preferredName){
+      res.redirect('/auth/preferred-name')
+    }
+    else {
+      res.redirect('/auth/check-answers')
+    }
 
-    if (preferredName == 'custom'){
-      if (!data.user.preferredNameCustom){
-        res.redirect('/auth/preferred-name')
-      }
-      else {
-        data.user.preferredName = data.user.preferredNameCustom
-        delete data.user.preferredNameCustom
-        res.redirect('/auth/check-answers')
-      }
+  })
+
+  router.post('/auth/update-preferred-name', (req, res) => {
+    const data = req.session.data
+
+    data.user = updatePreferredName(data.user)
+
+    if (!data.user.preferredName){
+      res.redirect('/auth/update-preferred-name')
     }
     else {
       res.redirect('/auth/check-answers')
@@ -145,13 +163,14 @@ module.exports = router => {
 
 
   router.post(['/auth/name'], (req, res, next) => {
-    req.session.data['fullName'] = `${req.body['firstName']} ${req.body['lastName']}`
-    if(req.session.data['emailAuth'] == 'true') {
-      res.redirect('/auth/check-answers')
-      // res.redirect('/auth/date-of-birth')
-    } else {
-      res.redirect('/auth/date-of-birth')    }
-   
+    // req.session.data['fullName'] = `${req.body['firstName']} ${req.body['lastName']}`
+    // if(req.session.data['emailAuth'] == 'true') {
+    //   res.redirect('/auth/check-answers')
+    //   // res.redirect('/auth/date-of-birth')
+    // } else {
+    //   res.redirect('/auth/date-of-birth')    }
+
+    res.redirect('/auth/update-preferred-name')
   })
 
   router.post('/auth/date-of-birth', (req, res) => { 
