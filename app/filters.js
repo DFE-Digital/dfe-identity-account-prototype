@@ -14,7 +14,6 @@ Object.keys(utils).forEach(filterName => addFilter(filterName, utils[filterName]
 // Import filters from filters folder
 if (fs.existsSync(individualFiltersFolder)) {
   var files = fs.readdirSync(individualFiltersFolder)
-  console.log(`Importing files: ${files.length}`)
   files.forEach(file => {
     let fileData = require(path.join(individualFiltersFolder, file))
     // Loop through each exported function in file (likely just one)
@@ -22,17 +21,16 @@ if (fs.existsSync(individualFiltersFolder)) {
       // Get each method from the file
       Object.keys(fileData[filterGroup]).forEach(filterName => {
         // filters[filterName] = fileData[filterGroup][filterName]
-        console.log(`Adding filter ${filterName}`)
         addFilter(filterName, fileData[filterGroup][filterName])
       })
     })
   })
 }
 
-// addFilter('getShortName',function(user) {
-//   if (!user) return ''
-//   else return `${user.firstNames} ${user.lastNames}`
-// })
+addFilter('getShortName',function(user) {
+  if (!user) return ''
+  else return `${user.firstNames} ${user.lastNames}`
+})
 
 addFilter('stringify',function(object) {
   return JSON.stringify(object)
