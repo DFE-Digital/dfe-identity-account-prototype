@@ -1,0 +1,49 @@
+{% set shortName = data.user | getShortName %}
+{% set fullName = data.user | getFullName %}
+{% set preferredName = data.user.preferredName %}
+
+{% set freeTextInput %}
+  {{ govukInput({
+    label: {
+      text: "Your preferred name",
+      _classes: "govuk-label--l",
+      isPageHeading: false
+    },
+    value: data.user.preferredName,
+    id: "custom-preferred-name",
+    name: "user[preferredNameCustom]"
+  }) }}
+{% endset %}
+
+{{ govukRadios({
+  name: "user[preferredName]",
+  fieldset: {
+    legend: {
+      text: title,
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  hint: {
+    html: "For example, Mike Smith instead of Michael Smith.<br><br>We’ll use your preferred name in correspondence. We use official names on teaching certificates."
+  },
+  items: [
+    {
+      value: shortName,
+      text: "Use " + shortName
+    },
+    {
+      value: fullName,
+      text: "Use " + fullName
+    } if fullName != shortName,
+    {
+      value: "custom",
+      text: "Other",
+      conditional: {
+        html: freeTextInput
+      },
+      checked: true if (preferredName and preferredName != shortName and preferredName != fullName)
+    }
+  ],
+  value: preferredName
+}) }}

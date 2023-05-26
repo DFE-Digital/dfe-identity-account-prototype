@@ -161,7 +161,7 @@
 }) if data['emailAuth'] != 'true' }}
 
 <p class="govuk-body">
-  Check the details we have for you from your DfE teacher record.
+  Check the details we have for you from your DfE teaching record.
 </p>
 
 <p class="govuk-body">
@@ -169,15 +169,22 @@
 </p>
 
 {% set middleNamesHtml %}
-{% if data.user.middleNames %}
-  {{data.user.middleNames}}
-{% else %}
-  <span class="govuk-hint">Not provided</span>
-{% endif %}
-  
+  {% if data.user.middleNames %}
+    {{data.user.middleNames}}
+  {% else %}
+    <span class="govuk-hint">Not provided</span>
+  {% endif %}
 {% endset %}
 
-<h2 class="govuk-heading-m">Personal details</h2>
+{% set preferredNameHtml %}
+  {% if data.user.preferredName %}
+    {{data.user.preferredName}}
+  {% else %}
+    <span class="govuk-hint">Not provided</span>
+  {% endif %}
+{% endset %}
+
+<h2 class="govuk-heading-m">Teaching record</h2>
 {{ govukSummaryList({
   classes: "govuk-!-margin-bottom-9",
   titleText: "Personal details",
@@ -246,10 +253,25 @@
 })}}
 
 
-<h2 class="govuk-heading-m">Sign in details</h2>
+<h2 class="govuk-heading-m">Account details</h2>
 {{ govukSummaryList({
   classes: "govuk-!-margin-bottom-9",
   rows: [
+    {
+      key: {
+        html: 'Preferred name'
+      },
+      value: {
+        html: preferredNameHtml
+      },
+      actions: {
+        items: [{
+          text: 'Change',
+          href: "preferred-name",
+          visuallyHiddenText: "preferredName"
+        }]
+      }
+    },
     {
       key: {
         html: 'Email'

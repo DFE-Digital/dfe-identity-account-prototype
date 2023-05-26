@@ -39,7 +39,7 @@ module.exports = router => {
       
       data.user.email = data.user.newEmail
       delete data.user.changeEmail
-      delete dta.user.newEmail
+      delete data.user.newEmail
       res.redirect('/auth/email-code')   
     }
     else {
@@ -104,29 +104,73 @@ module.exports = router => {
       res.redirect('/auth/phone-code')
     }
     // Ed todo: this is probably broken now as I have changed the mobile numbers in use
-    else if(req.session.data['phone'] == '07827999618') {
-      const data = req.session.data
-      data.phoneMatch = 'true'
-      data.matchAccount = 'true'
-      res.redirect('/auth/sign-in-interstitial')
-    } else if(req.session.data['emailAuth'] == 'true') {
-      res.redirect('/auth/check-answers')
-    } 
+    // else if(req.session.data['phone'] == '07827999618') {
+    //   const data = req.session.data
+    //   data.phoneMatch = 'true'
+    //   data.matchAccount = 'true'
+    //   res.redirect('/auth/sign-in-interstitial')
+    // } 
+
     else {
-      res.redirect('/auth/name')
+      if (data.user.preferredName){
+        res.redirect('/auth/check-answers')
+      }
+      else res.redirect('/auth/preferred-name')
     }
+
+  })
+
+  let updatePreferredName = user => {
+
+    let preferredName = user.preferredName
+
+    if (preferredName == 'custom'){
+      user.preferredName = user.preferredNameCustom
+      delete user.preferredNameCustom
+    }
+
+    return user
+
+  }
+
+  router.post('/auth/preferred-name', (req, res) => {
+    const data = req.session.data
+
+    data.user = updatePreferredName(data.user)
+
+    if (!data.user.preferredName){
+      res.redirect('/auth/preferred-name')
+    }
+    else {
+      res.redirect('/auth/check-answers')
+    }
+
+  })
+
+  router.post('/auth/update-preferred-name', (req, res) => {
+    const data = req.session.data
+
+    data.user = updatePreferredName(data.user)
+
+    if (!data.user.preferredName){
+      res.redirect('/auth/update-preferred-name')
+    }
+    else {
+      res.redirect('/auth/check-answers')
+    }
+
   })
 
 
-
   router.post(['/auth/name'], (req, res, next) => {
-    req.session.data['fullName'] = `${req.body['firstName']} ${req.body['lastName']}`
-    if(req.session.data['emailAuth'] == 'true') {
-      res.redirect('/auth/check-answers')
-      // res.redirect('/auth/date-of-birth')
-    } else {
-      res.redirect('/auth/date-of-birth')    }
-   
+    // req.session.data['fullName'] = `${req.body['firstName']} ${req.body['lastName']}`
+    // if(req.session.data['emailAuth'] == 'true') {
+    //   res.redirect('/auth/check-answers')
+    //   // res.redirect('/auth/date-of-birth')
+    // } else {
+    //   res.redirect('/auth/date-of-birth')    }
+
+    res.redirect('/auth/update-preferred-name')
   })
 
   router.post('/auth/date-of-birth', (req, res) => { 
@@ -277,6 +321,8 @@ module.exports = router => {
   router.post('/auth/finish', (req, res) => { res.redirect('/auth/return-to-service') })
 
   router.post('/auth/phone', (req, res) => { res.redirect('/auth/phone-code') })
+
+  router.post('/auth/preferred-name', (req, res) => { res.redirect('/auth/check-answers') })
   router.post('/auth/phone-radio', (req, res) => { res.redirect('/auth/phone-code') })
 
 }
