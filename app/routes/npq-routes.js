@@ -31,8 +31,8 @@ module.exports = router => {
     res.redirect('/sign-in/email')
   })
 
-   // NPQ create account
-   router.get('/user-research/npq/create-account', (req, res) => {
+  // NPQ create account
+  router.get('/user-research/npq/create-account', (req, res) => {
     const data = req.session.data
     data.identityServiceName = data.npq
     data.onwardContinue = data.npq
@@ -45,8 +45,8 @@ module.exports = router => {
     res.redirect('/auth/email')
   })
 
-    // NPQ sign-out external link
-    router.get('/user-research/npq/sign-out', (req, res) => {
+  // NPQ sign-out external link
+  router.get('/user-research/npq/sign-out', (req, res) => {
     const data = req.session.data
     data.identityServiceName = data.npq
     data.onwardContinue = data.npq
