@@ -70,7 +70,7 @@ module.exports = router => {
     data.service = 'npq'
     data.createAccountURL = '/user-research/npq/create-account'
     data.signInAccountURL = '/user-research/npq/sign-in'
-    res.redirect('/account/interstitial')
+    res.redirect('/account/account-details')
   })
 
   // NPQ closed state - sign in
