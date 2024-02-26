@@ -79,7 +79,7 @@ module.exports = router => {
     data.identityServiceName = data.npq
     data.onwardContinue = data.npq
     data.returnToService = 'https://npq-prototype.herokuapp.com/user-research/npq/closed-signin'
-    data.scenario = '2'
+    data.scenario = '4'
     data.emailAuth = 'false'
     data.verifiedDob = 'true'
     data.signIn = 'true'
@@ -92,7 +92,7 @@ module.exports = router => {
     data.identityServiceName = data.npq
     data.onwardContinue = data.npq
     data.returnToService = 'https://npq-prototype.herokuapp.com/user-research/npq/closed-eoi'
-    data.scenario = '2'
+    data.scenario = '5'
     data.emailAuth = 'false'
     data.verifiedDob = 'true'
     data.signIn = 'true'
