@@ -81,6 +81,8 @@ module.exports = router => {
     data.returnToService = 'https://npq-prototype.herokuapp.com/user-research/npq/closed-signin'
     data.scenario = '4'
     data.emailAuth = 'false'
+    data.createAccountURL = '/user-research/npq/create-account'
+    data.signInAccountURL = '/user-research/npq/sign-in'
     data.verifiedDob = 'true'
     data.signIn = 'true'
     res.redirect('/auth/ga-account')
@@ -94,6 +96,8 @@ module.exports = router => {
     data.returnToService = 'https://npq-prototype.herokuapp.com/user-research/npq/closed-eoi'
     data.scenario = '5'
     data.emailAuth = 'false'
+    data.createAccountURL = '/user-research/npq/create-account'
+    data.signInAccountURL = '/user-research/npq/sign-in'
     data.verifiedDob = 'true'
     data.signIn = 'true'
     res.redirect('/auth/ga-account')
