@@ -11,7 +11,7 @@
     {%- if data['service'] == 'qs' -%}
       <a class="govuk-back-link" href="https://qualifications-prototype.herokuapp.com/user-research/mvp/"> Back to {{ data.qs }}</a>
       {%- elseif data['service'] == 'npq' -%}
-        <a class="govuk-back-link" href="https://npq-prototype.herokuapp.com/registration-status/registration-status"> Back to {{ data.npq }}</a>
+        <a class="govuk-back-link" href="https://npq-prototype.herokuapp.com/npq-account"> Back to {{ data.npq }}</a>
       {%- else -%}
         <a class="govuk-back-link" href="/qts/apply-for-qts?alert=hide"> Back to {{ data.qtsLc }}</a>
     {%- endif -%}
@@ -29,7 +29,7 @@
       {%- elseif data['service'] == 'npq'-%}
       {{ govukButton({
         html: 'Back to Register for a NPQ',
-        href: 'https://npq-prototype.herokuapp.com/registration-status/registration-status'
+        href: 'https://npq-prototype.herokuapp.com/npq-account'
       }) }}
     {%- else -%}
       {{ govukButton({
